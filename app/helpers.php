@@ -4,6 +4,7 @@ function timeAgo($timestamp){
     $datetime2=date_create($timestamp);
     $diff=date_diff($datetime1, $datetime2);
     $timemsg='';
+    
     if($diff->y > 0){
         $timemsg = $diff->y .' year'. ($diff->y > 1?"'s":'');
 
