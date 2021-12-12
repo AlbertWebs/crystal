@@ -14,9 +14,8 @@ use App\Http\Controllers\AdminsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/product-quick-view', [HomeController::class, 'product_quick_view'])->name('product-quick-view');
 
 
 // Admin Routes
