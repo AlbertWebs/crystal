@@ -16,7 +16,88 @@ use App\Http\Controllers\AdminsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product-quick-view', [HomeController::class, 'product_quick_view'])->name('product-quick-view');
+Route::get('/products', [HomeController::class, 'products'])->name('products');
+Route::get('/products/category', [HomeController::class, 'products_category'])->name('category');
 
+// 
+Route::get('/find-us',[App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/about-us',[App\Http\Controllers\HomeController::class, 'about'])->name('about');
+Route::get('/special-offers',[App\Http\Controllers\HomeController::class, 'special_offers'])->name('special-offers');
+
+// 
+Route::get('/terms-and-conditions',[App\Http\Controllers\HomeController::class, 'terms'])->name('terms');
+Route::get('/privacy-policy',[App\Http\Controllers\HomeController::class, 'privacy'])->name('privacy');
+Route::get('/shipping-policy',[App\Http\Controllers\HomeController::class, 'shipping'])->name('shipping');
+Route::get('/delivery',[App\Http\Controllers\HomeController::class, 'delivery'])->name('delivery');
+Route::get('/copyright',[App\Http\Controllers\HomeController::class, 'copyright'])->name('copyright');
+Route::get('/our-portfolio',[App\Http\Controllers\HomeController::class, 'portfolio'])->name('portfolio');
+Route::get('/our-portfolio/{id}',[App\Http\Controllers\HomeController::class, 'folio'])->name('folio');
+
+//Search
+Route::get('/search',[App\Http\Controllers\HomeController::class, 'search'])->name('search');
+Route::get('/search-results',[App\Http\Controllers\HomeController::class, 'searchsite'])->name('search-results');
+Route::get('/filter',[App\Http\Controllers\HomeController::class, 'filter'])->name('search-filter');
+Route::get('/filters',[App\Http\Controllers\HomeController::class, 'filters'])->name('search-filters');
+Route::get('/do-not',[App\Http\Controllers\HomeController::class, 'do_not'])->name('do-not');
+
+Route::post('/newsletter', [App\Http\Controllers\HomeController::class, 'newsletter'])->name('newsletter');
+// Creates Offers Session
+Route::get('/subscription-offers/{email}', [App\Http\Controllers\HomeController::class, 'subscription_offers'])->name('subscription-offers');
+
+// Tags
+Route::get('/product-tags/{slung}', [App\Http\Controllers\HomeController::class, 'product_tags'])->name('product_tags');
+
+// Products
+Route::group(['prefix'=>'products'], function(){
+	Route::get('/', [App\Http\Controllers\HomeController::class, 'all'])->name('all');
+	Route::get('/shop-by-category', [App\Http\Controllers\HomeController::class, 'categories'])->name('shop-by-category');
+	Route::get('/shop-by-brand', [App\Http\Controllers\HomeController::class, 'brand'])->name('shop-by-brand');
+	Route::get('/{slung}', [App\Http\Controllers\HomeController::class, 'product_category'])->name('product-category');
+	Route::get('/brand/{brand}', [App\Http\Controllers\HomeController::class, 'brands'])->name('shop-by-brand');
+});
+
+// Single Product
+Route::get('product/{slung}', [App\Http\Controllers\HomeController::class, 'product_single'])->name('product-single');
+// Product Helpers
+Route::get('/popup/{slung}', [App\Http\Controllers\HomeController::class, 'popup'])->name('popup');
+
+
+// Cart Routes
+Route::group(['prefix'=>'shopping-cart'], function(){
+	Route::get('/', [CartController::class, 'index'])->name('cart');
+	Route::get('add-to-cart/{id}', [CartController::class, 'addCart'])->name('add.to.cart');
+	Route::post('update-cart', [CartController::class, 'update'])->name('update.cart');
+	Route::get('remove-from-cart/{id}', [CartController::class, 'destroy'])->name('remove.from.cart');
+
+	// Checkout
+	Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+	Route::get('/checkout/payment', [CheckoutController::class, 'payment'])->name('payment');
+	Route::get('/checkout/payment-last', [CheckoutController::class, 'payments'])->name('payments');
+	Route::post('checkout/login', [CheckoutController::class, 'login'])->name('checkout.login');
+	Route::post('checkout/create-user', [CheckoutController::class, 'create'])->name('checkout.create');
+	Route::get('checkout/placeOrder', [CheckoutController::class, 'placeOrderGet'])->name('checkout.order.get');
+	Route::post('checkout/placeOrder', [CheckoutController::class, 'placeOrder'])->name('checkout.order');
+	Route::post('/checkout/process-coupon', [CheckoutController::class, 'process_coupon'])->name('process_coupon');
+	Route::get('/checkout/remove-coupon/{code}', [CheckoutController::class, 'remove_coupon'])->name('remove-coupon');
+	Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist');
+
+});
+
+// WishList
+Route::group(['prefix'=>'wishlist'], function(){
+	Route::get('/', [WishListController::class, 'index'])->name('wishlist');
+	Route::get('add-to-wishlist/{id}', [WishListController::class, 'addWish'])->name('add.to.wishlist');
+	Route::get('remove-from-wishlist/{id}', [WishListController::class, 'destroy'])->name('remove.from.wishlist');
+});
+
+//Payment pages
+Route::post('payments/veryfy/mpesa',[PaymentsConroller::class, 'verify']);//The Lipa na MPESA Page
+Route::post('payments/veryfy/sitoki',[PaymentsConroller::class, 'stk']); //The Lipa na MPESA Page
+Route::get('mpesa/confirm',[PaymentsConroller::class, 'confirm']);           //Rquired URL
+Route::get('mpesa/validate',[PaymentsConroller::class, 'validation']);         //Rquired URL
+Route::get('mpesa/register',[PaymentsConroller::class, 'register']);           //Rquired URL
+
+Route::post('/secure-login', [App\Http\Controllers\HomeController::class, 'handleLogin']); 
 
 // Admin Routes
 Auth::routes();

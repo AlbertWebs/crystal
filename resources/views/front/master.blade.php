@@ -470,6 +470,8 @@
                                         title="Twitter"></a>
                                     <a href="#" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank"
                                         title="Linkedin"></a>
+                                    <a href="#" class="social-icon social-instagram fab fa-instagram" target="_blank"
+                                        title="instagram"></a>
                                 </div><!-- End .social-icons -->
                             </div><!-- End .widget -->
                         </div><!-- End .col-lg-3 -->
@@ -513,19 +515,19 @@
             <div class="container">
                 <div class="footer-bottom d-sm-flex align-items-center bg-dark">
                     <div class="footer-left">
-                        <span class="footer-copyright">Porto eCommerce. © 2021. All Rights Reserved</span>
+                        <span class="footer-copyright">Crystal Car Audio. Copyright © <?php echo date('Y') ?>. All Rights Reserved</span>
                     </div>
 
                     <div class="footer-right ml-auto mt-1 mt-sm-0">
                         <div class="payment-icons">
                             <span class="payment-icon visa"
-                                style="background-image: url(assets/images/payments/payment-visa.svg)"></span>
+                                style="background-image: url({{asset('theme/assets/images/payments/payment-visa.svg')}})"></span>
                             <span class="payment-icon paypal"
-                                style="background-image: url(assets/images/payments/payment-paypal.svg)"></span>
+                                style="background-image: url({{asset('theme/assets/images/payments/payment-paypal.svg')}})"></span>
                             <span class="payment-icon stripe"
-                                style="background-image: url(assets/images/payments/payment-stripe.png)"></span>
+                                style="background-image: url({{asset('theme/assets/images/payments/payment-stripe.png')}})"></span>
                             <span class="payment-icon verisign"
-                                style="background-image:  url(assets/images/payments/payment-verisign.svg)"></span>
+                                style="background-image:  url({{asset('theme/assets/images/payments/payment-verisign.svg')}})"></span>
                         </div>
                     </div>
                 </div>
@@ -720,7 +722,7 @@
     </div>
 
     <div class="newsletter-popup mfp-hide bg-img" id="newsletter-popup-form"
-        style="background: #f1f1f1 no-repeat center/cover url(assets/images/newsletter_popup_bg.jpg)">
+        style="background: #f1f1f1 no-repeat center/cover url({{asset('theme/assets/images/newsletter_popup_bg.jpg')}})">
         <div class="newsletter-popup-content">
             <img src="{{asset('theme/assets/images/logo-black.png')}}" alt="Logo" class="logo-newsletter" width="111" height="44">
             <h2>Subscribe to newsletter</h2>
