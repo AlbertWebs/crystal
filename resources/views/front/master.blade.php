@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{asset('theme/assets/css/bootstrap.min.css')}}">
 
     <!-- Main CSS File -->
+    <link rel="stylesheet" href="{{asset('theme/assets/css/style.min.css')}}">
     <link rel="stylesheet" href="{{asset('theme/assets/css/demo42.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/assets/vendor/fontawesome-free/css/all.min.css')}}">
 </head>
