@@ -7,7 +7,7 @@
         'dots': false,
         'nav': true
     }">
-        <div class="banner intro-slide1" style="background: url(assets/images/demoes/demo42/slider/slide1.jpg) rgb(255, 255, 255);
+        <div class="banner intro-slide1" style="background: url({{asset('theme/assets/images/demoes/demo42/slider/slide1.jpg')}}) rgb(255, 255, 255);
         min-height: 530px; background-position: right center; background-repeat: no-repeat;">
             <div class="container">
                 <div class="wrapper">
@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="banner intro-slide2" style="background: url(assets/images/demoes/demo42/slider/slide2.jpg) rgb(255, 255, 255);
+        <div class="banner intro-slide2" style="background: url({{asset('theme/assets/images/demoes/demo42/slider/slide2.jpg')}}) rgb(255, 255, 255);
         min-height: 530px; background-position: left center; background-repeat: no-repeat;">
             <div class="container">
                 <div class="wrapper">
@@ -146,8 +146,8 @@
             <div class="search-name d-lg-flex align-items-center appear-animate"
                 data-animation-name="fadeInUpShorter">
                 <h2 class="search-title"><i class="icon-business-book"></i>Add A Vehicle To
-                    Find Exact Fit Parts:</h2>
-                <h4 class="search-info">Shop for your specific vehicle to find parts that fit.
+                    Find Exact Audio Fit:</h2>
+                <h4 class="search-info">Shop for your specific vehicle audio parts.
                 </h4>
             </div>
             <div class="row search-form appear-animate" data-animation-name="fadeInUpShorter">
@@ -185,7 +185,7 @@
                 <div class="col-md-6 col-lg-2">
                     <a href="demo42-shop.html"
                         class="btn btn-borders btn-rounded btn-outline-primary ls-25 btn-block">Find
-                        Auto Parts</a>
+                        Audio Parts</a>
                 </div>
             </div>
         </div>
@@ -286,22 +286,22 @@
             <h2 class="title title-underline pb-1 appear-animate" data-animation-name="fadeInLeftShorter">Hot
                 Deals</h2>
             <div class="owl-carousel owl-theme appear-animate" data-owl-options="{
-            'loop': false,
-            'dots': false,
-            'nav': true,
-            'margin': 20,
-            'responsive': {
-                '0': {
-                    'items': 2
-                },
-                '576': {
-                    'items': 4
-                },
-                '991': {
-                    'items': 6
-                }
-            }
-        }">
+                    'loop': false,
+                    'dots': false,
+                    'nav': true,
+                    'margin': 20,
+                    'responsive': {
+                        '0': {
+                            'items': 2
+                        },
+                        '576': {
+                            'items': 4
+                        },
+                        '991': {
+                            'items': 6
+                        }
+                    }
+                }">
                 <div class="product-default inner-quickview inner-icon">
                     <figure>
                         <a href="demo42-product.html">
@@ -545,7 +545,7 @@
                 <h3 class="custom-title">Special Offers</h3>
                 <div class="owl-carousel owl-theme dots-simple">
                     <div class="banner banner1"
-                        style="background: url(assets/images/demoes/demo42/banner/banner1.jpg) rgb(232, 127, 59);
+                        style="background: url({{asset('theme/assets/images/demoes/demo42/banner/banner1.jpg')}}) rgb(232, 127, 59);
                     background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 40.2rem;">
                         <div class="banner-content banner-layer-middle position-absolute">
 
@@ -564,7 +564,7 @@
                         </div>
                     </div>
                     <div class="banner banner2"
-                        style="background: url(assets/images/demoes/demo42/banner/banner2.jpg) rgb(83, 86, 91);
+                        style="background: url({{asset('theme/assets/images/demoes/demo42/banner/banner2.jpg')}}) rgb(83, 86, 91);
                     background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 40.2rem;">
                         <div class="banner-content banner-layer-middle position-absolute">
 
