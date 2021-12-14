@@ -21,7 +21,7 @@
     <meta name="twitter:creator" content="@crystalcaraudio" />
     <meta name="_token" content="{{ csrf_token() }}">
     {{-- SEO --}}
-    @include('front.favicon')
+    {{-- @include('front.favicon') --}}
     @include('front.facebook')
     @include('front.tawk')
     @include('front.google')
