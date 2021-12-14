@@ -29,7 +29,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle(' ' . $Settings->sitename . ' - ' . $Settings->intro . '');
-            SEOMeta::setDescription('Vehicle Sounds Systems in Kenya, Vehicle Accessories in kenya, Car Sound Systems in Kenya, Car alarm Systems in Kenya,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
+            SEOMeta::setDescription('Car Audio Systems in Kenya, Vehicle Accessories in kenya, Car Sound Systems in Kenya, Car alarm Systems in Kenya,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers' . $Settings->welcome . '');
             SEOMeta::setCanonical('' . $Settings->url . '');
             OpenGraph::setDescription('' . $Settings->welcome . '');
@@ -37,7 +37,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
 
             
             $page_name = 'Home1';
@@ -64,7 +64,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/products');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Products';
             $Copyright = DB::table('copyright')->get();
             $page_title = 'Products';
@@ -89,7 +89,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/products');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Products';
             $Copyright = DB::table('copyright')->get();
             $page_title = 'Products';
@@ -121,7 +121,7 @@ class HomeController extends Controller
                     OpenGraph::setUrl('' . $Settings->url . '/products/'.$category.'');
                     OpenGraph::addProperty('type', 'website');
                     Twitter::setTitle('' . $Settings->sitename. '');
-                    Twitter::setSite('@amanisounds');
+                    Twitter::setSite('@crystalcaraudio');
                     // Set Session Here
                     Session::put('Category', $page_name);
                     $page_title = 'Products';
@@ -153,7 +153,7 @@ class HomeController extends Controller
                     OpenGraph::setUrl('' . $Settings->url . '/products/'.$category.'');
                     OpenGraph::addProperty('type', 'website');
                     Twitter::setTitle('' . $Settings->sitename. '');
-                    Twitter::setSite('@amanisounds');
+                    Twitter::setSite('@crystalcaraudio');
                     // Set Session Here
                     Session::put('Category', $page_name);
                     $page_title = 'Products';
@@ -183,7 +183,7 @@ class HomeController extends Controller
                     OpenGraph::setUrl('' . $Settings->url . '/products/'.$category.'');
                     OpenGraph::addProperty('type', 'website');
                     Twitter::setTitle('' . $Settings->sitename. '');
-                    Twitter::setSite('@amanisounds');
+                    Twitter::setSite('@crystalcaraudio');
                     // Set Session Here
                    
                     $page_title = 'Products';
@@ -214,7 +214,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/products/categories');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             // Set Session Here
             $page_name = "Shop By Category";
             Session::put('Category', $page_name);
@@ -242,7 +242,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/products/brand');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             // Set Session Here
             $page_name = "Shop By Brand";
             Session::put('Brand', $page_name);
@@ -282,7 +282,7 @@ class HomeController extends Controller
             OpenGraph::addProperty('type', 'website');
 
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Contact';
             $page_title = 'Contact Us';
             $SiteSettings = DB::table('sitesettings')->get();
@@ -304,7 +304,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/about-us');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
          
             $About = DB::table('about')->get();
             $SiteSettings = DB::table('sitesettings')->get();
@@ -357,7 +357,7 @@ class HomeController extends Controller
                     OpenGraph::setUrl('' . $Settings->url . '/product-tags/'.$slung.'');
                     OpenGraph::addProperty('type', 'website');
                     Twitter::setTitle('' . $Settings->sitename. '');
-                    Twitter::setSite('@amanisounds');
+                    Twitter::setSite('@crystalcaraudio');
                     // Set Session Here
                    
                     // End Session Here
@@ -387,7 +387,7 @@ class HomeController extends Controller
                 OpenGraph::setUrl('' . $Settings->url . '/product/'.$title.'');
                 OpenGraph::addProperty('type', 'product.item');
                 Twitter::setTitle('' . $Settings->sitename. '');
-                Twitter::setSite('@amanisounds');
+                Twitter::setSite('@crystalcaraudio');
                 $page_name = 'details';
                 $Copyright = DB::table('copyright')->get();
                 $page_title = $title;
@@ -413,7 +413,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/terms');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Terms';
             $Term = Term::all();
             $page_title = 'Terms Of Service';
@@ -434,7 +434,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/terms');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Terms';
             $Term = Delivery::all();
             $page_title = 'Terms Of Delivery';
@@ -457,7 +457,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/privacy');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Terms';
             $Privacy = Privacy::all();
             $page_title = 'Privacy Policy';
@@ -478,7 +478,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/privacy');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Terms';
             $Privacy = Privacy::all();
             $page_title = 'Privacy Policy';
@@ -501,7 +501,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/copyright');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Terms';
             $Copyright = DB::table('copyright')->get();
             $page_title = 'Copyright Statement';
@@ -550,7 +550,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/search-results/');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $ProductsCategory = DB::table('category')->where('keywords', 'like', '%' . $request->search . '%')->limit(4)->get();
             $ProductsTag = DB::table('tags')->where('title', 'like', '%' . $request->search . '%')->limit(1)->get();
             $ProductsBrand = DB::table('brands')->where('name', 'like', '%' . $request->search . '%')->limit(1)->get();
@@ -617,7 +617,7 @@ class HomeController extends Controller
                     OpenGraph::setUrl('' . $Settings->url . '/search-results/');
                     OpenGraph::addProperty('type', 'website');
                     Twitter::setTitle('' . $Settings->sitename. '');
-                    Twitter::setSite('@amanisounds');
+                    Twitter::setSite('@crystalcaraudio');
                     $ProductsCategory = DB::table('category')->where('keywords', 'like', '%' . $request->search . '%')->limit(4)->get();
                     $ProductsTag = DB::table('tags')->where('title', 'like', '%' . $request->search . '%')->limit(1)->get();
                     $ProductsBrand = DB::table('brands')->where('name', 'like', '%' . $request->search . '%')->limit(1)->get();
@@ -653,7 +653,7 @@ class HomeController extends Controller
                     OpenGraph::setUrl('' . $Settings->url . '/search-results/');
                     OpenGraph::addProperty('type', 'website');
                     Twitter::setTitle('' . $Settings->sitename. '');
-                    Twitter::setSite('@amanisounds');
+                    Twitter::setSite('@crystalcaraudio');
                     $ProductsCategory = DB::table('category')->where('keywords', 'like', '%' . $mobile_search . '%')->limit(4)->get();
                     $ProductsTag = DB::table('tags')->where('title', 'like', '%' . $mobile_search . '%')->limit(1)->get();
                     $ProductsBrand = DB::table('brands')->where('name', 'like', '%' . $mobile_search . '%')->limit(1)->get();
@@ -698,7 +698,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/products');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Products';
             $Copyright = DB::table('copyright')->get();
             $page_title = 'Portfolio';
@@ -723,7 +723,7 @@ class HomeController extends Controller
             OpenGraph::setUrl('' . $Settings->url . '/products');
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
-            Twitter::setSite('@amanisounds');
+            Twitter::setSite('@crystalcaraudio');
             $page_name = 'Products';
             $Copyright = DB::table('copyright')->get();
             $page_title = 'Portfolio';

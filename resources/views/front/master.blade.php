@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php $SiteSettings = DB::table('sitesettings')->get() ?>
+@foreach ($SiteSettings as $Settings)    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Porto - Bootstrap eCommerce Template</title>
+  
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Porto - Bootstrap eCommerce Template">
-    <meta name="author" content="SW-THEMES">
+    {{-- SEO --}}
+    {!! SEOMeta::generate() !!}
+    <meta name="author" content="Designekta Studios">
+    <meta property="og:description" content="Car Audio store in Nairobi, Vehicle Sounds Systems in Kenya, Vehicle Accessories in kenya, Car Sound Systems in Kenya, Car alarm Systems in Kenya">
+    <meta property="og:image" content="{{url('/')}}/uploads/logo/{{$Settings->logo}}" />
+    <meta property="fb:app_id" content="431980657174772" />
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@crystalcaraudio" />
+    <meta name="_token" content="{{ csrf_token() }}">
+    {{-- SEO --}}
+    @include('front.favicon')
+    @include('front.facebook')
+    @include('front.tawk')
+    @include('front.google')
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset('theme/assets/images/icons/favicon.png')}}">
+    
     <link rel="preload" href="{{asset('theme/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
         crossorigin="anonymous">
     <link rel="preload" href="{{asset('theme/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2')}}" as="font" type="font/woff2"
@@ -385,6 +399,6 @@
     <!-- Main JS File -->
     <script src="{{asset('theme/assets/js/main.min.js')}}"></script>
 </body>
-
+@endforeach
 
 </html>
