@@ -8,6 +8,7 @@ use Session;
 use OpenGraph;
 use SEOMeta;
 use App\Models\User;
+use App\Models\Rate;
 use App\Models\ReplyMessage;
 use App\Models\Subscriber;
 use Hash;
@@ -22,6 +23,7 @@ use Newsletter;
 use App\Models\Newsletters;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use AmrShawky\LaravelCurrency\Facade\Currency;
 class HomeController extends Controller
 {
     public function index()
@@ -49,6 +51,39 @@ class HomeController extends Controller
             
             return view('front.index', compact('keywords','page_title'));
         }
+    }
+
+    public function swap(){
+        $USD = Currency::convert()->from('KES')->to('USD')->get();
+        $EUR = Currency::convert()->from('KES')->to('EUR')->get();
+        $GBP = Currency::convert()->from('KES')->to('GBP')->get();
+        $Rate = Rate::all();
+        if($Rate->isEmpty()){
+           $data = array(
+                array('rates'=>$USD, 'currency'=> "USD"),
+                array('rates'=>$EUR, 'currency'=> "EUR"),
+                array('rates'=>$GBP, 'currency'=> "GBP"),
+                //...
+            );
+            Rate::insert($data);
+        }else{
+             $updateUSD = array(
+                  "rates"=>$USD
+             );
+
+             $updateEUR = array(
+                "rates"=>$EUR
+             );
+
+             $updateGBP = array(
+                "rates"=>$GBP
+             );
+        }
+        DB::table('rates')->where('currency','USD')->update($updateUSD);
+        DB::table('rates')->where('currency','EUR')->update($updateEUR);
+        DB::table('rates')->where('currency','GBP')->update($updateGBP);
+        
+        return $USD;
     }
 
     public function all()
@@ -792,6 +827,10 @@ class HomeController extends Controller
     public function sub(){
      
         return view('subscribe');
+    }
+
+    public function translate(){
+        $tr = new GoogleTranslate('fr');
     }
     
 }

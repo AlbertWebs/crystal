@@ -6,17 +6,17 @@
                     <i class="icon-shipping"></i>
 
                     <div class="info-box-content">
-                        <h4>FREE Next Day Delivery For Orders $35+</h4>
+                        <h4>FREE Next Day Delivery For Orders Above $135+</h4>
                     </div><!-- End .info-box-content -->
                 </div>
             </div><!-- End .header-left -->
 
             <div class="header-right header-dropdowns ml-0 ml-md-auto w-md-100">
                 <div class="header-dropdown ">
-                    <a href="#">USD</a>
+                    <a href="#">KES</a>
                     <div class="header-menu">
                         <ul>
-                            <li><a href="#">EUR</a></li>
+                            <li><a  href="#">KES</a></li>
                             <li><a href="#">USD</a></li>
                         </ul>
                     </div><!-- End .header-menu -->
@@ -26,9 +26,9 @@
                     <a href="#"><i class="flag-us flag"></i>ENG</a>
                     <div class="header-menu">
                         <ul>
-                            <li><a href="#"><i class="flag-us flag mr-2"></i>ENG</a>
+                            <li><a id="lang" href="#"><i class="flag-us flag mr-2"></i>ENG</a>
                             </li>
-                            <li><a href="#"><i class="flag-fr flag mr-2"></i>FRA</a></li>
+                            {{-- <li><a href="#"><i class="flag-ke flag mr-2"></i>SWA</a></li> --}}
                         </ul>
                     </div><!-- End .header-menu -->
                 </div><!-- End .header-dropown -->

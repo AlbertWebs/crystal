@@ -56,6 +56,8 @@
 </head>
 
 <body>
+
+    <div id="google_translate_element"></div> 
     <div class="page-wrapper">
 
         @include('front.notice')
@@ -398,6 +400,26 @@
 
     <!-- Main JS File -->
     <script src="{{asset('theme/assets/js/main.min.js')}}"></script>
+
+    {{-- Translator --}}
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            $("#lang").click(
+            //    
+            function googleTranslateElementInit() { 
+                new google.translate.TranslateElement(
+                    {pageLanguage: 'en'}, 
+                    'google_translate_element'
+                ); 
+            
+            // 
+            });
+        })
+       
+    </script> 
+      
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+    {{-- Google Translate --}}
 </body>
 @endforeach
 
