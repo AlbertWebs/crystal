@@ -66,25 +66,25 @@
 
                 <ul class="top-links mega-menu d-none d-xl-flex mb-0 pr-2">
                     <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
-                        <a href="#"><i class="icon-pin"></i>Our Stores</a></li>
+                        <a href="{{url('/')}}/find-us/map"><i class="icon-pin"></i>Our Stores</a></li>
                     <li class="menu-item menu-item-type-custom menu-item-object-custom narrow">
-                        <a href="#"><i class="icon-shipping-truck"></i>Track Your Order</a></li>
+                        <a href="{{url('/')}}/dashboard"><i class="icon-shipping-truck"></i>Track Your Order</a></li>
                     <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
-                        <a href="#"><i class="icon-help-circle"></i>Help</a></li>
+                        <a href="{{url('/')}}/find-us"><i class="icon-help-circle"></i>Help</a></li>
                     <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
-                        <a href="#"><i class="icon-wishlist-2"></i>Wishlist</a></li>
+                        <a href="{{url('/shopping-cart')}}/wishlist"><i class="icon-wishlist-2"></i>Wishlist</a></li>
                 </ul>
 
                 <span class="separator d-none d-md-block mr-0 ml-4"></span>
 
                 <div class="social-icons">
-                    <a href="#" class="social-icon social-facebook icon-facebook" target="_blank"
+                    <a href="{{$Settings->facebook}}" class="social-icon social-facebook icon-facebook" target="_blank"
                         title="facebook"></a>
-                    <a href="#" class="social-icon social-twitter icon-twitter" target="_blank"
+                    <a href="{{$Settings->twitter}}" class="social-icon social-twitter icon-twitter" target="_blank"
                         title="twitter"></a>
-                    <a href="#" class="social-icon social-instagram icon-instagram mr-0" target="_blank"
+                    <a href="{{$Settings->instagram}}" class="social-icon social-instagram icon-instagram mr-0" target="_blank"
                         title="instagram"></a>
-                    <a href="#" class="social-icon social-linkedin fab fa-linkedin-in mr-0" target="_blank"
+                    <a href="{{$Settings->linkedin}}" class="social-icon social-linkedin fab fa-linkedin-in mr-0" target="_blank"
                         title="linkedin"></a>
                 </div><!-- End .social-icons -->
             </div><!-- End .header-right -->
@@ -130,13 +130,20 @@
                 </div>
 
                 <span class="separator d-none d-lg-block mr-4"></span>
-
+                @if(Auth::user())
+                <a href="{{url('/')}}/dashboard" class="d-lg-block d-none">
+                @else
                 <a href="{{url('/')}}/login" class="d-lg-block d-none">
+                @endif
                     <div class="header-user">
                         <i class="icon-user-2"></i>
                         <div class="header-userinfo">
                             <span>Welcome</span>
+                            @if(Auth::user())
+                            <h4>{{Auth::user()->name}}</h4>
+                            @else
                             <h4>Sign In / Register</h4>
+                            @endif
                         </div>
                     </div>
                 </a>

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminsController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ClientController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -104,6 +106,22 @@ Route::get('mpesa/validate',[PaymentsConroller::class, 'validation']);         /
 Route::get('mpesa/register',[PaymentsConroller::class, 'register']);           //Rquired URL
 
 Route::post('/secure-login', [App\Http\Controllers\HomeController::class, 'handleLogin']); 
+
+
+// Users Routes
+Auth::routes();
+Route::group(['prefix'=>'dashboard'], function(){
+Route::get('/', [ClientController::class, 'index'])->name('dashboard.home');
+Route::post('/update-settings', [ClientController::class, 'save'])->name('dashboard.update');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+// SocialMedia
+Route::get('/facebook', [LoginController::class, 'facebook']);
+Route::get('/facebook/redirect', [LoginController::class, 'facebookRedirect']);
+Route::get('/google', [LoginController::class, 'google']);
+Route::get('/google/redirect', [LoginController::class, 'googleRedirect']);
+
+});
 
 // Admin Routes
 Auth::routes();
