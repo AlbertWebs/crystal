@@ -53,7 +53,7 @@ class HomeController extends Controller
         }
     }
 
-    public function swap(){
+    public function swaps(){
         $USD = Currency::convert()->from('KES')->to('USD')->get();
         $EUR = Currency::convert()->from('KES')->to('EUR')->get();
         $GBP = Currency::convert()->from('KES')->to('GBP')->get();
@@ -84,6 +84,15 @@ class HomeController extends Controller
         DB::table('rates')->where('currency','GBP')->update($updateGBP);
         
         return $USD;
+    }
+
+    public function swap($currency){
+        $Currency = Rate::where('currency',$currency)->get();
+        foreach($Currency as $cur){
+            Session::put('rates', $cur->rates);
+        }
+       
+        return back();
     }
 
     public function all()

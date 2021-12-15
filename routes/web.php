@@ -86,7 +86,7 @@ Route::group(['prefix'=>'shopping-cart'], function(){
 
 // Language Support
 Route::get('/google-translate',[App\Http\Controllers\HomeController::class, 'translate'])->name('translate');
-Route::get('/currency-swap',[App\Http\Controllers\HomeController::class, 'swap'])->name('swap');
+Route::get('/currency-swap/{code}',[App\Http\Controllers\HomeController::class, 'swap'])->name('swap');
 
 
 // WishList

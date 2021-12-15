@@ -4,20 +4,47 @@
             <div class="header-left d-none d-md-block">
                 <div class="info-box info-box-icon-left text-primary justify-content-start p-0">
                     <i class="icon-shipping"></i>
-
+                    @if (session()->has('rates'))
+                    <a href="#">
+                        <?php
+                             $rates = Session::get('rates');
+                             $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                        ?>
+                        @foreach ($Rates as $rt)
+                        <div class="info-box-content">
+                            <h4>FREE Next Day Delivery For Orders Above {{$rt->symbol}}<?php $total = 13500*$rt->rates; echo ceil($total) ?>+</h4>
+                        </div><!-- End .info-box-content -->
+                        @endforeach
+                    </a>
+                    @else
                     <div class="info-box-content">
-                        <h4>FREE Next Day Delivery For Orders Above $135+</h4>
+                        <h4>FREE Next Day Delivery For Orders Above {{$rt->symbol}}<?php $total = 13500*$rt->rates; echo ceil($total) ?>+</h4>
                     </div><!-- End .info-box-content -->
+                    @endif
                 </div>
             </div><!-- End .header-left -->
 
             <div class="header-right header-dropdowns ml-0 ml-md-auto w-md-100">
                 <div class="header-dropdown ">
-                    <a href="#">KES</a>
+                    
+                    @if (session()->has('rates'))
+                    <a href="#">
+                        <?php
+                             $rates = Session::get('rates');
+                             $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                        ?>
+                        @foreach ($Rates as $rt)
+                            {{$rt->currency}}
+                        @endforeach
+                    </a>
+                    @else
+                    <a href="{{url('/')}}/currency-swap/KES">KES</a>
+                    @endif
                     <div class="header-menu">
                         <ul>
-                            <li><a  href="#">KES</a></li>
-                            <li><a href="#">USD</a></li>
+                            <li><a  href="{{url('/')}}/currency-swap/KES">KES</a></li>
+                            <li><a href="{{url('/')}}/currency-swap/USD">USD</a></li>
+                            <li><a href="{{url('/')}}/currency-swap/GBP">GBP</a></li>
                         </ul>
                     </div><!-- End .header-menu -->
                 </div><!-- End .header-dropown -->
