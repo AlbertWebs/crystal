@@ -1,3 +1,5 @@
+<?php $SiteSettings = DB::table('sitesettings')->get() ?>
+@foreach ($SiteSettings as $Settings)  
 <header class="header">
     <div class="header-top">
         <div class="container">
@@ -18,7 +20,7 @@
                     </a>
                     @else
                     <div class="info-box-content">
-                        <h4>FREE Next Day Delivery For Orders Above {{$rt->symbol}}<?php $total = 13500*$rt->rates; echo ceil($total) ?>+</h4>
+                        <h4>FREE Next Day Delivery For Orders Above Ksh<?php $total = 13500; echo ceil($total) ?>+</h4>
                     </div><!-- End .info-box-content -->
                     @endif
                 </div>
@@ -95,9 +97,9 @@
                 <button class="mobile-menu-toggler text-dark mr-2" type="button">
                     <i class="fas fa-bars"></i>
                 </button>
-                <a href="demo42.html" class="logo">
-                    <img src="{{asset('theme/assets/images/demoes/demo42/shop42_logo.png')}}" class="w-100" width="202" height="80"
-                        alt="Porto Logo">
+                <a href="{{url('/')}}" class="logo">
+                    <img src="{{url('/')}}/uploads/logo/{{$Settings->logo}}" class="w-100" width="202" height="80"
+                        alt="{{$Settings->sitename}}">
                 </a>
             </div><!-- End .header-left -->
 
@@ -107,7 +109,7 @@
                     <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
                     <form action="#" method="get">
                         <div class="header-search-wrapper">
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Search..."
+                            <input type="search" class="form-control" autocomplete="off" name="q" id="q" placeholder="Search..."
                                 required>
 
                             <button class="btn icon-magnifier p-0" title="search" type="submit"></button>
@@ -123,13 +125,13 @@
                     </div>
                     <div class="sicon-header">
                         <h4 class="sicon-title ls-n-25">CALL US NOW</h4>
-                        <p>+123 5678 890</p>
+                        <p><a href="tel:{{$Settings->mobile}}"> {{$Settings->mobile}} </a></p>
                     </div> <!-- header -->
                 </div>
 
                 <span class="separator d-none d-lg-block mr-4"></span>
 
-                <a href="login.html" class="d-lg-block d-none">
+                <a href="{{url('/')}}/login" class="d-lg-block d-none">
                     <div class="header-user">
                         <i class="icon-user-2"></i>
                         <div class="header-userinfo">
@@ -265,138 +267,22 @@
                         </div>
                     </li>
                     <li class="active">
-                        <a href="demo42.html">Home</a>
+                        <a href="{{url('/')}}">Home</a>
                     </li>
-                    <li>
-                        <a href="demo42-shop.html">Shop</a>
-                        <div class="megamenu megamenu-fixed-width megamenu-3cols">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <a href="#" class="nolink">VARIATION 1</a>
-                                    <ul class="submenu">
-                                        <li><a href="demo42-shop.html" title="shop">Fullwidth Banner</a></li>
-                                        <li><a href="category-banner-boxed-slider.html">Boxed Slider
-                                                Banner</a>
-                                        </li>
-                                        <li><a href="category-banner-boxed-image.html">Boxed Image
-                                                Banner</a>
-                                        </li>
-                                        <li><a href="demo42-shop.html" title="shop">Left Sidebar</a></li>
-                                        <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
-                                        <li><a href="category-off-canvas.html">Off Canvas Filter</a></li>
-                                        <li><a href="category-horizontal-filter1.html">Horizontal
-                                                Filter1</a>
-                                        </li>
-                                        <li><a href="category-horizontal-filter2.html">Horizontal
-                                                Filter2</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4">
-                                    <a href="#" class="nolink">VARIATION 2</a>
-                                    <ul class="submenu">
-                                        <li><a href="category-list.html">List Types</a></li>
-                                        <li><a href="category-infinite-scroll.html">Ajax Infinite Scroll</a>
-                                        </li>
-                                        <li><a href="demo42-shop.html" title="shop">3 Columns Products</a></li>
-                                        <li><a href="category-4col.html">4 Columns Products</a></li>
-                                        <li><a href="category-5col.html">5 Columns Products</a></li>
-                                        <li><a href="category-6col.html">6 Columns Products</a></li>
-                                        <li><a href="category-7col.html">7 Columns Products</a></li>
-                                        <li><a href="category-8col.html">8 Columns Products</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4 p-0">
-                                    <div class="menu-banner">
-                                        <figure>
-                                            <img src="{{asset('theme/assets/images/menu-banner.jpg')}}" width="192" height="313"
-                                                alt="Menu banner">
-                                        </figure>
-                                        <div class="banner-content">
-                                            <h4>
-                                                <span class="">UP TO</span><br />
-                                                <b class="">50%</b>
-                                                <i>OFF</i>
-                                            </h4>
-                                            <a href="demo42-shop.html" class="btn btn-sm btn-dark">SHOP NOW</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End .megamenu -->
+                    <li >
+                        <a href="{{url('/')}}">Our Brands</a>
                     </li>
-                    <li>
-                        <a href="demo42-product.html">Products</a>
-                        <div class="megamenu megamenu-fixed-width">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <a href="#" class="nolink">PRODUCT PAGES</a>
-                                    <ul class="submenu">
-                                        <li><a href="product.html">SIMPLE PRODUCT</a></li>
-                                        <li><a href="product-variable.html">VARIABLE PRODUCT</a></li>
-                                        <li><a href="product.html">SALE PRODUCT</a></li>
-                                        <li><a href="product.html">FEATURED & ON SALE</a></li>
-                                        <li><a href="product-custom-tab.html">WITH CUSTOM TAB</a></li>
-                                        <li><a href="product-sidebar-left.html">WITH LEFT SIDEBAR</a></li>
-                                        <li><a href="product-sidebar-right.html">WITH RIGHT SIDEBAR</a></li>
-                                        <li><a href="product-addcart-sticky.html">ADD CART STICKY</a></li>
-                                    </ul>
-                                </div><!-- End .col-lg-4 -->
-
-                                <div class="col-lg-4">
-                                    <a href="#" class="nolink">PRODUCT LAYOUTS</a>
-                                    <ul class="submenu">
-                                        <li><a href="product-extended-layout.html">EXTENDED LAYOUT</a></li>
-                                        <li><a href="product-grid-layout.html">GRID IMAGE</a></li>
-                                        <li><a href="product-full-width.html">FULL WIDTH LAYOUT</a></li>
-                                        <li><a href="product-sticky-info.html">STICKY INFO</a></li>
-                                        <li><a href="product-sticky-both.html">LEFT & RIGHT STICKY</a></li>
-                                        <li><a href="product-transparent-image.html">TRANSPARENT IMAGE</a>
-                                        </li>
-                                        <li><a href="product-center-vertical.html">CENTER VERTICAL</a></li>
-                                        <li><a href="#">BUILD YOUR OWN</a></li>
-                                    </ul>
-                                </div><!-- End .col-lg-4 -->
-
-                                <div class="col-lg-4 p-0">
-                                    <div class="menu-banner menu-banner-2">
-                                        <figure>
-                                            <img src="{{asset('theme/assets/images/menu-banner-1.jpg')}}" alt="Menu banner"
-                                                class="product-promo">
-                                        </figure>
-                                        <i>OFF</i>
-                                        <div class="banner-content">
-                                            <h4>
-                                                <span class="">UP TO</span><br />
-                                                <b class="">50%</b>
-                                            </h4>
-                                        </div>
-                                        <a href="demo42-shop.html" class="btn btn-sm btn-dark">SHOP NOW</a>
-                                    </div>
-                                </div><!-- End .col-lg-4 -->
-                            </div><!-- End .row -->
-                        </div><!-- End .megamenu -->
+                    <li >
+                        <a href="{{url('/')}}">Browse Categories</a>
                     </li>
-                    <li>
-                        <a href="#">Pages</a>
-                        <ul>
-                            <li><a href="wishlist.html">Wishlist</a></li>
-                            <li><a href="cart.html">Shopping Cart</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="dashboard.html">Dashboard</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="single.html">Blog Post</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="forgot-password.html">Forgot Password</a></li>
-                        </ul>
+                    <li >
+                        <a href="{{url('/')}}">Products</a>
                     </li>
-                    <li><a href="https://1.envato.market/DdLk5" rel="noopener" target="_blank">Buy Porto!</a>
+                    <li >
+                        <a href="{{url('/')}}">Installation</a>
+                    </li>
+                  
+                    <li><a href="{{url('/')}}/find-us" rel="noopener" target="_blank">Contact Us</a>
                     </li>
                     <li class="float-right"><a href="#" class="pr-0">Special Offers</a></li>
                 </ul>
@@ -404,3 +290,4 @@
         </div><!-- End .container -->
     </div><!-- End .header-bottom -->
 </header><!-- End .header -->
+@endforeach

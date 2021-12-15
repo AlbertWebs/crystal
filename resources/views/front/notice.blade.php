@@ -3,6 +3,6 @@
         <h4 class="text-uppercase font-weight-bold mr-2">Deal of the week</h4>
         <h6>- 15% OFF in All Performance Parts -</h6>
 
-        <a href="demo42-shop.html" class="ml-2">Shop Now</a>
+        <a href="{{url('/')}}" class="ml-2">Shop Now</a>
     </div><!-- End .container -->
 </div><!-- End .top-notice -->
