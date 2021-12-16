@@ -209,7 +209,7 @@
 
                         <textarea name="content" id="article_ckeditor" rows="10" cols="80"></textarea>
                            
-                        <script src="{{asset('/')}}vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+                        <script src="http://amanivehiclesounds.co.ke//vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
                         <script>
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
@@ -217,7 +217,7 @@
                     <center>
                     <div class="form-group col-lg-12">
                     <div class="form-group col-lg-12">
-                        <label class="control-label">Thumb</label>
+                        <label class="control-label">Thumb(300 by 300)</label>
                         <div class="">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="" alt="" /></div>
@@ -245,52 +245,6 @@
                     </div>
 
                     
-                        
-                    {{--  --}}
-                    <div class="form-group col-lg-4">
-                        <label class="control-label">Image One(Main)</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="" alt="" /></div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image_one" type="file" /></span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group col-lg-4">
-                        <label class="control-label">Image Two(W-384 H-660)</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="" alt="" /></div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image_two" type="file" /></span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="form-group col-lg-4">
-                        <label class="control-label">Image Three(w = 570 h=200)</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="" alt="" /></div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image_three" type="file" /></span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                   
-
                     
                     </div>
                     </center>
@@ -301,6 +255,7 @@
                     
                     
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <br><br>
                     
                 <form>
               </div>
