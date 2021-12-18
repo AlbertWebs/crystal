@@ -110,7 +110,7 @@
     
                         <div class="col-lg-8">
                             <select name="combo" data-placeholder="Choose Combo Product" class="form-control chzn-select" tabindex="2">
-                              
+                                <option selected value="{{$Product->combo}}">@if($Product->combo == 1) Combo On @else Combo Off @endif</option>
                                 <option value="0">Combo Off</option>
                                 <option value="1">Combo On</option>
                              
