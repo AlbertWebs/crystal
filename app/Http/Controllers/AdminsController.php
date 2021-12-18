@@ -1372,7 +1372,7 @@ public function add_Product(Request $request){
     $Product->brand = $request->brand;
     $Product->price_raw = $request->price;
     $Product->code = $request->code;
-    $Product->combo = $request->combo;
+    $Product->combo = $combo;
     $Product->cat = $request->cat;
     $Product->sub_cat = $request->sub_cat;
     $Product->fb_pixels = $fb_pixels;
