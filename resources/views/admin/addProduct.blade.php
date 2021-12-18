@@ -104,6 +104,7 @@
                         </div>
                     </div>
 
+                    
                     <div class="form-group">
                         <label class="control-label col-lg-4">Google Product Category</label>
     
@@ -176,6 +177,17 @@
                         </select>
                     </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Combo</label>
+    
+                        <div class="col-lg-8">
+                        <div class="make-switch" data-on="success" data-off="danger">
+                                  
+                                    <input name="combo" type="checkbox" />
+                                </div>
+                        </div>
+                    </div>
                     <!-- Brands -->
           
                         {{-- <div class="col-lg-12">
@@ -213,6 +225,8 @@
                         <script>
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
+
+                        
                    
                     <center>
                     <div class="form-group col-lg-12">

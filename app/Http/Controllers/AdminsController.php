@@ -1352,6 +1352,13 @@ public function add_Product(Request $request){
     //     $image_three = $request->pro_img_cheat;
     // }
     //Additional images
+
+
+    if($request->combo == 'on'){
+        $combo = '1';
+    }else{
+        $combo = '0';
+    }
    
     $slung = Str::slug($request->name);
     $Product = new Product;
@@ -1365,6 +1372,7 @@ public function add_Product(Request $request){
     $Product->brand = $request->brand;
     $Product->price_raw = $request->price;
     $Product->code = $request->code;
+    $Product->combo = $request->combo;
     $Product->cat = $request->cat;
     $Product->sub_cat = $request->sub_cat;
     $Product->fb_pixels = $fb_pixels;
@@ -1545,6 +1553,14 @@ public function edit_Product(Request $request, $id){
    }else{
        $stock = 'Out of Stock';
    }
+
+   if($request->combo == 'on'){
+    $combo = '1';
+   }else{
+    $combo = '0';
+   }
+
+
    $slung = Str::slug($request->name);
 
 
@@ -1564,6 +1580,7 @@ public function edit_Product(Request $request, $id){
         'content' => $request->content,
         'image_one' =>$image_one,
         'thumbnail' =>$thumbnail,
+        'combo' => $combo,
         'stock' => $stock,
         'brand' =>$request->brand,
         'fb_pixels' =>$fb_pixels,

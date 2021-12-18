@@ -249,6 +249,25 @@
                     </div>
                     </div>
                     <!-- Brands -->
+              
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Combo</label>
+    
+                        <div class="col-lg-8">
+                        <div class="make-switch" data-on="success" data-off="danger">
+                                    <?php
+                                       $Stock = $Product->combo;
+                                       if($Stock == '1'){
+                                           $stockValue = 'checked';
+                                       }else{
+                                           $stockValue = 'Out of Stock';
+                                       }
+                                    ?>
+                                    <input name="combo" type="checkbox" {{$stockValue}} />
+                                </div>
+                        </div>
+                        </div>
 
                     <!-- Stock Control -->
                     <div class="form-group">
@@ -302,7 +321,7 @@
                          
                         <textarea name="content" id="article_ckeditor" rows="10" cols="80">{{$Product->content}}</textarea>
                            
-                        <script src="{{asset('/')}}vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+                        <script src="http://amanivehiclesounds.co.ke/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
                         <script>
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
@@ -326,7 +345,7 @@
                         </div>
                         
                     <div class="form-group col-lg-12">
-                        <label class="control-label">Thumbnail(250*250)</label>
+                        <label class="control-label">Thumbnail(300*300)</label>
                         <div class="">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{{url('/')}}/uploads/product/{{$Product->thumbnail}}" alt="" /></div>
@@ -339,7 +358,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-lg-4">
+                    {{-- <div class="form-group col-lg-4">
                         <label class="control-label">Image One(300*300)</label>
                         <div class="">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -379,7 +398,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                    
 
