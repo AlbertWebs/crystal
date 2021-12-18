@@ -105,6 +105,19 @@
                         </div>
                     </div> 
                     
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Combo Product</label>
+    
+                        <div class="col-lg-8">
+                            <select name="combo" data-placeholder="Choose Combo Product" class="form-control chzn-select" tabindex="2">
+                              
+                                <option value="0">Combo Off</option>
+                                <option value="1">Combo On</option>
+                             
+    
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Google Product Category</label>
