@@ -104,11 +104,22 @@
 				<h1 class="product-title">{{$product->name}}</h1>
 
 				<div class="ratings-container">
+					<?php $Reviews = DB::table('reviews')->where('product_id',$product->id)->get(); ?>
+					@if($Reviews->isEmpty())
 					<div class="product-ratings">
-						<span class="ratings" style="width:60%"></span><!-- End .ratings -->
+						<span class="ratings" style="width:0%"></span><!-- End .ratings -->
 					</div><!-- End .product-ratings -->
-
-					<a href="#" class="rating-link">( 6 Reviews )</a>
+                   
+					<a href="#" class="rating-link">( <?php echo count($Reviews); ?> Review(s) )</a>
+					@else
+					<?php $ReviewsAvg = DB::table('reviews')->where('product_id',$product->id)->avg('rating'); ?>
+					<div class="product-ratings">
+						<span class="ratings" style="width:{{$ReviewsAvg}}%"></span><!-- End .ratings -->
+					</div><!-- End .product-ratings -->
+                   
+					<a href="#" class="rating-link">( <?php echo count($Reviews); ?> Reviews )</a>
+					@endif
+					
 				</div><!-- End .ratings-container -->
 
 				<hr class="short-divider">
@@ -213,14 +224,13 @@
 					<label class="sr-only">Share:</label>
 
 					<div class="social-icons mr-2">
-						<a href="#" class="social-icon social-facebook icon-facebook" target="_blank"
+						<a href="https://www.facebook.com/sharer/sharer.php?u={{url('/')}}/product/{{$product->slung}}" class="social-icon social-facebook icon-facebook" target="_blank"
 							title="Facebook"></a>
-						<a href="#" class="social-icon social-twitter icon-twitter" target="_blank" title="Twitter"></a>
-						<a href="#" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank"
+						<a href="https://twitter.com/intent/tweet?text={{$product->name}} {{url('/')}}/product/{{$product->slung}}" class="social-icon social-twitter icon-twitter" target="_blank" title="Twitter"></a>
+						<a href="https://www.linkedin.com/sharing/share-offsite/?url={{url('/')}}/product/{{$product->slung}}" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank"
 							title="Linkedin"></a>
-						<a href="#" class="social-icon social-gplus fab fa-google-plus-g" target="_blank"
-							title="Google +"></a>
-						<a href="#" class="social-icon social-mail icon-mail-alt" target="_blank" title="Mail"></a>
+					
+						
 					</div><!-- End .social-icons -->
 
 					<a href="#" class="btn-icon-wish add-wishlist" title="Add to Wishlist"><i

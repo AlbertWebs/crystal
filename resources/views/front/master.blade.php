@@ -23,7 +23,7 @@
     {{-- SEO --}}
     {{-- @include('front.favicon') --}}
     @include('front.facebook')
-    @include('front.tawk')
+    {{-- @include('front.tawk') --}}
     @include('front.google')
 
     <!-- Favicon -->
@@ -305,6 +305,9 @@
     <script src="{{asset('theme/assets/js/plugins.min.js')}}"></script>
     <script src="{{asset('theme/assets/js/jquery.appear.min.js')}}"></script>
     <script src="{{asset('theme/assets/js/jquery.plugin.min.js')}}"></script>
+
+    {{--  --}}
+    
 
     <!-- Main JS File -->
     <script src="{{asset('theme/assets/js/main.min.js')}}"></script>

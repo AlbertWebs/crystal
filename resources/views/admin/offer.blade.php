@@ -76,7 +76,7 @@
                                                             }
                                                          ?>
                                                     </td>
-                                                    <td class="center"><img width="200" height="auto" src="{{url('/')}}/uploads/product/{{$value->image_one}}"></td>
+                                                    <td class="center"><img width="200" height="auto" src="{{url('/')}}/uploads/product/{{$value->thumbnail}}"></td>
                                                     <?php 
                                                        $status = $value->offer;
                                                        if($status == '1'){
