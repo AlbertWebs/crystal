@@ -302,9 +302,9 @@ class HomeController extends Controller
         
     }
        
-    public function popup($slung){
+    public function product_quick_view($slung){
         $Product =  DB::table('product')->where('slung',$slung)->get();
-        return view('front.popup',compact('Product'));
+        return view('front.product-quick-view',compact('Product'));
     }
 
     public function fullscreen($slung){
@@ -406,7 +406,6 @@ class HomeController extends Controller
                    
                     // End Session Here
                     $page_name = $value->title;
-                
                     $page_title = 'Products';
                     $search_results ='';
                     $search_results_category = '';

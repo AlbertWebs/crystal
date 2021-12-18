@@ -120,7 +120,6 @@
                              $rates = Session::get('rates');
                              $Rates = DB::table('rates')->where('rates',$rates)->get();    
                         ?>
-						
 						@foreach ($Rates as $rt)
                         <div class="price-box">
 							<span class="product-price"> {{$rt->symbol}}<?php $total = $product->price*$rt->rates; echo ceil($total) ?></span>
@@ -135,37 +134,29 @@
 				
 				<div class="product-desc">
 					<p>
-						{{$product->meta}}
+						Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+						pariatur. Excepteur sint occaecat cupidatat non.
 					</p>
 				</div><!-- End .product-desc -->
 
 				<ul class="single-info-list">
 					<!---->
 					<li>
-						Code:
-						<strong>{{$product->code}}</strong>
+						SKU:
+						<strong>654613612</strong>
 					</li>
 
 					<li>
 						CATEGORY:
 						<strong>
-							
-							<?php $Category = DB::table('category')->where('id',$product->cat)->get(); ?>
-                            @foreach($Category as $cat)
-                            <a target="new" href="{{url('/')}}/products/{{$cat->slung}}" class="product-category">{{$cat->cat}}</a>
-                            @endforeach
+							<a href="#" class="product-category">SHOES</a>
 						</strong>
-					</li>
-					<li>
-						Brand:
-						<strong>{{$product->brand}}</strong>
 					</li>
 				</ul>
 
-				{{-- Variations here --}}
 				<div class="product-filters-container">
 					<div class="product-single-filter">
-						<label>Variations:</label>
+						<label>Size:</label>
 						<ul class="config-size-list">
 							<li><a href="javascript:;" class="d-flex align-items-center justify-content-center">XL</a>
 							</li>
@@ -184,27 +175,20 @@
 					</div>
 					<!---->
 				</div>
-				{{-- Variations --}}
 
 				<div class="product-action">
 					<div class="price-box product-filtered-price">
-						@if($product->offer == 1)
-						<del class="old-price"><span>{{$rt->symbol}}<?php $total = $product->price_raw*$rt->rates; echo ceil($total) ?></span></del>
-						<span class="product-price">{{$rt->symbol}}<?php $total = $product->price*$rt->rates; echo ceil($total) ?></span>
-						@else 
-						<del class="old-price"><span>KES<?php $total = $product->price_raw*1; echo ceil($total) ?></span></del>
-						<span class="product-price">KES<?php $total = $product->price*1; echo ceil($total) ?></span>
-						@endif
+						<del class="old-price"><span>$286.00</span></del>
+						<span class="product-price">$245.00</span>
 					</div>
-                    <form>
-						<div class="product-single-qty">
-							<input class="horizontal-quantity form-control" type="text" />
-						</div><!-- End .product-single-qty -->
 
-						<button class="btn btn-dark" title="Add to Cart"><span class="fas fa-cart-plus"></span> Add to Cart</button>
-					</form>
+					<div class="product-single-qty">
+						<input class="horizontal-quantity form-control" type="text" />
+					</div><!-- End .product-single-qty -->
 
-					
+					<a href="javascript:;" class="btn btn-dark add-cart mr-2" title="Add to Cart">Add to Cart</a>
+
+					<a href="#" class="btn view-cart d-none">View cart</a>
 				</div><!-- End .product-action -->
 
 				<hr class="divider mb-0 mt-0">
