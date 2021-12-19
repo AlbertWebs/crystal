@@ -3548,6 +3548,39 @@ public function swapTrending($id){
    
  }
 
+ public function swapSuggest($id){
+    $Product = Product::find($id);
+    if($Product->suggest == 1){
+        $newStatus = 0;
+    }else{
+        $newStatus = 1;
+    }
+    $updateDetails = array(
+        'suggest'=>$newStatus
+    );
+    DB::table('product')->where('id',$id)->update($updateDetails);
+    return Redirect::back();
+   
+ }
+
+ public function swapFavorites($id){
+    $Product = Product::find($id);
+    if($Product->favorite == 1){
+        $newStatus = 0;
+    }else{
+        $newStatus = 1;
+    }
+    $updateDetails = array(
+        'favorite'=>$newStatus
+    );
+    DB::table('product')->where('id',$id)->update($updateDetails);
+    return Redirect::back();
+   
+ }
+ 
+
+ 
+
  public function swap_full($id){
     $Product = Product::find($id);
     if($Product->full == 1){

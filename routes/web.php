@@ -203,6 +203,10 @@ Route::get('/swapTrending/{id}', [AdminsController::class, 'swapTrending'])->mid
 Route::get('/swapFeatured/{id}', [AdminsController::class, 'swapFeatured'])->middleware('is_admin');
 Route::get('/swapSlider/{id}', [AdminsController::class, 'swapSlider'])->middleware('is_admin');
 Route::get('/swapBanner/{id}', [AdminsController::class, 'swapBanner'])->middleware('is_admin');
+Route::get('/swapSuggest/{id}', [AdminsController::class, 'swapSuggest'])->middleware('is_admin');
+Route::get('/swapFavorites/{id}', [AdminsController::class, 'swapFavorites'])->middleware('is_admin');
+
+
 
 Route::get('/wishlist', [AdminsController::class, 'wishlist'])->middleware('is_admin');
 

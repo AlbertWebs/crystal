@@ -83,6 +83,20 @@
                                                               @endif
                                                     &nbsp; <a onclick="return confirm('Swap Product Tredning Status')" href="{{url('/admin')}}/swapTrending/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Trending</a>
                                                     <hr>
+                                                    {{--  --}}
+                                                    Suggest: @if($value->suggest == 1)Active
+                                                    @else Inactive
+                                                                @endif
+                                                    &nbsp; <a onclick="return confirm('Swap Product Suggest Status')" href="{{url('/admin')}}/swapSuggest/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Suggest</a>
+                                                    <hr>
+                                                    {{--  --}}
+                                                    {{--  --}}
+                                                    Favorite: @if($value->favorite == 1)Active
+                                                    @else Inactive
+                                                                @endif
+                                                    &nbsp; <a onclick="return confirm('Swap Product Favorite Status')" href="{{url('/admin')}}/swapFavorites/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Favorite</a>
+                                                    <hr>
+                                                    {{--  --}}
                                                     Featured:@if($value->featured == 1)Active
                                                               @else Inactive
                                                               @endif
