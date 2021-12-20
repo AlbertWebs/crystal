@@ -163,19 +163,13 @@
                     <li class="menu-item d-flex align-items-center">
                         <a href="#" class="d-inline-flex align-items-center sf-with-ul">
                             <i class="custom-icon-toggle-menu d-inline-table"></i><span>All
-                                Departments</span></a>
+                                Categories</span></a>
                         <div class="menu-depart">
-                            <a href="#"><i class="icon-category-motorcycles"></i>Auto Parts</a>
-
-                            <a href="#">
-                                <i class="icon-category-internal-accessories"></i>Interior Accessories
-                            </a>
-
-                            <a href="#"><i class="icon-category-mechanics"></i>Performance</a>
-
-                            <a href="#"><i class="icon-category-sound-video"></i>Sound & Video</a>
-
-                            <a href="#"><i class="icon-category-steering"></i>Steering Wheels</a>
+                            <?php $Categories = DB::table('category')->get(); ?>
+                            @foreach ($Categories as $cat)
+                            <a href="{{url('/')}}/products/{{$cat->slung}}"><i class="icon-category-sound-video"></i>{{$cat->cat}}</a> 
+                            @endforeach
+                            
 
                         </div>
                     </li>
