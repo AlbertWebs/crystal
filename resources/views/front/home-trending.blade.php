@@ -53,7 +53,7 @@
                         @endif
                     </div>
                     <div class="btn-icon-group">
-                        <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+                        <a href="{{url('/')}}/shopping-cart/add-to-cart/{{$item->id}}" class="btn-icon btn-add-cart product-type-simple"><i
                                 class="icon-shopping-cart"></i></a>
                     </div>
                     <a href="{{url('/')}}/product-quick-view/{{$item->slung}}" class="btn-quickview" title="Quick View">Quick
