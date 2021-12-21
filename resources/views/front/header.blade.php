@@ -55,7 +55,8 @@
                     <a href="#"><i class="flag-us flag"></i>ENG</a>
                     <div class="header-menu">
                         <ul>
-                            <li><a id="lang" href="#"><i class="flag-us flag mr-2"></i>ENG</a>
+                            <li>
+                                <a id="lang" href="#"><i class="flag-us flag mr-2"></i>ENG</a>
                             </li>
                             {{-- <li><a href="#"><i class="flag-ke flag mr-2"></i>SWA</a></li> --}}
                         </ul>
@@ -65,14 +66,18 @@
                 <span class="separator d-none d-xl-block"></span>
 
                 <ul class="top-links mega-menu d-none d-xl-flex mb-0 pr-2">
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
-                        <a href="{{url('/')}}/find-us/map"><i class="icon-pin"></i>Our Stores</a></li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom narrow">
-                        <a href="{{url('/')}}/dashboard"><i class="icon-shipping-truck"></i>Track Your Order</a></li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
-                        <a href="{{url('/')}}/find-us"><i class="icon-help-circle"></i>Help</a></li>
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
-                        <a href="{{url('/')}}/wishlist"><i class="icon-wishlist-2"></i>Wishlist</a></li>
+                    <li class="menu-items menu-item-type-post_type menu-item-object-page narrow">
+                        <a href="{{url('/')}}/find-us/#map"><i class="icon-pin"></i>Our Stores</a>
+                    </li>
+                    <li class="menu-items menu-item-type-custom menu-item-object-custom narrow">
+                        <a href="{{url('/')}}/dashboard"><i class="icon-shipping-truck"></i>Track Your Order</a>
+                    </li>
+                    <li class="menu-items menu-item-type-post_type menu-item-object-page narrow">
+                        <a href="{{url('/')}}/find-us"><i class="icon-help-circle"></i>Help</a>
+                    </li>
+                    <li class="menu-items menu-item-type-post_type menu-item-object-page narrow">
+                        <a href="{{url('/')}}/wishlist"><i class="icon-wishlist-2"></i>Wishlist</a>
+                    </li>
                 </ul>
 
                 <span class="separator d-none d-md-block mr-0 ml-4"></span>
