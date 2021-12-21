@@ -72,7 +72,7 @@
                     <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
                         <a href="{{url('/')}}/find-us"><i class="icon-help-circle"></i>Help</a></li>
                     <li class="menu-item menu-item-type-post_type menu-item-object-page narrow">
-                        <a href="{{url('/shopping-cart')}}/wishlist"><i class="icon-wishlist-2"></i>Wishlist</a></li>
+                        <a href="{{url('/')}}/wishlist"><i class="icon-wishlist-2"></i>Wishlist</a></li>
                 </ul>
 
                 <span class="separator d-none d-md-block mr-0 ml-4"></span>
