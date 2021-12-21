@@ -67,7 +67,7 @@
                             <a  href="{{url('/')}}/products/{{$cat->slung}}">{{$cat->cat}}</a>
                             @endforeach
                         </div>
-                        <a href="wishlist.html" class="btn-icon-wish" title="wishlist"><i
+                        <a href="{{url('/')}}/wishlist/add-to-wishlist/{{$item->id}}" class="btn-icon-wish" title="wishlist"><i
                                 class="icon-heart"></i></a>
                     </div>
                     <h3 class="product-title">
