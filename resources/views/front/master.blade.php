@@ -148,7 +148,7 @@
             <div class="container">
                 <div class="footer-bottom d-sm-flex align-items-center bg-dark">
                     <div class="footer-left">
-                        <span class="footer-copyright">Crystal Car Audio. Copyright © <?php echo date('Y') ?>. All Rights Reserved</span>
+                        <span class="footer-copyright">Copyright © <?php echo date('Y') ?> Crystal Car Audio - All Rights Reserved | Powered By Designekta Studios</span>
                     </div>
 
                     <div class="footer-right ml-auto mt-1 mt-sm-0">

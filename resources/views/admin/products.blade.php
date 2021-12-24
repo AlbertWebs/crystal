@@ -77,49 +77,45 @@
                                                     Price : {{$value->price}} <br>
                                                     Web Code : {{$value->code}}<br>
                                                     Brand:{{$value->brand}}
-                                                    <hr>
-                                                    Trending: @if($value->trending == 1)Active
-                                                              @else Inactive
-                                                              @endif
-                                                    &nbsp; <a onclick="return confirm('Swap Product Tredning Status')" href="{{url('/admin')}}/swapTrending/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Trending</a>
-                                                    <hr>
-                                                    {{--  --}}
-                                                    Suggest: @if($value->suggest == 1)Active
-                                                    @else Inactive
-                                                                @endif
-                                                    &nbsp; <a onclick="return confirm('Swap Product Suggest Status')" href="{{url('/admin')}}/swapSuggest/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Suggest</a>
-                                                    <hr>
-                                                    {{--  --}}
-                                                    {{--  --}}
-                                                    Favorite: @if($value->favorite == 1)Active
-                                                    @else Inactive
-                                                                @endif
-                                                    &nbsp; <a onclick="return confirm('Swap Product Favorite Status')" href="{{url('/admin')}}/swapFavorites/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Favorite</a>
-                                                    <hr>
-                                                    {{--  --}}
-                                                    Featured:@if($value->featured == 1)Active
-                                                              @else Inactive
-                                                              @endif
+                                                        <small>
+                                                                <hr>
+                                                                Trending: @if($value->trending == 1)Active
+                                                                        @else Inactive
+                                                                        @endif
+                                                                &nbsp; <a onclick="return confirm('Swap Product Tredning Status')" href="{{url('/admin')}}/swapTrending/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Trending</a>
+                                                                &nbsp; | &nbsp;
+                                                                {{--  --}}
+                                                                Suggest: @if($value->suggest == 1)Active
+                                                                @else Inactive
+                                                                            @endif
+                                                                &nbsp; <a onclick="return confirm('Swap Product Suggest Status')" href="{{url('/admin')}}/swapSuggest/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Suggest</a>
+                                                                <hr>
+                                                                {{--  --}}
+                                                                {{--  --}}
+                                                                Favorite: @if($value->favorite == 1)Active
+                                                                @else Inactive
+                                                                            @endif
+                                                                &nbsp; <a onclick="return confirm('Swap Product Favorite Status')" href="{{url('/admin')}}/swapFavorites/{{$value->id}}"   class="btn btn-info"><i class="icon-exchange icon-white"></i> Swap Favorite</a>
+                                                                &nbsp; | &nbsp;
+                                                                {{--  --}}
+                                                                Featured:@if($value->featured == 1)Active
+                                                                        @else Inactive
+                                                                        @endif
 
-                                                    &nbsp;<a onclick="return confirm('Swap Product Featured Status')" href="{{url('/admin')}}/swapFeatured/{{$value->id}}"   class="btn btn-success"><i class="icon-exchange icon-white"></i> Swap Featured</a>
+                                                                &nbsp;<a onclick="return confirm('Swap Product Featured Status')" href="{{url('/admin')}}/swapFeatured/{{$value->id}}"   class="btn btn-success"><i class="icon-exchange icon-white"></i> Swap Featured</a>
 
-                                                    <hr>
-                                                    Slider:@if($value->slider == 1)Active
-                                                              @else Inactive
-                                                              @endif
-                                                    &nbsp;<a onclick="return confirm('Swap Product Slider Status')" href="{{url('/admin')}}/swapSlider/{{$value->id}}"   class="btn btn-default"><i class="icon-exchange icon-white"></i> Swap Slider</a>
-
+                                                                <hr>
+                                                                Slider:@if($value->slider == 1)Active
+                                                                        @else Inactive
+                                                                        @endif
+                                                                &nbsp;<a onclick="return confirm('Swap Product Slider Status')" href="{{url('/admin')}}/swapSlider/{{$value->id}}"   class="btn btn-default"><i class="icon-exchange icon-white"></i> Swap Slider</a>
+                                                        </small>
                                                     </td>
                                                    
                                                     <td class="center"><img style="max-width:200px; width:100%;" src="{{url('/')}}/uploads/product/{{$value->thumbnail}}"></td>
                                                     <td class="center">
                                                     <center>
-                                                       @if($value->full == 1)
-                                                       <a href="{{url('/admin')}}/swap_full/{{$value->id}}"   class="btn btn-success"><i class="icon-exchange icon-white"></i> Combo:Active </a>
-                                                       @else
-                                                       <a href="{{url('/admin')}}/swap_full/{{$value->id}}"   class="btn btn-danger"><i class="icon-exchange icon-white"></i> Combo:InActive </a>
-                                                       @endif
-                                                       <br><br>
+                                                      <br>
                                                        <a href="{{url('/admin')}}/editProduct/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit</a><br><br><a href="{{url('/admin')}}/editProductDetails/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit Details</a><br><br><a href="#"   class="btn btn-success" data-toggle="modal" data-target="#buttonedModal_{{$value->id}}"><i class="icon-link icon-white"></i> Get Link </a><br><br><a onclick="return confirm('Do you want to delete this product?')" href="{{url('/admin')}}/deleteProduct/{{$value->id}}"   class="btn btn-danger"><i class="icon-trash icon-white"></i> Del</a></center></td>
                                                     <!-- <td class="center"></td> -->
                                                   
