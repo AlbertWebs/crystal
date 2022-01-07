@@ -182,16 +182,16 @@
                         <a href="{{url('/')}}">Home</a>
                     </li>
                     <li >
-                        <a href="{{url('/')}}">Our Brands</a>
+                        <a href="{{url('/')}}/products/shop-by-brand">Our Brands</a>
                     </li>
                     <li >
-                        <a href="{{url('/')}}">Browse Categories</a>
+                        <a href="{{url('/')}}/products/shop-by-category">Browse Categories</a>
                     </li>
                     <li >
-                        <a href="{{url('/')}}">Products</a>
+                        <a href="{{url('/')}}/products">Products</a>
                     </li>
                     <li >
-                        <a href="{{url('/')}}">Installation</a>
+                        <a href="{{url('/')}}/our-portfolio">Installation</a>
                     </li>
                   
                     <li><a href="{{url('/')}}/find-us" rel="noopener" target="_blank">Contact Us</a>
