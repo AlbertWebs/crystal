@@ -66,7 +66,6 @@ class CheckoutController extends Controller
             return redirect()->route('payment');
         }
         else{
-            
             return view('checkout.index', compact('keywords','CartItems','page_title','SiteSettings','page_name'));
         }
     }

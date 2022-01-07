@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '37a44b990acbaa281923fb46092bce97b5bd8994',
+    'reference' => '5db624099cb2bc24ab1df0cb39fd5b1d0e04437b',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -90,6 +90,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'f2c763e311b0fc58b2dfdfa2c41c6318a7c884e1',
+    ),
+    'composer/ca-bundle' => 
+    array (
+      'pretty_version' => '1.3.1',
+      'version' => '1.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4c679186f2aca4ab6a0f1b0b9cf9252decb44d0b',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -212,6 +221,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'a8ccedc7ca95189ead0e407c43b530dc17791d6a',
+    ),
+    'geoip2/geoip2' => 
+    array (
+      'pretty_version' => 'v2.12.2',
+      'version' => '2.12.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '83adb44ac4b9553d36b579a14673ed124583082f',
     ),
     'graham-campbell/result-type' => 
     array (
@@ -507,7 +525,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '37a44b990acbaa281923fb46092bce97b5bd8994',
+      'reference' => '5db624099cb2bc24ab1df0cb39fd5b1d0e04437b',
     ),
     'laravel/sail' => 
     array (
@@ -589,6 +607,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'aa70e813a6ad3d1558fc927863d47309b4c23e69',
+    ),
+    'maxmind-db/reader' => 
+    array (
+      'pretty_version' => 'v1.11.0',
+      'version' => '1.11.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b1f3c0699525336d09cc5161a2861268d9f2ae5b',
+    ),
+    'maxmind/web-service-common' => 
+    array (
+      'pretty_version' => 'v0.8.1',
+      'version' => '0.8.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '32f274051c543fc865e5a84d3a2c703913641ea8',
     ),
     'mockery/mockery' => 
     array (
@@ -1098,6 +1134,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
+    ),
+    'stevebauman/location' => 
+    array (
+      'pretty_version' => 'v6.2.0',
+      'version' => '6.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cc2e63fc2b64f17d4404fe206612bc67dca16b10',
     ),
     'stichoza/google-translate-php' => 
     array (
