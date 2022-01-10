@@ -182,14 +182,14 @@ class CheckoutController extends Controller
                 $MPESA = DB::table('invoices')->orderBy('id','DESC')->Limit('1')->get();
                 $count_mpesa = count($MPESA);
                 if($count_mpesa == 0){
-                    $InvoiceNumber = 'AVS001';
-                    $OrderNumberNumber = 'AVS001';
+                    $InvoiceNumber = 'CCA001';
+                    $OrderNumberNumber = 'CCA001';
                 }else{
                     foreach($MPESA as $mpesa){
                         $LastID = $mpesa->id;
                         $Next = $LastID+1;
-                        $InvoiceNumber = "AVS0".$Next;
-                        $OrderNumberNumber = "AVS10".$Next;
+                        $InvoiceNumber = "CCA0".$Next;
+                        $OrderNumberNumber = "CCA10".$Next;
                         // Create Session
                         session()->put('Order', $OrderNumberNumber);
                         session()->put('Invoice', $InvoiceNumber);
@@ -298,8 +298,8 @@ class CheckoutController extends Controller
             // Redirect To Cart
             return redirect()->route('payment');
         }else{
-            $ip = \Request::ip();
-            // $ip = '154.76.108.131';
+            // $ip = \Request::ip();
+            $ip = '154.76.108.131';
          
 
             $data = \Location::get($ip);
@@ -330,14 +330,14 @@ class CheckoutController extends Controller
                 $MPESA = DB::table('invoices')->orderBy('id','DESC')->Limit('1')->get();
                 $count_mpesa = count($MPESA);
                 if($count_mpesa == 0){
-                    $InvoiceNumber = 'AVS001';
-                    $OrderNumberNumber = 'AVS001';
+                    $InvoiceNumber = 'CCA001';
+                    $OrderNumberNumber = 'CCA001';
                 }else{
                     foreach($MPESA as $mpesa){
                         $LastID = $mpesa->id;
                         $Next = $LastID+1;
-                        $InvoiceNumber = "AVS0".$Next;
-                        $OrderNumberNumber = "AVS10".$Next;
+                        $InvoiceNumber = "CCA0".$Next;
+                        $OrderNumberNumber = "CCA10".$Next;
                         // Create Session
                         session()->put('Order', $OrderNumberNumber);
                         session()->put('Invoice', $InvoiceNumber);

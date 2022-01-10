@@ -87,6 +87,8 @@ Route::group(['prefix'=>'shopping-cart'], function(){
 
 });
 
+
+Route::post('/checkemail',[App\Http\Controllers\HomeController::class, 'checkEmail'])->name('checkEmail');
 // Language Support
 Route::get('/google-translate',[App\Http\Controllers\HomeController::class, 'translate'])->name('translate');
 Route::get('/currency-swap/{code}',[App\Http\Controllers\HomeController::class, 'swap'])->name('swap');

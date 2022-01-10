@@ -9,9 +9,12 @@
             <div class="container">
                 <ul class="checkout-progress-bar d-flex justify-content-center flex-wrap">
                     <li>
-                        <a href="{{url('/')}}">Shopping Cart</a>
+                        <a href="{{url('/')}}/shopping-cart">Shopping Cart</a>
                     </li>
                     <li class="active">
+                        <a href="{{url('/')}}/shopping-cart/checkout/payment">Billing Details</a>
+                    </li>
+                    <li>
                         <a href="{{url('/')}}/shopping-cart/checkout">Checkout</a>
                     </li>
                     <li class="disabled">
@@ -405,10 +408,10 @@
 		                		</aside><!-- End .col-lg-3 -->
                                 @else
 		                		<aside class="col-lg-3">
-		                			<div class="summary">
+		                			<div class="cart-summary">
 		                				<h3 class="summary-title">Your Order #{{$OrderNumberNumber}}</h3><!-- End .summary-title -->
 
-		                				<table class="table table-summary">
+		                				<table class="table table-totals">
 		                					<thead>
 		                						<tr>
 		                							<th>Product</th>
@@ -457,7 +460,7 @@
 		                				
                                         <button  type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
 		                					<span class="btn-text"> Save and Proceed <i class="icon-arrow-right"></i> </span>
-		                					<span class="btn-hover-text">Proceed to Place Order</span>
+		                					{{-- <span class="btn-hover-text">Proceed to Place Order</span> --}}
                                         </button>
                                         <center><img class="spinner text-center" width="25" src="{{asset('uploads/preloaders/loading.gif')}}" alt=""></center>
                                         <div id="saved" class="text-success text-center">Successful! Redirecting......</div>

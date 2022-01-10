@@ -29,12 +29,12 @@
     {
       "@context": "http://www.schema.org",
       "@type": "ProfessionalService",
-      "name": "Amani Vehicle Sounds",
+      "name": "Crystal Car Audio",
       "url": "http://amanivehiclesounds.co.ke/",
       "logo": "https://amanivehiclesounds.co.ke/uploads/logo/amaniCropped.png",
       "sameAs": [ 
-        "https://web.facebook.com/amanivehiclesounds",
-        "https://www.instagram.com/amanivehiclesounds",
+        "https://web.facebook.com/crystalclearbeats/",
+        "https://www.instagram.com/crys_talcaraudio/",
         "https://www.linkedin.com/company/amani-vehicle-sounds",
         "https://twitter.com/amanisounds",
         "https://www.youtube.com/channel/UCBBJkj3YILwheHsp5KGtjsA"
@@ -51,6 +51,6 @@
          "addressCountry": "Kenya"
       },
        "openingHours": "Mo 01:00-01:00 Tu 01:00-01:00 We 01:00-01:00 Th 01:00-01:00 Fr 01:00-01:00 Sa 01:00-01:00 Su 01:00-01:00",
-       "telephone": "+254794301190"
+       "telephone": "+254790721397"
     }
 </script>

@@ -637,6 +637,17 @@ class HomeController extends Controller
     }
 
     
+    public function checkEmail(Request $request)
+    {
+        $email = $request->input('email');
+        $isExists = \App\Models\User::where('email', $email)->first();
+        //Create The Logics To return AJAX
+        if($isExists){
+            return response()->json(array("exists" => true));
+        }else{
+            return response()->json(array("exists" => false));
+        }
+    }
 
     public function filter(Request $request)
     {
