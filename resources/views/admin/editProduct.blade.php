@@ -327,14 +327,34 @@
                         </script>
 
                         {{-- Specs JSON --}}
-                        <?php $Extras = DB::table('extras')->where('category_id',$Product->cat)->get(); ?>
-                        <div class="form-group">
-                            <label for="text1" class="control-label col-lg-4">Data 1</label>
+                        @if($Product->extras == null)
 
-                            <div class="col-lg-8">
-                                <input autocomplete="off" id="limiter-text" type="text" id="text1" name="name" value="" placeholder="e.g Studios Website " class="form-control" />
-                            </div>
+                        @else
+                        {{-- Loop Them Here --}}
+
+                        {{--  --}}
+                        <div class="container">
+                            <table class="table table-bordered" id="dynamicAddRemove">
+                                <tr>
+                                    <th>Extras</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="col-lg-6">
+                                                <input type="text" name="addMoreInputFields[0][title]" placeholder="Feature e.g Bluetooth" class="form-control" />
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="addMoreInputFields[0][value]" placeholder="BT 2,0" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Feature</button></td>
+                                </tr>
+                            </table>
                         </div>
+                        @endif
 
 
 
@@ -450,5 +470,21 @@
         @include('admin.right')
          <!-- END RIGHT STRIP  SECTION -->
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        var i = 0;
+        $("#dynamic-ar").click(function () {
+            ++i;
+            $("#dynamicAddRemove").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                '][title]" placeholder="Feature" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                );
+        });
+        $(document).on('click', '.remove-input-field', function () {
+            $(this).parents('tr').remove();
+        });
+    </script>
 
 @endsection
