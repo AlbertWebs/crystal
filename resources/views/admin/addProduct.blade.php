@@ -238,10 +238,10 @@
                                     <td>
                                         <div class="form-group">
                                             <div class="col-lg-6">
-                                                <input type="text" name="addMoreInputFields[0][title]" placeholder="Enter Title" class="form-control" />
+                                                <input type="text" name="addMoreInputFields[0][title]" placeholder="Feature e.g Bluetooth" class="form-control" />
                                             </div>
                                             <div class="col-lg-6">
-                                                <input type="text" name="addMoreInputFields[0][value]" placeholder="Enter Value" class="form-control" />
+                                                <input type="text" name="addMoreInputFields[0][value]" placeholder="BT 2,0" class="form-control" />
                                             </div>
                                         </div>
                                     </td>
@@ -322,8 +322,8 @@
         $("#dynamic-ar").click(function () {
             ++i;
             $("#dynamicAddRemove").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
-                '][title]" placeholder="Enter subject" class="form-control" /></div></div><div class="form-group"><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
-                '][value]" placeholder="Enter subject" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                '][title]" placeholder="Feature" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
                 );
         });
         $(document).on('click', '.remove-input-field', function () {

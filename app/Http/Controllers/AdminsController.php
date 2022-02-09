@@ -1249,9 +1249,9 @@ public function addProduct(){
 }
 
 public function add_Product(Request $request){
-    $data = $request->all();
-    dd($data);
-    die();
+    // $data = $request->all();
+    // dd($data);
+    // die();
 
     $path = 'uploads/product';
     if(isset($request->fb_pixels)){
