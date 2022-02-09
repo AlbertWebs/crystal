@@ -641,6 +641,7 @@ class ComposerStaticInitb7cc547abc509b8b4ce818cc91d47960
         'App\\Models\\Coupon' => __DIR__ . '/../..' . '/app/Models/Coupon.php',
         'App\\Models\\CouponCode' => __DIR__ . '/../..' . '/app/Models/CouponCode.php',
         'App\\Models\\Delivery' => __DIR__ . '/../..' . '/app/Models/Delivery.php',
+        'App\\Models\\Extra' => __DIR__ . '/../..' . '/app/Models/Extra.php',
         'App\\Models\\GPC' => __DIR__ . '/../..' . '/app/Models/GPC.php',
         'App\\Models\\Invoice' => __DIR__ . '/../..' . '/app/Models/Invoice.php',
         'App\\Models\\MPESA' => __DIR__ . '/../..' . '/app/Models/MPESA.php',

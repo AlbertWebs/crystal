@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="wrap" >
-        
+
 
         <!-- HEADER SECTION -->
         @include('admin.top')
@@ -18,13 +18,13 @@
 
         <!--PAGE CONTENT -->
         <div id="content">
-             
+
             <div class="inner" style="min-height: 700px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        
+
                         <center><h2> Edit Product </h2></center>
-                        
+
                     </div>
                 </div>
                   <hr />
@@ -38,12 +38,12 @@
                 </div>
                   <!--END BLOCK SECTION -->
                 <hr />
-                  
-               
+
+
                   <!-- Inner Content Here -->
-                 
+
             <div class="inner">
-                
+
 
               <div class="row">
                <center>
@@ -55,10 +55,10 @@
 							   <div class="alert alert-danger">{{ Session::get('messageError') }}</div>
 				@endif
                  </center>
-                 
+
 
                  <form class="form-horizontal" method="post"  action="{{url('/admin/edit_Product')}}/{{$Product->id}}" enctype="multipart/form-data">
-                    
+
                  <div class="form-group">
                         <label for="text1" class="control-label col-lg-4">Product Name</label>
 
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                
+
 
 
                      <div class="form-group">
@@ -103,25 +103,25 @@
                         <div class="col-lg-8">
                             <input type="text" id="text1" name="code" value="{{$Product->code}}" placeholder="e.g REALES2019 " class="form-control" />
                         </div>
-                    </div> 
-                    
+                    </div>
+
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Google Product Category</label>
                         <?php
                                 $CatID = $Product->google_product_category;
                                 $TheCategory = DB::table('g_p_c_s')->where('code',$CatID)->get();
-                                
+
                         ?>
                         <div class="col-lg-8">
                             <select name="google_product_category" data-placeholder="Choose Category" class="form-control chzn-select" tabindex="2">
-                              
+
                                <?php $TheCategoryList = DB::table('g_p_c_s')->get(); ?>
                                <option selected value="{{$Product->google_product_category}}">@foreach($TheCategory as $valuee){{$valuee->category}} - {{$valuee->code}} @endforeach</option>
                                @foreach($TheCategoryList as $value)
                                   <option value="{{$value->code}}">{{$value->category}} - {{$value->code}}</option>
                                @endforeach
-    
+
                             </select>
                         </div>
                     </div>
@@ -132,10 +132,10 @@
                     <?php
                             $CatID = $Product->cat;
                             $TheCategory = DB::table('category')->where('id',$CatID)->get();
-                             
+
                     ?>
 
-                        
+
 
                     <div class="col-lg-8">
                         <select name="cat" data-placeholder="Choose Category" class="form-control chzn-select" tabindex="2">
@@ -151,15 +151,15 @@
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Tags</label>
-    
+
                         <?php
                                 $TagID = $Product->tag;
                                 $TheCategory = DB::table('tags')->where('id',$TagID)->get();
-                                 
+
                         ?>
-    
-                            
-    
+
+
+
                         <div class="col-lg-8">
                             <select name="tag" data-placeholder="Choose tag" class="form-control chzn-select" tabindex="2">
                               <option selected="selected" value="{{$Product->tag}}">@foreach($TheCategory as $valuee){{$valuee->title}} @endforeach</option>
@@ -167,7 +167,7 @@
                                @foreach($TheCategoryList as $value)
                                   <option value="{{$value->id}}">{{$value->title}}</option>
                                @endforeach
-    
+
                             </select>
                         </div>
                         </div>
@@ -175,33 +175,33 @@
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Replaced With</label>
-    
-                     
-    
-                            
-    
+
+
+
+
+
                         <div class="col-lg-8">
                             <select name="replaced" data-placeholder="Replaced With" class="form-control chzn-select" tabindex="2">
-                              <?php 
+                              <?php
                                     $replacedvalue = $Product->replaced;
                               ?>
                                @if($replacedvalue == 0)
                                <option selected="selected" value="0">
                                    None
                                </option>
-                               @else 
+                               @else
                                <option selected="selected" value="{{$replacedvalue}}">
                                <?php $ProductID = app\Product::find($replacedvalue) ?>
                                {{$ProductID->name}}
                                </option>
                                @endif
-                            
+
 
                                <?php $TheCategoryList = DB::table('product')->get(); ?>
                                @foreach($TheCategoryList as $value)
                                   <option value="{{$value->id}}">{{$value->name}}</option>
                                @endforeach
-    
+
                             </select>
                         </div>
                         </div>
@@ -209,11 +209,11 @@
                     <!-- <div class="form-group">
                     <label class="control-label col-lg-4">Sub Category</label>
 
-                    
+
                     <?php
                             $CatID = $Product->sub_cat;
                             $TheCategory = DB::table('sub_category')->where('id',$CatID)->get();
-                             
+
                     ?>
 
                     <div class="col-lg-8">
@@ -233,13 +233,13 @@
                     <div class="form-group">
                     <label class="control-label col-lg-4">Brand</label>
 
-                    
-                  
+
+
 
                     <div class="col-lg-8">
                         <select name="brand" data-placeholder="Choose Sub Category" class="form-control chzn-select" tabindex="2">
                            <option selected="selected" value="{{$Product->brand}}">{{$Product->brand}}</option>
-                           
+
                            <?php $ThebrandList = DB::table('brands')->get(); ?>
                            @foreach($ThebrandList as $brandvalue)
                               <option value="{{$brandvalue->name}}">{{$brandvalue->name}}</option>
@@ -249,11 +249,11 @@
                     </div>
                     </div>
                     <!-- Brands -->
-              
+
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Combo</label>
-    
+
                         <div class="col-lg-8">
                         <div class="make-switch" data-on="success" data-off="danger">
                                     <?php
@@ -288,7 +288,7 @@
                     </div>
                     </div>
                     <!-- </Stock Control -->
-{{--           
+{{--
                         <div class="col-lg-12">
                             <div class="box">
                                 <header>
@@ -310,23 +310,23 @@
                                     </ul>
                                 </header>
                                 <div id="div-1" class="body collapse in">
-                                    
+
                                         <textarea name="content" id="wysihtml5" class="form-control" rows="10">{{$Product->content}}</textarea>
 
-                                    
+
                                 </div>
                             </div>
                         </div> --}}
 
-                         
+
                         <textarea name="content" id="article_ckeditor" rows="10" cols="80">{{$Product->content}}</textarea>
-                           
+
                         <script src="http://amanivehiclesounds.co.ke/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
                         <script>
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
 
-                   
+
                     <center>
                     <div class="form-group col-lg-12">
 
@@ -343,7 +343,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     <div class="form-group col-lg-12">
                         <label class="control-label">Thumbnail(300*300)</label>
                         <div class="">
@@ -371,7 +371,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="form-group col-lg-4">
                         <label class="control-label">W-1280 H-293(Align Right)</label>
                         <div class="">
@@ -385,7 +385,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="form-group col-lg-4">
                         <label class="control-label">Image Three(300*300)</label>
                         <div class="">
@@ -400,26 +400,26 @@
                         </div>
                     </div> --}}
 
-                   
 
-                    
+
+
                     </div>
                     </center>
                     <br><br>
                     <div class="col-lg-12 text-center">
                       <button type="submit" class="btn btn-success"><i class="icon-check icon-white"></i> Save </button>
                     </div>
-                    
+
                     <input type="hidden" name="image_one_cheat" value="{{$Product->image_one}}">
                     <input type="hidden" name="fb_pixels_cheat" value="{{$Product->fb_pixels}}">
-                    
+
                     <input type="hidden" name="thumbnail_cheat" value="{{$Product->thumbnail}}">
 
-                    
+
                     <input type="hidden" name="image_two_cheat" value="{{$Product->image_two}}">
                     <input type="hidden" name="image_three_cheat" value="{{$Product->image_three}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    
+
                 <form>
               </div>
 
@@ -428,7 +428,7 @@
 
 
 
-                
+
             </div>
 
         </div>

@@ -57,6 +57,7 @@ return array(
     'App\\Models\\Coupon' => $baseDir . '/app/Models/Coupon.php',
     'App\\Models\\CouponCode' => $baseDir . '/app/Models/CouponCode.php',
     'App\\Models\\Delivery' => $baseDir . '/app/Models/Delivery.php',
+    'App\\Models\\Extra' => $baseDir . '/app/Models/Extra.php',
     'App\\Models\\GPC' => $baseDir . '/app/Models/GPC.php',
     'App\\Models\\Invoice' => $baseDir . '/app/Models/Invoice.php',
     'App\\Models\\MPESA' => $baseDir . '/app/Models/MPESA.php',

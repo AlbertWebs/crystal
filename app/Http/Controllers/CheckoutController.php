@@ -737,6 +737,7 @@ class CheckoutController extends Controller
         }
 
      } 
+     
     public function create(Request $request){
         $name = $request->name;
         $email = $request->email;

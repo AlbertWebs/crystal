@@ -23,12 +23,12 @@ Route::get('/product-quick-view/{slung}', [HomeController::class, 'product_quick
 Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/products/category', [HomeController::class, 'products_category'])->name('category');
 
-// 
+//
 Route::get('/find-us',[App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/about-us',[App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/special-offers',[App\Http\Controllers\HomeController::class, 'special_offers'])->name('special-offers');
 
-// 
+//
 Route::get('/terms-and-conditions',[App\Http\Controllers\HomeController::class, 'terms'])->name('terms');
 Route::get('/privacy-policy',[App\Http\Controllers\HomeController::class, 'privacy'])->name('privacy');
 Route::get('/shipping-policy',[App\Http\Controllers\HomeController::class, 'shipping'])->name('shipping');
@@ -108,7 +108,7 @@ Route::get('mpesa/confirm',[PaymentsConroller::class, 'confirm']);           //R
 Route::get('mpesa/validate',[PaymentsConroller::class, 'validation']);         //Rquired URL
 Route::get('mpesa/register',[PaymentsConroller::class, 'register']);           //Rquired URL
 
-Route::post('/secure-login', [App\Http\Controllers\HomeController::class, 'handleLogin']); 
+Route::post('/secure-login', [App\Http\Controllers\HomeController::class, 'handleLogin']);
 
 
 // Users Routes
@@ -131,13 +131,13 @@ Auth::routes();
 
 Route::group(['prefix'=>'admin'], function(){
 
-  
+
 //Login route
 
 
 Route::get('/',  [AdminsController::class, 'index'])->name('admin.home')->middleware('is_admin');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
- 
+
 //reset password
 Route::get('/searches',  [AdminsController::class, 'Searches'])->middleware('is_admin');
 //Testimonial
@@ -247,7 +247,7 @@ Route::post('/add_Pricing',  [AdminsController::class, 'add_Pricing'])->middlewa
 
 //Video
 Route::get('/videos', [AdminsController::class, 'videos'])->middleware('is_admin');
-Route::get('/deleteVideo/{id}', [AdminsController::class, 'deleteVideo'])->middleware('is_admin'); 
+Route::get('/deleteVideo/{id}', [AdminsController::class, 'deleteVideo'])->middleware('is_admin');
 Route::post('/edit_Video/{id}',  [AdminsController::class, 'edit_Video'])->middleware('is_admin');
 Route::get('/editVideo/{id}',  [AdminsController::class, 'editVideo'])->middleware('is_admin');
 Route::post('/add_Video/{id}',  [AdminsController::class, 'add_Video'])->middleware('is_admin');
@@ -373,11 +373,12 @@ Route::post('/add_User',  [AdminsController::class, 'add_User'])->middleware('is
 
 //Blog Controls
 Route::get('/blog', [AdminsController::class, 'blog'])->middleware('is_admin');
-Route::get('/editBlog/{id}', [AdminsController::class, 'editBlog'])->middleware('is_admin'); 
+Route::get('/editBlog/{id}', [AdminsController::class, 'editBlog'])->middleware('is_admin');
 Route::get('/delete_Blog/{id}', [AdminsController::class, 'delete_Blog'])->middleware('is_admin');
 Route::post('/edit_Blog/{id}',  [AdminsController::class, 'edit_Blog'])->middleware('is_admin');
 Route::get('/addBlog',  [AdminsController::class, 'addBlog'])->middleware('is_admin');
 Route::post('/add_blog',  [AdminsController::class, 'add_Blog'])->middleware('is_admin');
+
 //Categories Control
 Route::get('/categories', [AdminsController::class, 'categories'])->middleware('is_admin');
 Route::get('/editCategories/{id}', [AdminsController::class, 'editCategories'])->middleware('is_admin');
@@ -385,6 +386,14 @@ Route::get('/deleteCategory/{id}', [AdminsController::class, 'deleteCategory'])-
 Route::post('/edit_Category/{id}',  [AdminsController::class, 'edit_Category'])->middleware('is_admin');
 Route::get('/addCategory',  [AdminsController::class, 'addCategory'])->middleware('is_admin');
 Route::post('/add_Category',  [AdminsController::class, 'add_Category'])->middleware('is_admin');
+
+//Extra Control
+Route::get('/extras', [AdminsController::class, 'extras'])->middleware('is_admin');
+Route::get('/editExtra/{id}', [AdminsController::class, 'editExtra'])->middleware('is_admin');
+Route::get('/deleteExtra/{id}', [AdminsController::class, 'deleteExtra'])->middleware('is_admin');
+Route::post('/edit_Extra/{id}',  [AdminsController::class, 'edit_Extra'])->middleware('is_admin');
+Route::get('/addExtra',  [AdminsController::class, 'addExtra'])->middleware('is_admin');
+Route::post('/add_Extra',  [AdminsController::class, 'add_Extra'])->middleware('is_admin');
 
 Route::get('/categoriesBanners', [AdminsController::class, 'categoriesBanners'])->middleware('is_admin');
 Route::get('/editCategoriesBanners/{id}', [AdminsController::class, 'editCategoriesBanners'])->middleware('is_admin');
@@ -425,7 +434,7 @@ Route::post('/edit_SubCategory/{id}',  [AdminsController::class, 'edit_SubCatego
 Route::get('/addSubCategory',  [AdminsController::class, 'addSubCategory'])->middleware('is_admin');
 Route::post('/add_SubCategory',  [AdminsController::class, 'add_SubCategory'])->middleware('is_admin');
 
-//Active Services 
+//Active Services
 Route::get('/traceServices', [AdminsController::class, 'traceServices'])->middleware('is_admin');
 Route::get('/editTraceServices/{id}', [AdminsController::class, 'editTraceServices'])->middleware('is_admin');
 Route::get('/deleteTraceServices/{id}', [AdminsController::class, 'deleteTraceServices'])->middleware('is_admin');
@@ -507,7 +516,7 @@ Route::get('/wizard', [AdminsController::class, 'wizard'])->middleware('is_admin
 Route::get('/maps', [AdminsController::class, 'maps'])->middleware('is_admin');
 // SiteSettings
 Route::get('/sitesettings', [AdminsController::class, 'sitesettings'])->middleware('is_admin');
-Route::post('/savesitesettings', [AdminsController::class, 'savesitesettings'])->middleware('is_admin'); 
+Route::post('/savesitesettings', [AdminsController::class, 'savesitesettings'])->middleware('is_admin');
 //Messages
 Route::get('/allMessages',  [AdminsController::class, 'allMessages'])->middleware('is_admin');
 Route::get('/unread',  [AdminsController::class, 'unread'])->middleware('is_admin');
@@ -534,9 +543,9 @@ Route::get('/updateCategory', [AdminsController::class, 'updateCategory'])->midd
 Route::get('/Without', [AdminsController::class, 'google_product_category'])->middleware('is_admin');
 });
 
-Route::get('get/details/{id}', 'PaymentsConroller@getDetails')->name('getDetails'); 
+Route::get('get/details/{id}', 'PaymentsConroller@getDetails')->name('getDetails');
 
-// MPESA 
+// MPESA
 Route::group(['prefix'=>'payments'], function(){
 Route::post('/B2C/{AccID}','PaymentsConroller@B2C');
 Route::get('/balance/{AccID}','PaymentsConroller@Balance');
@@ -566,9 +575,9 @@ Route::get('sitemap', function() {
 	if (!$sitemap->isCached()) {
 		// add item to the sitemap (url, date, priority, freq)
 		$sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
-		
 
-	
+
+
 		// get all posts from db
 		$post = DB::table('category')->orderBy('created_at', 'desc')->get();
 

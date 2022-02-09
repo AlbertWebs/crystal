@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <center><h2> Add Category US </h2></center>
+                        <center><h2> Add Extra </h2></center>
 
                     </div>
                 </div>
@@ -59,15 +59,34 @@
                  </center>
 
 
-                 <form class="form-horizontal" method="post"  action="{{url('/admin/add_Category')}}" enctype="multipart/form-data">
+                 <form class="form-horizontal" method="post"  action="{{url('/admin/add_Extra')}}" enctype="multipart/form-data">
 
-                 <div class="form-group">
-                        <label for="text1" class="control-label col-lg-4">Cateory Name</label>
+                    <div class="form-group">
+                        <label for="text1" class="control-label col-lg-4">Item Name</label>
 
                         <div class="col-lg-8">
-                            <input type="text" id="text1" name="name" value="" placeholder="e.g Get Started " class="form-control" />
+                            <input type="text" id="text1" name="title" value="" placeholder="e.g Bluetooth " class="form-control" />
                         </div>
                     </div>
+
+                    {{--  --}}
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Parent Category</label>
+
+
+
+
+                        <div class="col-lg-8">
+                            <select name="category_id" data-placeholder="Choose Category" class="form-control chzn-select" tabindex="2">
+
+                               <?php $TheCategoryList = DB::table('category')->get(); ?>
+                               @foreach($TheCategoryList as $value)
+                                  <option value="{{$value->id}}">{{$value->cat}}</option>
+                               @endforeach
+
+                            </select>
+                        </div>
+                        </div>
 
 
 
@@ -75,7 +94,7 @@
 
                     <br><br>
                     <div class="col-lg-12 text-center">
-                      <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> Add Category</button>
+                      <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> Add Extra</button>
                     </div>
 
 
