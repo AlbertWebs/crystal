@@ -321,7 +321,7 @@
 
                         <textarea name="content" id="article_ckeditor" rows="10" cols="80">{{$Product->content}}</textarea>
 
-                        <script src="http://amanivehiclesounds.co.ke/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+                        <script src="https://amanivehiclesounds.co.ke/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
                         <script>
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
