@@ -326,6 +326,18 @@
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
 
+                        {{-- Specs JSON --}}
+                        <?php $Extras = DB::table('extras')->where('category_id',$Product->cat)->get(); ?>
+                        <div class="form-group">
+                            <label for="text1" class="control-label col-lg-4">Data 1</label>
+
+                            <div class="col-lg-8">
+                                <input autocomplete="off" id="limiter-text" type="text" id="text1" name="name" value="" placeholder="e.g Studios Website " class="form-control" />
+                            </div>
+                        </div>
+
+
+
 
                     <center>
                     <div class="form-group col-lg-12">
