@@ -234,6 +234,7 @@
                                     <th>Extras</th>
                                     <th>Action</th>
                                 </tr>
+
                                 <tr>
                                     <td>
                                         <div class="form-group">

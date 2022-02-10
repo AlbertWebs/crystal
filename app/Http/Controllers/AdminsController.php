@@ -1249,9 +1249,17 @@ public function addProduct(){
 }
 
 public function add_Product(Request $request){
-    // $data = $request->all();
-    // dd($data);
-    // die();
+    $data = $request->all();
+
+    if($request->has('addMoreInputFields')){
+        $arr = $data['addMoreInputFields'];
+        $encodedSku = json_encode($arr,JSON_UNESCAPED_SLASHES);
+    }else{
+        $encodedSku = "";
+    }
+    echo $encodedSku;
+
+    die();
 
     $path = 'uploads/product';
     if(isset($request->fb_pixels)){
@@ -1295,70 +1303,6 @@ public function add_Product(Request $request){
     }
 
 
-
-    // if(isset($request->image_one)){
-    //     $fileSize = $request->file('image_one')->getSize();
-    //         if($fileSize>=1800000){
-    //         Session::flash('message', "File Exceeded the maximum allowed Size");
-    //         Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-    //         return Redirect::back();
-    //         }else{
-
-    //             $file = $request->file('image_one');
-    //             /** Renaming Edits */
-    //             $extension = $file->getClientOriginalExtension();
-    //             $image_main_temp = $request->name.'-001.'.$extension;
-    //             $image_one = str_replace(' ', '-',$image_main_temp);
-    //             $file->move($path, $image_one);
-    //             /* Renaming Edits Ends*/
-    //         }
-    // }else{
-    //     $image_one = $request->pro_img_cheat;
-    // }
-
-    // if(isset($request->image_two)){
-    //     $fileSize = $request->file('image_two')->getSize();
-    //      if($fileSize>=1800000){
-    //         Session::flash('message', "File Exceeded the maximum allowed Size");
-    //         Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-
-    //      }else{
-
-    //          $file = $request->file('image_two');
-    //          /** Renaming Edits */
-    //          $extension = $file->getClientOriginalExtension();
-    //          $image_main_temp = $request->name.'-002.'.$extension;
-    //          $image_two = str_replace(' ', '-',$image_main_temp);
-    //          $file->move($path, $image_two);
-    //          /* Renaming Edits Ends*/
-    //      }
-    // }else{
-    //     $image_two = $request->pro_img_cheat;
-    // }
-
-
-    // if(isset($request->image_three)){
-    //     $fileSize = $request->file('image_three')->getSize();
-    //     if($fileSize>=1800000){
-    //        Session::flash('message', "File Exceeded the maximum allowed Size");
-    //        Session::flash('messageError', "An error occured, You may have exceeded the maximum size for an image you uploaded");
-
-    //     }else{
-
-    //         $file = $request->file('image_three');
-    //          /** Renaming Edits */
-    //          $extension = $file->getClientOriginalExtension();
-    //          $image_main_temp = $request->name.'-003.'.$extension;
-    //          $image_three = str_replace(' ', '-',$image_main_temp);
-    //          $file->move($path, $image_three);
-    //          /* Renaming Edits Ends*/
-    //     }
-    // }else{
-    //     $image_three = $request->pro_img_cheat;
-    // }
-    //Additional images
-
-
     if($request->combo == 'on'){
         $combo = '1';
     }else{
@@ -1370,6 +1314,7 @@ public function add_Product(Request $request){
     $Product->name = $request->name;
     $Product->google_product_category = $request->google_product_category;
     $Product->slung = $slung;
+    $Product->extras = $encodedSku;
     $Product->iframe = $request->iframe;
     $Product->meta = $request->meta;
     $Product->content = $request->content;
@@ -1447,6 +1392,14 @@ public function edit_Product_slung(){
 
 
 public function edit_Product(Request $request, $id){
+    $data = $request->all();
+    if($request->has('addMoreInputFields')){
+        $arr = $data['addMoreInputFields'];
+        $encodedSku = json_encode($arr,JSON_UNESCAPED_SLASHES);
+    }else{
+        $encodedSku = "";
+    }
+
     $path = 'uploads/product';
 
     if(isset($request->fb_pixels)){
@@ -1594,6 +1547,7 @@ public function edit_Product(Request $request, $id){
         'price' =>$request->price,
         'price_raw' =>$request->price_raw,
         'code' =>$request->code,
+        'extras' =>$encodedSku,
         'cat' =>$request->cat,
         'tag' =>$request->tag,
         'sub_cat' =>$request->sub_cat,

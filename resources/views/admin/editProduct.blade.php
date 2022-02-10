@@ -326,11 +326,7 @@
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
 
-                        {{-- Specs JSON --}}
-                        @if($Product->extras == null)
 
-                        @else
-                        {{-- Loop Them Here --}}
 
                         {{--  --}}
                         <div class="container">
@@ -339,6 +335,10 @@
                                     <th>Extras</th>
                                     <th>Action</th>
                                 </tr>
+
+
+
+                                @if($Product->extras == null)
                                 <tr>
                                     <td>
                                         <div class="form-group">
@@ -352,9 +352,42 @@
                                     </td>
                                     <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Feature</button></td>
                                 </tr>
+                                @else
+
+                                <?php $ExtraArray = json_decode($Product->extras); $CountArray = count($ExtraArray); $init = 0;  ?>
+                                @foreach ($ExtraArray as $key => $value)
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <div class="col-lg-6">
+                                                <input type="text" name="addMoreInputFields[{{$init}}][title]" value="{{$value->title}}" placeholder="Feature e.g Bluetooth" class="form-control" />
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="addMoreInputFields[{{$init}}][value]" value="{{$value->value}}" placeholder="BT 2,0" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-danger remove-input-field">Delete</button>
+                                    </td>
+                                </tr>
+                                <?php $init = $init+1;  ?>
+                                @endforeach
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                        <button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Feature</button>
+                                    </td>
+                                </tr>
+                                @endif
+
+
+
                             </table>
                         </div>
-                        @endif
 
 
 
@@ -389,49 +422,6 @@
                             </div>
                         </div>
                     </div>
-
-                    {{-- <div class="form-group col-lg-4">
-                        <label class="control-label">Image One(300*300)</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{{url('/')}}/uploads/product/{{$Product->image_one}}" alt="" /></div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image_one" type="file" /></span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-4">
-                        <label class="control-label">W-1280 H-293(Align Right)</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{{url('/')}}/uploads/product/{{$Product->image_two}}" alt="" /></div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image_two" type="file" /></span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-4">
-                        <label class="control-label">Image Three(300*300)</label>
-                        <div class="">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{{url('/')}}/uploads/product/{{$Product->image_three}}" alt="" /></div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                <div>
-                                    <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image_three" type="file" /></span>
-                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-
 
 
 
@@ -471,20 +461,40 @@
          <!-- END RIGHT STRIP  SECTION -->
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-        var i = 0;
-        $("#dynamic-ar").click(function () {
-            ++i;
-            $("#dynamicAddRemove").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
-                '][title]" placeholder="Feature" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
-                '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
-                );
-        });
-        $(document).on('click', '.remove-input-field', function () {
-            $(this).parents('tr').remove();
-        });
-    </script>
+    @if($Product->extras == null)
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
+            var i = 0;
+            $("#dynamic-ar").click(function () {
+                ++i;
+                $("#dynamicAddRemove").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                    '][title]" placeholder="Feature" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                    '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                    );
+            });
+            $(document).on('click', '.remove-input-field', function () {
+                $(this).parents('tr').remove();
+            });
+        </script>
+    @else
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
+            var i = {{$CountArray}};
+            $("#dynamic-ar").click(function () {
+                ++i;
+                $("#dynamicAddRemove").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                    '][title]" placeholder="Feature" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                    '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                    );
+            });
+            $(document).on('click', '.remove-input-field', function () {
+                $(this).parents('tr').remove();
+            });
+        </script>
+    @endif
+
+
 
 @endsection
