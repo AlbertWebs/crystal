@@ -26,6 +26,9 @@ use Carbon\Carbon;
 use AmrShawky\LaravelCurrency\Facade\Currency;
 class HomeController extends Controller
 {
+    public function index_home(){
+        return view('front.index-home');
+    }
     public function index()
     {
         $SEOSettings = DB::table('seosettings')->get();
@@ -41,14 +44,14 @@ class HomeController extends Controller
             Twitter::setTitle('' . $Settings->sitename. '');
             Twitter::setSite('@crystalcaraudio');
 
-            
+
             $page_name = 'Home1';
             $page_title = 'Car Radio, Car Stereo - Amani Vehicle Sounds';
-           
+
             $keywords = 'Car Sound Systems, Car Alarm Systems, Car Surveillance Systems,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers';
-            
-            
+
+
             return view('front.index', compact('keywords','page_title'));
         }
     }
@@ -82,7 +85,7 @@ class HomeController extends Controller
         DB::table('rates')->where('currency','USD')->update($updateUSD);
         DB::table('rates')->where('currency','EUR')->update($updateEUR);
         DB::table('rates')->where('currency','GBP')->update($updateGBP);
-        
+
         return $USD;
     }
 
@@ -91,7 +94,7 @@ class HomeController extends Controller
         foreach($Currency as $cur){
             Session::put('rates', $cur->rates);
         }
-       
+
         return back();
     }
 
@@ -145,14 +148,14 @@ class HomeController extends Controller
         }
     }
 
-    
 
- 
+
+
 
     public function product_category($category){
         Session::forget('Category');
         $Category = DB::table('category')->where('slung',$category)->get();
-       
+
             foreach ($Category as $key => $value) {
                 $page_name = $value->cat;
                 $SEOSettings = DB::table('seosettings')->get();
@@ -179,7 +182,7 @@ class HomeController extends Controller
         }
 
 
-       
+
     }
 
     public function products_discounts($category){
@@ -212,9 +215,9 @@ class HomeController extends Controller
     }
 
     public function brands($category){
-       
+
         $Category = DB::table('brands')->where('name',$category)->get();
-       
+
             foreach ($Category as $key => $value) {
                 $page_name = $value->name;
                 $SEOSettings = DB::table('seosettings')->get();
@@ -229,7 +232,7 @@ class HomeController extends Controller
                     Twitter::setTitle('' . $Settings->sitename. '');
                     Twitter::setSite('@crystalcaraudio');
                     // Set Session Here
-                   
+
                     $page_title = 'Products';
                     $search_results ='';
                     $search_results_category = '';
@@ -241,13 +244,13 @@ class HomeController extends Controller
         }
 
 
-       
+
     }
 
-    
+
 
     public function categories(){
-        Session::forget('Category');    
+        Session::forget('Category');
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Shop by Category  | ' . $Settings->sitename .'');
@@ -263,19 +266,19 @@ class HomeController extends Controller
             $page_name = "Shop By Category";
             Session::put('Category', $page_name);
             $page_title = 'Products';
-            
+
             $keywords = 'Car Sound Systems, Car Alarm Systems, Car Surveillance Systems,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers';
-            
+
             // infinite Scroll
-         
+
             return view('front.categories', compact('keywords','page_title','page_name'));
     }
-        
+
     }
 
     public function brand(){
-        Session::forget('Brand');    
+        Session::forget('Brand');
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Shop by Brand  | ' . $Settings->sitename .'');
@@ -291,17 +294,17 @@ class HomeController extends Controller
             $page_name = "Shop By Brand";
             Session::put('Brand', $page_name);
             $page_title = 'Products';
-            
+
             $keywords = 'Car Sound Systems, Car Alarm Systems, Car Surveillance Systems,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers';
-            
+
             // infinite Scroll
-         
+
             return view('front.brands', compact('keywords','page_title','page_name'));
     }
-        
+
     }
-       
+
     public function product_quick_view($slung){
         $Product =  DB::table('product')->where('slung',$slung)->get();
         return view('front.product-quick-view',compact('Product'));
@@ -338,7 +341,7 @@ class HomeController extends Controller
     public function about()
     {
         $SEOSettings = DB::table('seosettings')->get();
-        
+
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('About Us | ' . $Settings->sitename . '');
             SEOMeta::setDescription('Amani Vehicle Sounds, Amani Car Sound Systems  Car Speakers systems. Pioneer Car stereo, Speakers for sale in kenya ');
@@ -349,7 +352,7 @@ class HomeController extends Controller
             OpenGraph::addProperty('type', 'website');
             Twitter::setTitle('' . $Settings->sitename. '');
             Twitter::setSite('@crystalcaraudio');
-         
+
             $About = DB::table('about')->get();
             $SiteSettings = DB::table('sitesettings')->get();
             $Services = DB::table('services')->inRandomOrder()->paginate(2);
@@ -376,9 +379,9 @@ class HomeController extends Controller
                 {
                 foreach ($products as $key => $product) {
                 $output.='<tr>'.
-                
+
                 '<td style="padding:10px 10px 10px 10px;"><a style="color:#66139B; visibility:visible;" href="'.$url.'/'.$product->slung.'"><b>'.$product->title.'</b></a></td>'.
-                
+
                 '</tr>';
                 }
                 return Response($output);
@@ -387,9 +390,9 @@ class HomeController extends Controller
      }
 
      public function product_tags($slung){
-       
+
         $Category = DB::table('tags')->where('slung',$slung)->get();
-            foreach ($Category as $key => $value) { 
+            foreach ($Category as $key => $value) {
                 $page_name = $value->title;
                 $SEOSettings = DB::table('seosettings')->get();
                 foreach ($SEOSettings as $Settings) {
@@ -403,7 +406,7 @@ class HomeController extends Controller
                     Twitter::setTitle('' . $Settings->sitename. '');
                     Twitter::setSite('@crystalcaraudio');
                     // Set Session Here
-                   
+
                     // End Session Here
                     $page_name = $value->title;
                     $page_title = 'Products';
@@ -439,8 +442,8 @@ class HomeController extends Controller
                 return view('front.product', compact('keywords','page_title', 'Products', 'page_name'));
             }
         }
-        
-        
+
+
     }
 
 
@@ -486,7 +489,7 @@ class HomeController extends Controller
         }
     }
 
-    
+
 
     public function privacy()
     {
@@ -530,7 +533,7 @@ class HomeController extends Controller
         }
     }
 
-    
+
 
     public function copyright()
     {
@@ -597,23 +600,23 @@ class HomeController extends Controller
             $ProductsCategory = DB::table('category')->where('keywords', 'like', '%' . $request->search . '%')->limit(4)->get();
             $ProductsTag = DB::table('tags')->where('title', 'like', '%' . $request->search . '%')->limit(1)->get();
             $ProductsBrand = DB::table('brands')->where('name', 'like', '%' . $request->search . '%')->limit(1)->get();
-        
+
             // Call Route
             // return redirect()->route('search-results', ['ProductsTag'=>$ProductsTag,'ProductsBrand'=>$ProductsBrand,'ProductsCategory'=>$ProductsCategory]);
-            
+
             return view('front.search-results', compact('ProductsCategory','ProductsTag','ProductsBrand','page_title','keywords', 'Products', 'page_name', 'search_results', 'search_results_category','search'));
-          
-            
+
+
         }
 
-        
-       
-        
+
+
+
     }
 
     public function do_not(Request $request)
     {
-        
+
         $search = $request->Checked;
 
         if(Auth::user()){
@@ -636,7 +639,7 @@ class HomeController extends Controller
 
     }
 
-    
+
     public function checkEmail(Request $request)
     {
         $email = $request->input('email');
@@ -655,7 +658,7 @@ class HomeController extends Controller
         $category = $request->category;
         $brand = $request->brand;
         $search = $request->keyword;
-           
+
                 $Products = DB::table('product')->where('cat',$category)->where('brand', 'like', '%' . $request->brand . '%')->paginate(200);
                 $page_name = $request->search;
                 $page_title = $request->search;
@@ -675,23 +678,23 @@ class HomeController extends Controller
                     $ProductsCategory = DB::table('category')->where('keywords', 'like', '%' . $request->search . '%')->limit(4)->get();
                     $ProductsTag = DB::table('tags')->where('title', 'like', '%' . $request->search . '%')->limit(1)->get();
                     $ProductsBrand = DB::table('brands')->where('name', 'like', '%' . $request->search . '%')->limit(1)->get();
-                    
+
                     return view('front.search-results', compact('ProductsCategory','ProductsTag','ProductsBrand','page_title','keywords', 'Products', 'page_name', 'search_results', 'search_results_category','search'));
-          
-            
+
+
         }
 
-        
-       
-        
+
+
+
     }
 
     public function filters(Request $request)
     {
         $keywords = '';
-      
+
         $mobile_search = $request->mobile_search;
-           
+
                 $Products = DB::table('product')->where('code', 'like', '%' . $mobile_search . '%')->orWhere('name', 'like', '%' . $mobile_search . '%')->paginate(200);
                 $page_name = $mobile_search;
                 $page_title = $mobile_search;
@@ -712,15 +715,15 @@ class HomeController extends Controller
                     $ProductsTag = DB::table('tags')->where('title', 'like', '%' . $mobile_search . '%')->limit(1)->get();
                     $ProductsBrand = DB::table('brands')->where('name', 'like', '%' . $mobile_search . '%')->limit(1)->get();
                     $search = $mobile_search;
-                    
+
                     return view('front.search-results', compact('ProductsCategory','ProductsTag','ProductsBrand','page_title','keywords', 'Products', 'page_name', 'search_results', 'search_results_category','search'));
-          
-            
+
+
         }
 
-        
-       
-        
+
+
+
     }
 
     // manual login
@@ -733,15 +736,15 @@ class HomeController extends Controller
             $status = 1;
             return $status;
         }
-            
+
         // authentication failed...
         $status = 0;
         return $status;
     }
 
-    
-    public function portfolio(){ 
-       
+
+    public function portfolio(){
+
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Our Work | ' . $Settings->sitename .'');
@@ -762,11 +765,11 @@ class HomeController extends Controller
             $keywords = 'Sony Car Tweeters, Sony Car Ampifires, Kenwood Car Speakers, Kenwood Car Subwoofers, Sony car Subwoofers';
             return view('front.portfolio', compact('keywords','page_title', 'Products', 'page_name', 'search_results', 'search_results_category'));
         }
-        
+
     }
 
-    public function folio($id){ 
-       
+    public function folio($id){
+
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Our Work | ' . $Settings->sitename .'');
@@ -787,11 +790,11 @@ class HomeController extends Controller
             $keywords = 'Sony Car Tweeters, Sony Car Ampifires, Kenwood Car Speakers, Kenwood Car Subwoofers, Sony car Subwoofers';
             return view('front.folio', compact('keywords','page_title', 'Products', 'page_name', 'search_results', 'search_results_category'));
         }
-        
+
     }
 
     public function newsletter(Request $request)
-    {   
+    {
         $email = $request->user_email;
         $UserCheck = DB::table('users')->where('email',$request->user_email)->get();
         $UserSubscribers = DB::table('subscribers')->where('email',$request->user_email)->get();
@@ -807,7 +810,7 @@ class HomeController extends Controller
             $password = Hash::make($password_inSecured);
             $name = "User-$email";
             $email = $email;
-           
+
             $User = new User;
             $User->name = $name;
             $User->email = $email;
@@ -818,7 +821,7 @@ class HomeController extends Controller
             $coupon = "AVS$string";
             // Create Expiry
             $expire = now()->addDays(7)->format('Y-m-d');
-           
+
             // Log the random coupon to the database
             $code = new CouponCode;
             $code->title = "NEWSLETTER";
@@ -836,7 +839,7 @@ class HomeController extends Controller
 
         }
 
-       
+
     }
 
     public function subscription_offers(){
@@ -844,14 +847,14 @@ class HomeController extends Controller
     }
 
     public function sub(){
-     
+
         return view('subscribe');
     }
 
     public function translate(){
         $tr = new GoogleTranslate('fr');
     }
-    
+
 }
 
 

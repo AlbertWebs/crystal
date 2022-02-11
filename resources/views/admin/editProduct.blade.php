@@ -161,7 +161,7 @@
                     <div class="col-lg-8">
                         <select name="sub_cat" id="sub_cat"  data-placeholder="Choose Sub Category" class="form-control" tabindex="2">
                            <option selected="selected" value="{{$Product->sub_cat}}">@foreach($TheCategory as $valuee){{$valuee->name}} @endforeach</option>
-                           
+
 
                         </select>
                     </div>
@@ -299,7 +299,7 @@
                             <label for="limiter" class="control-label col-lg-4">What's in the Box</label>
 
                             <div class="col-lg-8">
-                                <textarea  name="box" class="form-control"></textarea>
+                                <textarea  name="box" class="form-control">{{$Product->box}}</textarea>
                                 <p class="help-block">Brief Description whats in the box</p>
                             </div>
                         </div>
@@ -308,7 +308,7 @@
                             <label for="limiter" class="control-label col-lg-4">Warranty Statement</label>
 
                             <div class="col-lg-8">
-                                <textarea  name="warranty" class="form-control"></textarea>
+                                <textarea  name="warranty" class="form-control">{{$Product->warranty}}</textarea>
                                 <p class="help-block">Product Warranty</p>
                             </div>
                         </div>
@@ -495,7 +495,7 @@
                             var toAppend = '';
                             $.each(data,function(i,o){
                             toAppend += '<option value="'+o.id+'">'+o.name+'</option>';
-                            
+
                         });
                         $('#sub_cat').append(toAppend);
 

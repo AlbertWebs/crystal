@@ -18,7 +18,8 @@ use App\Http\Controllers\WishListController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index_home'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home-page');
 Route::get('/product-quick-view/{slung}', [HomeController::class, 'product_quick_view'])->name('product-quick-view');
 Route::get('/products', [HomeController::class, 'products'])->name('products');
 Route::get('/products/category', [HomeController::class, 'products_category'])->name('category');
