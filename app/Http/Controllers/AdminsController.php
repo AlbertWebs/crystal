@@ -1257,9 +1257,9 @@ public function add_Product(Request $request){
     }else{
         $encodedSku = "";
     }
-    echo $encodedSku;
+    // echo $encodedSku;
 
-    die();
+    // die();
 
     $path = 'uploads/product';
     if(isset($request->fb_pixels)){
