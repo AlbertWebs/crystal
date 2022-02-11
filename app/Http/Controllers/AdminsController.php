@@ -1197,7 +1197,7 @@ public function deleteCategory($id){
 }
 
 public function subCategories(){
-    $Category = SubCategory::all();
+    $Category = Sub_Category::all();
     $page_title = 'list';
     $page_name = 'Categories';
     return view('admin.SubCategories',compact('page_title','Category','page_name'));
@@ -1211,7 +1211,7 @@ public function addSubCategory(){
 
 public function add_SubCategory(Request $request){
 
-    $SubCategory = new SubCategory;
+    $SubCategory = new Sub_Category;
     $SubCategory->name = $request->name;
     $SubCategory->cat_id = $request->cat_id;
 
@@ -1221,7 +1221,7 @@ public function add_SubCategory(Request $request){
 }
 
 public function editSubCategories($id){
-    $Category = SubCategory::find($id);
+    $Category = Sub_Category::find($id);
     $page_title = 'formfiletext';
     $page_name = 'Edit Home Page Slider';
     return view('admin.editSubCategory',compact('page_title','Category','page_name'));
@@ -1310,7 +1310,7 @@ public function add_Product(Request $request){
     }else{
         $combo = '0';
     }
-   
+
     $slung = Str::slug($request->name);
     $Product = new Product;
     $Product->name = $request->name;
