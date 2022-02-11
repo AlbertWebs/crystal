@@ -76,6 +76,7 @@ return array(
     'App\\Models\\STKMpesaTransaction' => $baseDir . '/app/Models/STKMpesaTransaction.php',
     'App\\Models\\Search' => $baseDir . '/app/Models/Search.php',
     'App\\Models\\Special' => $baseDir . '/app/Models/Special.php',
+    'App\\Models\\Sub_Category' => $baseDir . '/app/Models/Sub_Category.php',
     'App\\Models\\Subscriber' => $baseDir . '/app/Models/Subscriber.php',
     'App\\Models\\Tag' => $baseDir . '/app/Models/Tag.php',
     'App\\Models\\Term' => $baseDir . '/app/Models/Term.php',

@@ -138,12 +138,30 @@
 
 
                     <div class="col-lg-8">
-                        <select name="cat" data-placeholder="Choose Category" class="form-control chzn-select" tabindex="2">
+                        <select name="cat" id="cat" data-placeholder="Choose Category" class="form-control chzn-select" tabindex="2">
                           <option selected="selected" value="{{$Product->cat}}">@foreach($TheCategory as $valuee){{$valuee->cat}} @endforeach</option>
                            <?php $TheCategoryList = DB::table('category')->get(); ?>
                            @foreach($TheCategoryList as $value)
                               <option value="{{$value->id}}">{{$value->cat}}</option>
                            @endforeach
+                        </select>
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label class="control-label col-lg-4">Sub Category</label>
+
+
+                    <?php
+                            $CatID = $Product->sub_cat;
+                            $TheCategory = DB::table('sub_category')->where('id',$CatID)->get();
+
+                    ?>
+
+                    <div class="col-lg-8">
+                        <select name="sub_cat" id="sub_cat"  data-placeholder="Choose Sub Category" class="form-control" tabindex="2">
+                           <option selected="selected" value="{{$Product->sub_cat}}">@foreach($TheCategory as $valuee){{$valuee->name}} @endforeach</option>
+                           
 
                         </select>
                     </div>
@@ -206,27 +224,7 @@
                         </div>
                         </div>
 
-                    <!-- <div class="form-group">
-                    <label class="control-label col-lg-4">Sub Category</label>
 
-
-                    <?php
-                            $CatID = $Product->sub_cat;
-                            $TheCategory = DB::table('sub_category')->where('id',$CatID)->get();
-
-                    ?>
-
-                    <div class="col-lg-8">
-                        <select name="sub_cat" data-placeholder="Choose Sub Category" class="form-control chzn-select" tabindex="2">
-                           <option selected="selected" value="{{$Product->sub_cat}}">@foreach($TheCategory as $valuee){{$valuee->name}} @endforeach</option>
-                           <?php $TheSubCategoryList = DB::table('sub_category')->get(); ?>
-                           @foreach($TheSubCategoryList as $value)
-                              <option value="{{$value->id}}">{{$value->name}}</option>
-                           @endforeach
-
-                        </select>
-                    </div>
-                    </div> -->
 
                     <!-- Brands -->
 
@@ -287,36 +285,7 @@
                             </div>
                     </div>
                     </div>
-                    <!-- </Stock Control -->
-{{--
-                        <div class="col-lg-12">
-                            <div class="box">
-                                <header>
-                                    <div class="icons"><i class="icon-th-large"></i></div>
-                                    <h5>Product Description</h5>
-                                    <ul class="nav pull-right">
-                                        <li>
-                                            <div class="btn-group">
-                                                <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
-                                                    href="#div-1">
-                                                    <i class="icon-minus"></i>
-                                                </a>
-                                                 <button class="btn btn-danger btn-xs close-box">
-                                                    <i
-                                                        class="icon-remove"></i>
-                                                </button>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </header>
-                                <div id="div-1" class="body collapse in">
 
-                                        <textarea name="content" id="wysihtml5" class="form-control" rows="10">{{$Product->content}}</textarea>
-
-
-                                </div>
-                            </div>
-                        </div> --}}
 
 
                         <textarea name="content" id="article_ckeditor" rows="10" cols="80">{{$Product->content}}</textarea>
@@ -325,6 +294,25 @@
                         <script>
                             CKEDITOR.replace( 'article_ckeditor' );
                         </script>
+                          <br><br>
+                        <div class="form-group">
+                            <label for="limiter" class="control-label col-lg-4">What's in the Box</label>
+
+                            <div class="col-lg-8">
+                                <textarea  name="box" class="form-control"></textarea>
+                                <p class="help-block">Brief Description whats in the box</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="limiter" class="control-label col-lg-4">Warranty Statement</label>
+
+                            <div class="col-lg-8">
+                                <textarea  name="warranty" class="form-control"></textarea>
+                                <p class="help-block">Product Warranty</p>
+                            </div>
+                        </div>
+                        <br><br>
 
 
 
@@ -494,6 +482,29 @@
             });
         </script>
     @endif
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function (e) {
+            $('#cat').on('change', e => {
+                var val = $('#cat').val();
+                $('#sub_cat').empty()
+                $.ajax({
+                    url: `/admin/get-subcategories/${val}`,
+                    success: function(data){
+                            var toAppend = '';
+                            $.each(data,function(i,o){
+                            toAppend += '<option value="'+o.id+'">'+o.name+'</option>';
+                            
+                        });
+                        $('#sub_cat').append(toAppend);
+
+
+                        }
+                })
+            })
+        })
+    </script>
 
 
 

@@ -344,6 +344,9 @@ Route::post('/edit_Product_Details/{id}',  [AdminsController::class, 'edit_Produ
 Route::get('/addProduct',  [AdminsController::class, 'addProduct'])->middleware('is_admin');
 Route::post('/add_Product',  [AdminsController::class, 'add_Product'])->middleware('is_admin');
 
+Route::get('/get-subcategories/{id}',  [AdminsController::class, 'get_subcategories'])->middleware('is_admin');
+
+
 
 //Admin
 Route::get('/admins', [AdminsController::class, 'admins'])->middleware('is_admin');

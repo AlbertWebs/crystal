@@ -64,6 +64,8 @@ use App\Models\Slider;
 
 use App\Models\Banner;
 
+use App\Models\Sub_Category;
+
 use App\Models\Page_Settings;
 
 use App\Models\Message;
@@ -1308,12 +1310,15 @@ public function add_Product(Request $request){
     }else{
         $combo = '0';
     }
-
+   
     $slung = Str::slug($request->name);
     $Product = new Product;
     $Product->name = $request->name;
     $Product->google_product_category = $request->google_product_category;
     $Product->slung = $slung;
+    $Product->tag = $request->tag;
+    $Product->warranty = $request->warranty;
+    $Product->box = $request->box;
     $Product->extras = $encodedSku;
     $Product->iframe = $request->iframe;
     $Product->meta = $request->meta;
@@ -1550,6 +1555,8 @@ public function edit_Product(Request $request, $id){
         'extras' =>$encodedSku,
         'cat' =>$request->cat,
         'tag' =>$request->tag,
+        'box' =>$request->box,
+        'warranty' =>$request->warranty,
         'sub_cat' =>$request->sub_cat,
     );
 
@@ -3993,6 +4000,16 @@ public function edit_Extra(Request $request, $id){
 public function deleteExtra($id){
     DB::table('extras')->where('id',$id)->delete();
     return Redirect::back();
+}
+
+public function get_subcategories(Request $request,$id){
+    if ($request->ajax()) {
+        // return response()->json([
+        //     'sub_cats' => Sub_Category::where('cat_id', $id)->get()
+        // ]);
+        $data = Sub_Category::where('cat_id', $id)->get();
+        return response()->json($data);
+    }
 }
 
 }
