@@ -342,16 +342,16 @@
                                 </tr>
                                 @else
 
-                                <?php $ExtraArray = json_decode($Product->extras); $CountArray = count($ExtraArray); $init = 0;  ?>
+                                <?php $ExtraArray = json_decode($Product->extras,JSON_UNESCAPED_SLASHES);  $CountArray = count($ExtraArray);  $init = 0;  ?>
                                 @foreach ($ExtraArray as $key => $value)
                                 <tr>
                                     <td>
                                         <div class="form-group">
                                             <div class="col-lg-6">
-                                                <input type="text" name="addMoreInputFields[{{$init}}][title]" value="{{$value->title}}" placeholder="Feature e.g Bluetooth" class="form-control" />
+                                                <input type="text" name="addMoreInputFields[{{$init}}][title]" value="{{$value['title']}}" placeholder="Feature e.g Bluetooth" class="form-control" />
                                             </div>
                                             <div class="col-lg-6">
-                                                <input type="text" name="addMoreInputFields[{{$init}}][value]" value="{{$value->value}}" placeholder="BT 2,0" class="form-control" />
+                                                <input type="text" name="addMoreInputFields[{{$init}}][value]" value="{{$value['value']}}" placeholder="BT 2,0" class="form-control" />
                                             </div>
                                         </div>
                                     </td>
