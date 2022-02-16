@@ -1210,9 +1210,10 @@ public function addSubCategory(){
 }
 
 public function add_SubCategory(Request $request){
-
+    $slung = Str::slug($request->name);
     $SubCategory = new Sub_Category;
     $SubCategory->name = $request->name;
+    $SubCategory->slung = $slung;
     $SubCategory->cat_id = $request->cat_id;
 
     $SubCategory->save();
@@ -1228,9 +1229,10 @@ public function editSubCategories($id){
 }
 
 public function edit_SubCategory(Request $request, $id){
-
+    $slung = Str::slug($request->name);
     $updateDetails = array(
         'cat_id'=>$request->cat_id,
+        'slung'=>$slung,
         'name' =>$request->name,
 
     );
@@ -4011,6 +4013,19 @@ public function get_subcategories(Request $request,$id){
         return response()->json($data);
     }
 }
+
+public function subcategory_slung(){
+    $variable = DB::table('sub_category')->get();
+    foreach ($variable as $key => $value) {
+        $slung = Str::slug($value->name);
+        $updateDetails = array(
+            'slung' => $slung,
+        );
+        DB::table('sub_category')->where('id',$value->id)->update($updateDetails);
+    }
+    echo "done";
+}
+
 
 }
 

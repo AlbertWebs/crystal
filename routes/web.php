@@ -152,6 +152,8 @@ Route::post('/edit_Testimonial/{id}',  [AdminsController::class, 'edit_Testimoni
 
 Route::get('/edit-Product-slung',  [AdminsController::class, 'edit_Product_slung'])->middleware('is_admin');
 
+Route::get('/edit-sub-slung',  [AdminsController::class, 'subcategory_slung'])->middleware('is_admin');
+
 Route::get('/addProductToFacebookPixel','AdminsController@addProductToFacebookPixel');
 Route::get('/emptyProductToFacebookPixel','AdminsController@emptyProductToFacebookPixel');
 
