@@ -1261,9 +1261,14 @@ public function add_Product(Request $request){
     }else{
         $encodedSku = "";
     }
-    // echo $encodedSku;
 
-    // die();
+    if($request->has('addVariations')){
+        $arrs = $data['addVariations'];
+        $encodedVar = json_encode($arrs,JSON_UNESCAPED_SLASHES);
+    }else{
+        $encodedVar = "";
+    }
+
 
     $path = 'uploads/product';
     if(isset($request->fb_pixels)){
@@ -1322,6 +1327,7 @@ public function add_Product(Request $request){
     $Product->warranty = $request->warranty;
     $Product->box = $request->box;
     $Product->extras = $encodedSku;
+    $Product->variations = $encodedVar;
     $Product->iframe = $request->iframe;
     $Product->meta = $request->meta;
     $Product->content = $request->content;
@@ -1405,6 +1411,13 @@ public function edit_Product(Request $request, $id){
         $encodedSku = json_encode($arr,JSON_UNESCAPED_SLASHES);
     }else{
         $encodedSku = "";
+    }
+
+    if($request->has('addVariations')){
+        $arrs = $data['addVariations'];
+        $encodedVar = json_encode($arrs,JSON_UNESCAPED_SLASHES);
+    }else{
+        $encodedVar = "";
     }
 
     $path = 'uploads/product';
@@ -1555,6 +1568,7 @@ public function edit_Product(Request $request, $id){
         'price_raw' =>$request->price_raw,
         'code' =>$request->code,
         'extras' =>$encodedSku,
+        'variations' =>$encodedVar,
         'cat' =>$request->cat,
         'tag' =>$request->tag,
         'box' =>$request->box,
@@ -4006,9 +4020,6 @@ public function deleteExtra($id){
 
 public function get_subcategories(Request $request,$id){
     if ($request->ajax()) {
-        // return response()->json([
-        //     'sub_cats' => Sub_Category::where('cat_id', $id)->get()
-        // ]);
         $data = Sub_Category::where('cat_id', $id)->get();
         return response()->json($data);
     }

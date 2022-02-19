@@ -74,6 +74,38 @@
                         </div>
                     </div>
 
+                    {{-- Varaitions Available --}}
+                    <div class="form-group">
+                        <label for="text1" class="control-label col-lg-4">Variations</label>
+
+                        <div class="col-lg-8">
+
+
+                                <table class="table table-bordered" id="dynamicAddRemoves">
+                                    <tr>
+                                        <th>Variations</th>
+                                        <th>Action</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="col-lg-6">
+                                                    <input type="text" name="addVariations[0][title]" placeholder="e.g Size" class="form-control" />
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <input type="text" name="addVariations[0][value]" placeholder="Price" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><button type="button" name="add" id="dynamic-ars" class="btn btn-outline-primary">Add Variation</button></td>
+                                    </tr>
+                                </table>
+
+
+                        </div>
+                    </div>
+
 
 
 
@@ -148,7 +180,7 @@
                         <div class="col-lg-8">
                             <select name="sub_cat" id="sub_cat"  data-placeholder="Choose Sub Category" class="form-control" tabindex="2">
 
-                            
+
 
                             </select>
                         </div>
@@ -337,6 +369,22 @@
             $(this).parents('tr').remove();
         });
     </script>
+
+    <script type="text/javascript">
+        var i = 0;
+        $("#dynamic-ars").click(function () {
+            ++i;
+            $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addVariations[' + i +
+                '][title]" placeholder="eg Size" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addVariations[' + i +
+                '][value]" placeholder="Price" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                );
+        });
+        $(document).on('click', '.remove-input-field', function () {
+            $(this).parents('tr').remove();
+        });
+    </script>
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
         $(document).ready(function (e) {
@@ -349,7 +397,7 @@
                             var toAppend = '';
                             $.each(data,function(i,o){
                             toAppend += '<option value="'+o.id+'">'+o.name+'</option>';
-                            
+
                         });
                         $('#sub_cat').append(toAppend);
 

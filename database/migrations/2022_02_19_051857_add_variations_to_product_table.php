@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlungToSubCategoryTable extends Migration
+class AddVariationsToProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddSlungToSubCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::table('sub_category', function (Blueprint $table) {
-            $table->string('slung')->nullable();
+        Schema::table('product', function (Blueprint $table) {
+            $table->string('variations')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddSlungToSubCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::table('sub_category', function (Blueprint $table) {
+        Schema::table('product', function (Blueprint $table) {
             //
         });
     }

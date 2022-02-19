@@ -94,6 +94,72 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="text1" class="control-label col-lg-4">Variations</label>
+
+                        <div class="col-lg-8">
+                        {{--  --}}
+                        <table class="table table-bordered" id="dynamicAddRemoves">
+                            <tr>
+                                <th>Variations</th>
+                                <th>Action</th>
+                            </tr>
+
+
+
+                            @if($Product->variations == null)
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">
+                                            <input type="text" name="addVariations[0][title]" placeholder="Variation" class="form-control" />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="addVariations[0][value]" placeholder="Value" class="form-control" />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><button type="button" name="add" id="dynamic-ars" class="btn btn-outline-primary">Add Variation</button></td>
+                            </tr>
+                            @else
+
+                            <?php $ExtraArrays = json_decode($Product->variations,JSON_UNESCAPED_SLASHES);  $CountArrays = count($ExtraArrays);  $inits = 0;  ?>
+                            @foreach ($ExtraArrays as $key => $value)
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="col-lg-6">
+                                            <input type="text" name="addVariations[{{$inits}}][title]" value="{{$value['title']}}"  class="form-control" />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="addVariations[{{$inits}}][value]" value="{{$value['value']}}"  class="form-control" />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger remove-input-field">Delete</button>
+                                </td>
+                            </tr>
+                            <?php $inits = $inits+1;  ?>
+                            @endforeach
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                    <button type="button" name="add" id="dynamic-ars" class="btn btn-outline-primary">Add Variations</button>
+                                </td>
+                            </tr>
+                            @endif
+
+
+
+                        </table>
+                        {{--  --}}
+                        </div>
+                    </div>
+
 
 
 
@@ -474,6 +540,36 @@
                 ++i;
                 $("#dynamicAddRemove").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
                     '][title]" placeholder="Feature" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addMoreInputFields[' + i +
+                    '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                    );
+            });
+            $(document).on('click', '.remove-input-field', function () {
+                $(this).parents('tr').remove();
+            });
+        </script>
+    @endif
+
+    @if($Product->variations == null)
+        <script type="text/javascript">
+            var i = 0;
+            $("#dynamic-ars").click(function () {
+                ++i;
+                $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addVariations[' + i +
+                    '][title]" placeholder="Variation" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addVariations[' + i +
+                    '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                    );
+            });
+            $(document).on('click', '.remove-input-field', function () {
+                $(this).parents('tr').remove();
+            });
+        </script>
+    @else
+        <script type="text/javascript">
+            var i = {{$CountArrays}};
+            $("#dynamic-ars").click(function () {
+                ++i;
+                $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addVariations[' + i +
+                    '][title]" placeholder="Variation" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addVariations[' + i +
                     '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
                     );
             });
