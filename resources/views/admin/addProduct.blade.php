@@ -90,11 +90,14 @@
                                     <tr>
                                         <td>
                                             <div class="form-group">
-                                                <div class="col-lg-6">
-                                                    <input type="text" name="addVariations[0][title]" placeholder="e.g Size" class="form-control" />
+                                                <div class="col-lg-4">
+                                                    <input type="text" name="addVariations[0][title]" placeholder="Variation" class="form-control" />
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <input type="text" name="addVariations[0][value]" placeholder="Price" class="form-control" />
+                                                <div class="col-lg-4">
+                                                    <input type="text" name="addVariations[0][key]" placeholder="Key" class="form-control" />
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <input type="text" name="addVariations[0][value]" placeholder="Value" class="form-control" />
                                                 </div>
                                             </div>
                                         </td>
@@ -374,8 +377,9 @@
         var i = 0;
         $("#dynamic-ars").click(function () {
             ++i;
-            $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addVariations[' + i +
-                '][title]" placeholder="eg Size" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addVariations[' + i +
+            $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                '][title]" placeholder="Variation" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                '][key]" placeholder="Key" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
                 '][value]" placeholder="Price" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
                 );
         });
