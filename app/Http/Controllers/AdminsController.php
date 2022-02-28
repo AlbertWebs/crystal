@@ -128,6 +128,8 @@ use Illuminate\Support\Str;
 
 use App\Models\ServiceRequest;
 
+use App\Models\Image;
+
 class AdminsController extends Controller
 {
      /**
@@ -4036,6 +4038,29 @@ public function subcategory_slung(){
     }
     echo "done";
 }
+
+public function storeImage(Request $request)
+{
+    $request->validate([
+      'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    $image = new Image;
+
+    if ($request->file('file')) {
+        $imagePath = $request->file('file');
+        $imageName = $imagePath->getClientOriginalName();
+
+        $path = $request->file('file')->storeAs('uploads', $imageName, 'public');
+    }
+
+    $image->name = $imageName;
+    $image->path = '/storage/'.$path;
+    $image->save();
+
+    return response()->json('Image uploaded successfully');
+}
+
 
 
 }

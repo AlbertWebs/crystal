@@ -111,11 +111,14 @@
                             <tr>
                                 <td>
                                     <div class="form-group">
-                                        <div class="col-lg-6">
-                                            <input type="text" name="addVariations[0][title]" placeholder="Variation" class="form-control" />
+                                        <div class="col-lg-4">
+                                            <input type="text" name="addVariations[0][title]" placeholder="Variation Monitor" class="form-control" />
                                         </div>
-                                        <div class="col-lg-6">
-                                            <input type="text" name="addVariations[0][value]" placeholder="Value" class="form-control" />
+                                        <div class="col-lg-4">
+                                            <input type="text" name="addVariations[0][key]" placeholder="key eg Size" class="form-control" />
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" name="addVariations[0][value]" placeholder="Value 15-inch" class="form-control" />
                                         </div>
                                     </div>
                                 </td>
@@ -128,10 +131,13 @@
                             <tr>
                                 <td>
                                     <div class="form-group">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <input type="text" name="addVariations[{{$inits}}][title]" value="{{$value['title']}}"  class="form-control" />
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
+                                            <input type="text" name="addVariations[{{$inits}}][key]" value="{{$value['key']}}"  class="form-control" />
+                                        </div>
+                                        <div class="col-lg-4">
                                             <input type="text" name="addVariations[{{$inits}}][value]" value="{{$value['value']}}"  class="form-control" />
                                         </div>
                                     </div>
@@ -477,15 +483,13 @@
                         </div>
                     </div>
 
-
-
                     </div>
                     </center>
-                    <br><br>
+                    <br>
                     <div class="col-lg-12 text-center">
                       <button type="submit" class="btn btn-success"><i class="icon-check icon-white"></i> Save </button>
                     </div>
-
+                    <br>
                     <input type="hidden" name="image_one_cheat" value="{{$Product->image_one}}">
                     <input type="hidden" name="fb_pixels_cheat" value="{{$Product->fb_pixels}}">
 
@@ -554,9 +558,10 @@
             var i = 0;
             $("#dynamic-ars").click(function () {
                 ++i;
-                $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addVariations[' + i +
-                    '][title]" placeholder="Variation" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addVariations[' + i +
-                    '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                    '][title]" placeholder="Monitor" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                    '][key]" placeholder="Size" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                    '][value]" placeholder="5-Inch" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
                     );
             });
             $(document).on('click', '.remove-input-field', function () {
@@ -568,9 +573,10 @@
             var i = {{$CountArrays}};
             $("#dynamic-ars").click(function () {
                 ++i;
-                $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-6"><input type="text" name="addVariations[' + i +
-                    '][title]" placeholder="Variation" class="form-control" /></div><div class="col-lg-6"><input type="text" name="addVariations[' + i +
-                    '][value]" placeholder="value" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                    '][title]" placeholder="eg Monitor" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                    '][key]" placeholder="key eg Size" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
+                    '][value]" placeholder="eg 15-Inch" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
                     );
             });
             $(document).on('click', '.remove-input-field', function () {
@@ -602,6 +608,7 @@
         })
     </script>
 
+{{--  --}}
 
 
 @endsection
