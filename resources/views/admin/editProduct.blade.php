@@ -127,16 +127,22 @@
                             @else
 
                             <?php $ExtraArrays = json_decode($Product->variations,JSON_UNESCAPED_SLASHES);  $CountArrays = count($ExtraArrays);  $inits = 0;  ?>
-                            @foreach ($ExtraArrays as $key => $value)
+                            @foreach ($ExtraArrays as $value)
                             <tr>
                                 <td>
                                     <div class="form-group">
                                         <div class="col-lg-4">
                                             <input type="text" name="addVariations[{{$inits}}][title]" value="{{$value['title']}}"  class="form-control" />
                                         </div>
-                                        <div class="col-lg-4">
-                                            <input type="text" name="addVariations[{{$inits}}][key]" value="{{$value['key']}}"  class="form-control" />
-                                        </div>
+                                        @if(isset($value['key']))
+                                            <div class="col-lg-4">
+                                                <input type="text" name="addVariations[{{$inits}}][key]" value="{{$value['key']}}"  class="form-control" />
+                                            </div>
+                                        @else
+                                            <div class="col-lg-4">
+                                                <input type="text" name="addVariations[{{$inits}}][key]" value=""  class="form-control" />
+                                            </div>
+                                        @endif
                                         <div class="col-lg-4">
                                             <input type="text" name="addVariations[{{$inits}}][value]" value="{{$value['value']}}"  class="form-control" />
                                         </div>

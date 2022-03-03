@@ -1271,6 +1271,9 @@ public function add_Product(Request $request){
         $encodedVar = "";
     }
 
+    dd($encodedVar);
+    die();
+
 
     $path = 'uploads/product';
     if(isset($request->fb_pixels)){

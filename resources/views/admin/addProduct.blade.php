@@ -99,6 +99,10 @@
                                                 <div class="col-lg-4">
                                                     <input type="text" name="addVariations[0][value]" placeholder="Value" class="form-control" />
                                                 </div>
+                                                <br><br>
+                                                <div class="col-lg-12">
+                                                    <input type="file" name="addVariations[0][image]"  class="form-control" />
+                                                </div>
                                             </div>
                                         </td>
                                         <td><button type="button" name="add" id="dynamic-ars" class="btn btn-outline-primary">Add Variation</button></td>
