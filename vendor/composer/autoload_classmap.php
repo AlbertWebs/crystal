@@ -68,6 +68,7 @@ return array(
     'App\\Models\\Offer' => $baseDir . '/app/Models/Offer.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\Payment' => $baseDir . '/app/Models/Payment.php',
+    'App\\Models\\Photo' => $baseDir . '/app/Models/Photo.php',
     'App\\Models\\Portfolio' => $baseDir . '/app/Models/Portfolio.php',
     'App\\Models\\Privacy' => $baseDir . '/app/Models/Privacy.php',
     'App\\Models\\ProExcel' => $baseDir . '/app/Models/ProExcel.php',

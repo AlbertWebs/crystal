@@ -7,6 +7,9 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\DropzoneController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,6 +134,9 @@ Route::get('/google/redirect', [LoginController::class, 'googleRedirect']);
 Auth::routes();
 
 Route::group(['prefix'=>'admin'], function(){
+
+Route::get('dropzone', [DropzoneController::class, 'dropzone']);
+Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
 
 
 //Login route
