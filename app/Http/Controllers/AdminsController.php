@@ -1425,6 +1425,9 @@ public function edit_Product(Request $request, $id){
         $encodedVar = "";
     }
 
+    // echo $encodedVar;
+    // die();
+
     $path = 'uploads/product';
 
     if(isset($request->fb_pixels)){

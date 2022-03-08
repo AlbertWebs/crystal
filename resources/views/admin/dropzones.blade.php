@@ -49,7 +49,7 @@
                             <form action="{{ route('dropzone.store') }}" method="post" enctype="multipart/form-data" id="image-upload" class="dropzone">
                                 @csrf
                                 <div>
-                                    <h3>Drop Images Here</h3>
+                                    <h3>Drop Images Here Like a Rockstar</h3>
                                 </div>
                             </form>
                         </div>

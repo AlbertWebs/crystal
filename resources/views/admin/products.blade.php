@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="wrap" >
-        
+
 
         <!-- HEADER SECTION -->
         @include('admin.top')
@@ -18,13 +18,13 @@
 
         <!--PAGE CONTENT -->
         <div id="content">
-             
+
             <div class="inner" style="min-height: 700px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        
+
                         <center><h2> All Product </h2></center>
-                        
+
                     </div>
                 </div>
                   <hr />
@@ -38,7 +38,7 @@
                 </div>
                   <!--END BLOCK SECTION -->
                 <hr />
-                 
+
                  <!-- COMMENT AND NOTIFICATION  SECTION -->
                    <div class="row">
                         <div class="col-lg-12">
@@ -56,8 +56,8 @@
                                                     <!-- <th>Category</th> -->
                                                     <th>Image</th>
                                                     <th>Action</th>
-                                            
-                                                    
+
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -111,31 +111,31 @@
                                                                 &nbsp;<a onclick="return confirm('Swap Product Slider Status')" href="{{url('/admin')}}/swapSlider/{{$value->id}}"   class="btn btn-default"><i class="icon-exchange icon-white"></i> Swap Slider</a>
                                                         </small>
                                                     </td>
-                                                   
+
                                                     <td class="center"><img style="max-width:200px; width:100%;" src="{{url('/')}}/uploads/product/{{$value->thumbnail}}"></td>
                                                     <td class="center">
                                                     <center>
                                                       <br>
                                                        <a href="{{url('/admin')}}/editProduct/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit</a><br><br><a href="{{url('/admin')}}/editProductDetails/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit Details</a><br><br><a href="#"   class="btn btn-success" data-toggle="modal" data-target="#buttonedModal_{{$value->id}}"><i class="icon-link icon-white"></i> Get Link </a><br><br><a onclick="return confirm('Do you want to delete this product?')" href="{{url('/admin')}}/deleteProduct/{{$value->id}}"   class="btn btn-danger"><i class="icon-trash icon-white"></i> Del</a></center></td>
                                                     <!-- <td class="center"></td> -->
-                                                  
+
                                                 </tr>
                                             @endforeach
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 <!-- END COMMENT AND NOTIFICATION  SECTION -->
-                
 
 
 
-                
+
+
             </div>
 
         </div>
@@ -160,7 +160,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            
+
                                         </div>
                                     </div>
                                 </div>

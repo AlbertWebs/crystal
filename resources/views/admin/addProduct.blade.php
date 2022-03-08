@@ -101,7 +101,20 @@
                                                 </div>
                                                 <br><br>
                                                 <div class="col-lg-12">
-                                                    <input type="file" name="addVariations[0][image]"  class="form-control" />
+                                                    <select name="addVariations[0][image]"  data-placeholder="Choose Image" class="form-control chzn-select" tabindex="2">
+                                                        <br><br>
+                                                        <option value="0"></option>
+                                                        <?php $Photos = DB::table('photos')->get(); ?>
+                                                        @foreach($Photos as $photos)
+                                                            <option value="{{$photos->name}}">
+                                                                <a  href="{{$photos->name}}">{{$photos->name}}</a>
+                                                            </option>
+
+                                                        @endforeach
+                                                    </select>
+
+
+
                                                 </div>
                                             </div>
                                         </td>
@@ -112,7 +125,6 @@
 
                         </div>
                     </div>
-
 
 
 
@@ -384,7 +396,7 @@
             $("#dynamicAddRemoves").append('<tr><td><div class="form-group"><div class="col-lg-4"><input type="text" name="addVariations[' + i +
                 '][title]" placeholder="Variation" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
                 '][key]" placeholder="Key" class="form-control" /></div><div class="col-lg-4"><input type="text" name="addVariations[' + i +
-                '][value]" placeholder="Price" class="form-control" /></div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                '][value]" placeholder="Price" class="form-control" /></div><div class="col-lg-12"> <select name="addVariations[0][image]" data-placeholder="Choose Image" class="form-control chzn-select" tabindex="2"> <br><br> <option value="0"></option> <?php $Photos = DB::table('photos')->get(); ?> @foreach($Photos as $photos) <option value="{{$photos->name}}"> <a href="{{$photos->name}}">{{$photos->name}}</a> </option> @endforeach </select> </div></div></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
                 );
         });
         $(document).on('click', '.remove-input-field', function () {
@@ -415,6 +427,7 @@
             })
         })
     </script>
+
 
 
 

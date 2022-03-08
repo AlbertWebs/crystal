@@ -16,7 +16,9 @@ class DropzoneController extends Controller
      */
     public function dropzone()
     {
-        return view('admin.dropzone');
+        $page_name = "";
+        $page_title = "";
+        return view('admin.dropzone', compact('page_name','page_title'));
     }
 
     /**
@@ -28,12 +30,15 @@ class DropzoneController extends Controller
     {
         $image = $request->file('file');
 
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images'),$imageName);
+        $OriginalName = $image->getClientOriginalName();
+        // $imageName = $OriginalName.'.'.$image->extension();
+        $imageName = $OriginalName;
+
+        $image->move(public_path('uploads/product'),$imageName);
         // add to dDatabase
         $Photos = new Photo;
         $Photos->name  = $imageName;
-        $Photos->path = public_path('images');
+        $Photos->path = public_path('uploads/product');
         $Photos->save();
 
         return response()->json(['success'=>$imageName]);
