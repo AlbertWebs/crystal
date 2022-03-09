@@ -51,6 +51,7 @@
                                 <div>
                                     <h3>Drop Images Here</h3>
                                 </div>
+
                             </form>
                         </div>
                     </div>

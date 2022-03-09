@@ -137,6 +137,12 @@ Route::group(['prefix'=>'admin'], function(){
 
 Route::get('dropzone', [DropzoneController::class, 'dropzone']);
 Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+Route::get('/photos', [AdminsController::class, 'photos'])->middleware('is_admin');
+Route::get('/photosGrid', [AdminsController::class, 'photosGrid'])->middleware('is_admin');
+Route::get('/editPhoto/{id}',  [AdminsController::class, 'editPhoto'])->middleware('is_admin');
+Route::get('/deletePhoto/{id}',  [AdminsController::class, 'deletePhoto'])->middleware('is_admin');
+Route::post('/edit_Photo/{id}',  [AdminsController::class, 'edit_Photo'])->middleware('is_admin');
+
 
 
 //Login route

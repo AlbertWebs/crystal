@@ -25,7 +25,7 @@
 
 
 
-            <center><h2> Gallery Styles </h2></center>
+            <center><h2> Photos </h2></center>
 
 
 
@@ -54,7 +54,7 @@
 
                  <p style="text-align:center">
                        @foreach($Gallery as $value)
-                          <a  id="example1" href="{{url('/')}}/uploads/gallery/{{$value->image}}"  title="<a href='{{url('/admin')}}/editGallery/{{$value->id}}'>Edit</a>"><img src="{{url('/')}}/uploads/gallery/{{$value->image}}" alt="" /></a>
+                          <a  id="example1" href="{{url('/')}}/uploads/product/{{$value->name}}"  title="<a href='{{url('/admin')}}/editPhoto/{{$value->id}}'>Edit</a>"><img style="max-width: 300px" src="{{url('/')}}/uploads/product/{{$value->name}}" alt="" /></a>
                        @endforeach
 
                 </p>

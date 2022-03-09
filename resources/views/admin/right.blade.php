@@ -17,6 +17,8 @@
                 <button type="button" title="Use This To Load All Products without Images" onclick="window.open('{{url('/admin/Products-lte')}}','_self')" class="btn btn-success btn-block"> Products LTE </button>
                 <button type="button" onclick="window.open('{{url('/admin/extras')}}','_self')" class="btn btn-success btn-block"> Extra Category </button>
                 <button type="button" onclick="window.open('{{url('/admin/dropzone')}}','_self')" class="btn btn-success btn-block"> Drop To Gallery </button>
+                <button type="button" onclick="window.open('{{url('/admin/photos')}}','_self')" class="btn btn-success btn-block"> Gallery </button>
+                <button type="button" onclick="window.open('{{url('/admin/photosGrid')}}','_self')" class="btn btn-success btn-block"> Gallery Grid </button>
                 <button type="button" onclick="window.open('{{url('/admin/myApi')}}','_self')" class="btn btn-danger btn-block"> M-PESA </button>
                 <button type="button" onclick="window.open('{{url('/admin/coupons')}}','_self')" class="btn btn-danger btn-block"> Coupons </button>
                 <button type="button" onclick="window.open('{{url('/admin/operations')}}','_self')" class="btn btn-danger btn-block"> Operations </button>

@@ -14,6 +14,7 @@ use Stevebauman\Location\Facades\Location;
 
 use Storage;
 
+
 use Mail;
 
 use Hash;
@@ -23,6 +24,8 @@ use Session;
 use datetime;
 
 use App\Models\Extra;
+
+use App\Models\Photo;
 
 use App\Models\Offer;
 
@@ -122,7 +125,9 @@ use App\Models\How;
 
 use App\Models\Action;
 
-use App\Models\File;
+// use App\Models\File;
+
+use File;
 
 use Illuminate\Support\Str;
 
@@ -4067,6 +4072,48 @@ public function storeImage(Request $request)
     return response()->json('Image uploaded successfully');
 }
 
+
+public function photos(){
+    $Photo = Photo::all();
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Photo';
+    return view('admin.photos',compact('page_title','Photo','page_name'));
+}
+
+public function editPhoto($id){
+    $Photo = Photo::find($id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Photos';
+    return view('admin.editPhoto',compact('page_title','Photo','page_name'));
+}
+
+public function deletePhoto($id){
+    DB::table('photos')->where('id',$id)->delete();
+    return Redirect::back();
+}
+
+
+public function photosGrid(){
+    $page_title = 'Gallery';
+    $page_name = 'Image Gallery';
+    $Gallery = Photo::all();
+    return view('admin.photosGrid',compact('page_title','Gallery','page_name'));
+}
+
+public function edit_Photo(Request $request, $id){
+
+    if(isset($request->image)){
+        // delete File
+        $destinationPath = url('/')."/uploads/product/$request->title";
+        File::delete(public_path('uploads/product'),$request->title);
+        $image = $request->file('image');
+        $imageName = $request->title;
+        $image->move(public_path('uploads/product'),$imageName);
+    }
+
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
 
 
 }
