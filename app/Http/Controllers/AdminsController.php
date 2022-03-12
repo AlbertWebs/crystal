@@ -4143,7 +4143,7 @@ public function add_Variation(Request $request){
         $fb_pixels = str_replace(' ', '-',$image_main_temp);
         $file->move($path, $fb_pixels);
         /* Renaming Edits Ends*/
-        $fb_pixels = $request->pro_img_cheat;
+        $fb_pixels = $fb_pixels;
     }else{
     $fb_pixels =null;
     }
@@ -4256,15 +4256,13 @@ public function edit_Variation(Request $request, $id){
     $path = 'uploads/product';
 
     if(isset($request->fb_pixels)){
-
-        /** Renaming Edits */
+        $file = $request->file('fb_pixels');
         $random = rand(100,1000);
         $extension = $file->getClientOriginalExtension();
         $VariationName = str_replace(' ','-',$request->name);
-        $image_main_temp = $random.'-fb_pixels.'.$extension;
-        $fb_pixels = str_replace('  ', '-',$image_main_temp);
+        $image_main_temp = $VariationName.'-fb_pixels.'.$extension;
+        $fb_pixels = $image_main_temp;
         $file->move($path, $fb_pixels);
-        /* Renaming Edits Ends*/
     }else{
         $fb_pixels = $request->fb_pixels_cheat;
     }
@@ -4274,8 +4272,9 @@ public function edit_Variation(Request $request, $id){
         /** Renaming Edits */
         $extension = $file->getClientOriginalExtension();
         $image_main_temp = $request->name.'-thumbnail.'.$extension;
-        $thumbnail = str_replace(' ', '-',$image_main_temp);
-        $file->move($path, $thumbnail);
+
+        $file->move($path, $image_main_temp);
+        $thumbnail = $image_main_temp;
         /* Renaming Edits Ends*/
     }
     else
@@ -4384,7 +4383,9 @@ public function edit_Variation(Request $request, $id){
 
 public function deleteVariation($id){
     DB::table('variations')->where('id',$id)->delete();
-    return Redirect::back();
+    // Redirect
+    return redirect()->route('all-products');
+    // return Redirect::back();
 }
 
 

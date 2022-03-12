@@ -75,7 +75,7 @@
                     </div>
 
                     {{-- Varaitions Available --}}
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="text1" class="control-label col-lg-4">Variations</label>
 
                         <div class="col-lg-8">
@@ -124,7 +124,7 @@
 
 
                         </div>
-                    </div>
+                    </div> --}}
 
 
 

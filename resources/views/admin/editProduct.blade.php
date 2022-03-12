@@ -99,7 +99,7 @@
 
                         <div class="col-lg-8">
                         {{--  --}}
-                        <table class="table table-bordered" id="dynamicAddRemoves">
+                        {{-- <table class="table table-bordered" id="dynamicAddRemoves">
                             <tr>
                                 <th>Variations</th>
                                 <th>Action</th>
@@ -210,7 +210,7 @@
 
 
 
-                        </table>
+                        </table> --}}
                         {{--  --}}
                         </div>
                     </div>
@@ -602,7 +602,7 @@
         </script>
     @endif
 
-    @if($Product->variations == null)
+    {{-- @if($Product->variations == null)
         <script type="text/javascript">
             var i = 0;
             $("#dynamic-ars").click(function () {
@@ -632,7 +632,7 @@
                 $(this).parents('tr').remove();
             });
         </script>
-    @endif
+    @endif --}}
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>

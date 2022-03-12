@@ -356,7 +356,7 @@ Route::get('/approveInvoice/{id}',  [AdminsController::class, 'approveInvoice'])
 
 
 //Priducts
-Route::get('/products', [AdminsController::class, 'products'])->middleware('is_admin');
+Route::get('/products', [AdminsController::class, 'products'])->name('all-products')->middleware('is_admin');
 Route::get('/Products-lte', [AdminsController::class, 'productslte'])->middleware('is_admin');
 
 Route::get('/editProduct/{id}', [AdminsController::class, 'editProduct'])->middleware('is_admin');

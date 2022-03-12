@@ -420,7 +420,7 @@
                     <br>
                     <div class="col-lg-12 text-center">
                       <button type="submit" class="btn btn-success"><i class="icon-check icon-white"></i> Save </button>
-                      <a onclick="return confirm('Do you want to delete this product?')" href="{{url('/admin')}}/deleteVariation/{{$value->id}}" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete Variation</a>
+                      <a onclick="return confirm('Do you want to delete this product?')" href="{{url('/admin')}}/deleteVariation/{{$Variation->id}}" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete Variation</a>
                     </div>
                     <br>
                     <input type="hidden" name="image_one_cheat" value="{{$Variation->image_one}}">
