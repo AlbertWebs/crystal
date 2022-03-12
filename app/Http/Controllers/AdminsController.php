@@ -31,6 +31,8 @@ use App\Models\Offer;
 
 use App\Models\Coupon;
 
+use App\Models\Variation;
+
 use App\Models\Tag;
 
 use App\Models\Term;
@@ -1276,8 +1278,7 @@ public function add_Product(Request $request){
         $encodedVar = "";
     }
 
-    dd($encodedVar);
-    die();
+
 
 
     $path = 'uploads/product';
@@ -4112,6 +4113,277 @@ public function edit_Photo(Request $request, $id){
     }
 
     Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+// Add Variations Modifires
+public function addVariation($id){
+    $Product = Product::find($id);
+    $page_title = 'formfiletext';//For Layout Inheritance
+    $page_name = 'Add New Variation';
+    return view('admin.addVariation',compact('page_title','page_name','Product'));
+}
+
+public function add_Variation(Request $request){
+    $data = $request->all();
+    $data = $request->all();
+    if($request->has('addMoreInputFields')){
+        $arr = $data['addMoreInputFields'];
+        $encodedSku = json_encode($arr,JSON_UNESCAPED_SLASHES);
+    }else{
+        $encodedSku = "";
+    }
+
+    $path = 'uploads/product';
+    if(isset($request->fb_pixels)){
+        $file = $request->file('fb_pixels');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-fb_pixels.'.$extension;
+        $fb_pixels = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $fb_pixels);
+        /* Renaming Edits Ends*/
+        $fb_pixels = $request->pro_img_cheat;
+    }else{
+    $fb_pixels =null;
+    }
+
+    if(isset($request->thumbnail)){
+
+        $file = $request->file('thumbnail');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-thumbnail.'.$extension;
+        $thumbnail = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $thumbnail);
+        /* Renaming Edits Ends*/
+    }else{
+        $thumbnail = null;
+    }
+
+
+    if($request->combo == 'on'){
+        $combo = '1';
+    }else{
+        $combo = '0';
+    }
+
+    $slung = Str::slug($request->name);
+    $Variation = new Variation;
+    $Variation->name = $request->name;
+    $Variation->product_id = $request->product_id;
+    $Variation->google_product_category = $request->google_variation_category;
+    $Variation->slung = $slung;
+    $Variation->tag = $request->tag;
+    $Variation->warranty = $request->warranty;
+    $Variation->box = $request->box;
+    $Variation->extras = $encodedSku;
+    $Variation->iframe = $request->iframe;
+    $Variation->meta = $request->meta;
+    $Variation->content = $request->content;
+    $Variation->price = $request->price;
+    $Variation->brand = $request->brand;
+    $Variation->price_raw = $request->price;
+    $Variation->code = $request->code;
+    $Variation->combo = $combo;
+    $Variation->cat = $request->cat;
+    $Variation->sub_cat = $request->sub_cat;
+    $Variation->fb_pixels = $fb_pixels;
+    $Variation->thumbnail = $thumbnail;
+    $Variation->save();
+    Session::flash('message', "You have Added One New Variation");
+    return Redirect::back();
+}
+
+public function Variations($id){
+    $Variation = Variation::where('product_id',$id)->get();
+    $Parent = Product::find($id);
+    $page_title = 'list';
+    $page_name = 'All Variations';
+    return view('admin.variations',compact('page_title','Variation','page_name','Parent'));
+}
+
+
+public function variationslte(){
+    $Variation = Variation::all();
+    $page_title = 'list';
+    $page_name = 'All Variations';
+    return view('admin.variations-lte',compact('page_title','Variation','page_name'));
+}
+
+
+
+public function editVariation($id){
+    $Variation = Variation::find($id);
+    $Parent = Product::find($Variation->product_id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Variation';
+    return view('admin.editVariation',compact('page_title','Variation','page_name','Parent'));
+}
+
+public function editVariationDetails($id){
+    $Variation = Variation::find($id);
+    $page_title = 'formfiletext';
+    $page_name = 'Edit Variation';
+    return view('admin.editVariationDetails',compact('page_title','Variation','page_name'));
+}
+
+
+public function edit_Variation_Details(Request $request, $id){
+    $updateDetails = array(
+
+        'content' => $request->content,
+
+    );
+    DB::table('variation')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+
+
+
+
+public function edit_Variation(Request $request, $id){
+    $data = $request->all();
+    if($request->has('addMoreInputFields')){
+        $arr = $data['addMoreInputFields'];
+        $encodedSku = json_encode($arr,JSON_UNESCAPED_SLASHES);
+    }else{
+        $encodedSku = "";
+    }
+
+    $path = 'uploads/product';
+
+    if(isset($request->fb_pixels)){
+
+        /** Renaming Edits */
+        $random = rand(100,1000);
+        $extension = $file->getClientOriginalExtension();
+        $VariationName = str_replace(' ','-',$request->name);
+        $image_main_temp = $random.'-fb_pixels.'.$extension;
+        $fb_pixels = str_replace('  ', '-',$image_main_temp);
+        $file->move($path, $fb_pixels);
+        /* Renaming Edits Ends*/
+    }else{
+        $fb_pixels = $request->fb_pixels_cheat;
+    }
+
+    if(isset($request->thumbnail)){
+        $file = $request->file('thumbnail');
+        /** Renaming Edits */
+        $extension = $file->getClientOriginalExtension();
+        $image_main_temp = $request->name.'-thumbnail.'.$extension;
+        $thumbnail = str_replace(' ', '-',$image_main_temp);
+        $file->move($path, $thumbnail);
+        /* Renaming Edits Ends*/
+    }
+    else
+    {
+        $thumbnail = $request->thumbnail_cheat;
+    }
+
+
+    if(isset($request->image_one)){
+        $fileSize = $request->file('image_one')->getSize();
+                $file = $request->file('image_one');
+                /** Renaming Edits */
+                $extension = $file->getClientOriginalExtension();
+                $image_main_temp = $request->name.'-001.'.$extension;
+                $image_one = str_replace(' ', '-',$image_main_temp);
+                $file->move($path, $image_one);
+                /* Renaming Edits Ends*/
+    }else{
+        $image_one = $request->image_one_cheat;
+    }
+
+    if(isset($request->image_two)){
+            $file = $request->file('image_two');
+            /** Renaming Edits */
+            $extension = $file->getClientOriginalExtension();
+            $image_main_temp = $request->name.'-002.'.$extension;
+            $image_twoRaw = str_replace(' ', '-',$image_main_temp);
+            $image_two = str_replace('&', 'and',$image_twoRaw);
+            $file->move($path, $image_two);
+            /* Renaming Edits Ends*/
+    }
+    else
+    {
+        $image_two = $request->image_two_cheat;
+    }
+
+
+    if(isset($request->image_three)){
+
+            $file = $request->file('image_three');
+            /** Renaming Edits */
+            $extension = $file->getClientOriginalExtension();
+            $image_main_temp = $request->name.'-003.'.$extension;
+            $image_three = str_replace(' ', '-',$image_main_temp);
+            $file->move($path, $image_three);
+            /* Renaming Edits Ends*/
+
+
+    }
+    else
+    {
+        $image_three = $request->image_three_cheat;
+    }
+    //Additional images
+
+   if($request->stock == 'on'){
+       $stock = 'In Stock';
+   }else{
+       $stock = 'Out of Stock';
+   }
+
+   if($request->combo == 'on'){
+    $combo = '1';
+   }else{
+    $combo = '0';
+   }
+
+
+   $slung = Str::slug($request->name);
+
+
+   $replaced = $request->replaced;
+
+
+    $updateDetails = array(
+        'name' => $request->name,
+        'slung' => $slung,
+        'replaced' => $request->replaced,
+        'meta' => $request->meta,
+        'google_product_category'=>$request->google_variation_category,
+        'iframe' => $request->iframe,
+        'content' => $request->content,
+        'image_one' =>$image_one,
+        'thumbnail' =>$thumbnail,
+        'combo' => $combo,
+        'stock' => $stock,
+        'brand' =>$request->brand,
+        'fb_pixels' =>$fb_pixels,
+        'image_two' =>$image_two,
+        'image_three' =>$image_three,
+        'price' =>$request->price,
+        'price_raw' =>$request->price_raw,
+        'code' =>$request->code,
+        'extras' =>$encodedSku,
+        'cat' =>$request->cat,
+        'tag' =>$request->tag,
+        'box' =>$request->box,
+        'warranty' =>$request->warranty,
+        'sub_cat' =>$request->sub_cat,
+    );
+
+    DB::table('variations')->where('id',$id)->update($updateDetails);
+    Session::flash('message', "Changes have been saved");
+    return Redirect::back();
+}
+
+public function deleteVariation($id){
+    DB::table('variations')->where('id',$id)->delete();
     return Redirect::back();
 }
 

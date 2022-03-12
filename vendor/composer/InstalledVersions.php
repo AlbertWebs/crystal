@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '5db624099cb2bc24ab1df0cb39fd5b1d0e04437b',
+    'reference' => 'ae05a8ae649084fe14661ecd73b9a4fc7f3021e5',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -122,6 +122,42 @@ private static $installed = array (
       array (
       ),
       'reference' => '0992cc19268b259a39e86f296da5f0677841f42c',
+    ),
+    'doctrine/cache' => 
+    array (
+      'pretty_version' => '2.1.1',
+      'version' => '2.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '331b4d5dbaeab3827976273e9356b3b453c300ce',
+    ),
+    'doctrine/dbal' => 
+    array (
+      'pretty_version' => '3.3.3',
+      'version' => '3.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '82331b861727c15b1f457ef05a8729e508e7ead5',
+    ),
+    'doctrine/deprecations' => 
+    array (
+      'pretty_version' => 'v0.5.3',
+      'version' => '0.5.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9504165960a1f83cc1480e2be1dd0a0478561314',
+    ),
+    'doctrine/event-manager' => 
+    array (
+      'pretty_version' => '1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '41370af6a30faa9dc0368c4a6814d596e81aba7f',
     ),
     'doctrine/inflector' => 
     array (
@@ -502,6 +538,15 @@ private static $installed = array (
       ),
       'reference' => '0f0977f5c7f7ccbd795ed70fa9e66f2344e6c894',
     ),
+    'kitloong/laravel-migrations-generator' => 
+    array (
+      'pretty_version' => 'v5.2.0',
+      'version' => '5.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '434237eeab043c13ab7657b3fd704b43cf5bf39e',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -525,7 +570,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '5db624099cb2bc24ab1df0cb39fd5b1d0e04437b',
+      'reference' => 'ae05a8ae649084fe14661ecd73b9a4fc7f3021e5',
     ),
     'laravel/sail' => 
     array (
@@ -834,6 +879,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c814a05837f2edb0d1471d6e3f4ab3501ca3899a',
+    ),
+    'psr/cache' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd11b50ad223250cf17b86e38383413f5a6764bf8',
     ),
     'psr/container' => 
     array (

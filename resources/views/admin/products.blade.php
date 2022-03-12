@@ -114,9 +114,23 @@
 
                                                     <td class="center"><img style="max-width:200px; width:100%;" src="{{url('/')}}/uploads/product/{{$value->thumbnail}}"></td>
                                                     <td class="center">
-                                                    <center>
-                                                      <br>
-                                                       <a href="{{url('/admin')}}/editProduct/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit</a><br><br><a href="{{url('/admin')}}/editProductDetails/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit Details</a><br><br><a href="#"   class="btn btn-success" data-toggle="modal" data-target="#buttonedModal_{{$value->id}}"><i class="icon-link icon-white"></i> Get Link </a><br><br><a onclick="return confirm('Do you want to delete this product?')" href="{{url('/admin')}}/deleteProduct/{{$value->id}}"   class="btn btn-danger"><i class="icon-trash icon-white"></i> Del</a></center></td>
+                                                        <center>
+                                                            <?php $Variations = DB::table('variations')->where('product_id',$value->id)->limit('1')->get(); ?>
+                                                            @if($Variations->isEmpty())
+                                                            <a href="{{url('/admin')}}/addVariation/{{$value->id}}"   class="btn btn-success"><i class="icon-plus icon-white"></i> Add Variation</a>
+                                                            @else
+                                                            <a href="{{url('/admin')}}/variations/{{$value->id}}"   class="btn btn-success"><i class="icon-folder-open icon-white"></i> View Variations</a>
+                                                            @endif
+                                                            <br>
+                                                            <br>
+                                                            <a href="{{url('/admin')}}/editProduct/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit</a>
+                                                            <br><br>
+                                                            <a href="{{url('/admin')}}/editProductDetails/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit Details</a>
+                                                            <br><br>
+                                                            <a href="#"   class="btn btn-success" data-toggle="modal" data-target="#buttonedModal_{{$value->id}}"><i class="icon-link icon-white"></i> Get Link </a>
+                                                            <br><br><a onclick="return confirm('Do you want to delete this product?')" href="{{url('/admin')}}/deleteProduct/{{$value->id}}"   class="btn btn-danger"><i class="icon-trash icon-white"></i> Del</a>
+                                                        </center>
+                                                    </td>
                                                     <!-- <td class="center"></td> -->
 
                                                 </tr>
