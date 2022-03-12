@@ -1281,6 +1281,7 @@ public function add_Product(Request $request){
 
 
 
+
     $path = 'uploads/product';
     if(isset($request->fb_pixels)){
         $fileSize = $request->file('fb_pixels')->getSize();
@@ -1329,11 +1330,19 @@ public function add_Product(Request $request){
         $combo = '0';
     }
 
+    if($request->has_variants == 'on'){
+        $Variants = '1';
+    }else{
+        $Variants = '0';
+    }
+
+
     $slung = Str::slug($request->name);
     $Product = new Product;
     $Product->name = $request->name;
     $Product->google_product_category = $request->google_product_category;
     $Product->slung = $slung;
+    $Product->variant = $Variants;
     $Product->tag = $request->tag;
     $Product->warranty = $request->warranty;
     $Product->box = $request->box;
@@ -1353,7 +1362,16 @@ public function add_Product(Request $request){
     $Product->thumbnail = $thumbnail;
     $Product->save();
     Session::flash('message', "You have Added One New Product");
-    return Redirect::back();
+
+    if($Variants == 1){
+        //Last Product
+        $Last = Product::latest()->first();
+        $LastProductID = $Last->id;
+        // Redirect to AddVariants
+        return redirect(route('addVariation', ['product_id' => $LastProductID]));
+    }else{
+        return Redirect::back();
+    }
 }
 
 public function Products(){

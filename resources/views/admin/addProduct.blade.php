@@ -257,6 +257,18 @@
                     </div>
                     <!-- Brands -->
 
+                    {{-- Has Variatis --}}
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Has Variants</label>
+
+                        <div class="col-lg-8">
+                            <div class="make-switch" data-on="success" data-off="danger">
+                                <input name="has_variants" type="checkbox"  />
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Has Variants --}}
+
 
 
                         <textarea name="content" id="article_ckeditor" rows="10" cols="80"></textarea>

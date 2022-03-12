@@ -162,7 +162,7 @@ Route::get('/deleteTestimonial/{id}',  [AdminsController::class, 'deleteTestimon
 Route::post('/edit_Testimonial/{id}',  [AdminsController::class, 'edit_Testimonial'])->middleware('is_admin');
 
 //Variation
-Route::get('/addVariation/{product_id}',  [AdminsController::class, 'addVariation'])->middleware('is_admin');
+Route::get('/addVariation/{product_id}',  [AdminsController::class, 'addVariation'])->name('addVariation')->middleware('is_admin');
 Route::post('/add_Variation',  [AdminsController::class, 'add_Variation'])->middleware('is_admin');
 Route::get('/variations/{id}', [AdminsController::class, 'variations'])->middleware('is_admin');
 Route::get('/editVariation/{id}',  [AdminsController::class, 'editVariation'])->middleware('is_admin');
