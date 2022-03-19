@@ -72,7 +72,8 @@
 
                                                             <a href="{{url('/admin')}}/editVariation/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit</a>
                                                             <br><br>
-
+                                                            <a href="{{url('/admin')}}/addVariation/{{$Parent->id}}"   class="btn btn-success"><i class="icon-plus icon-white"></i> Add Variation</a>
+                                                            <br><br>
                                                             <a href="#"   class="btn btn-success" data-toggle="modal" data-target="#buttonedModal_{{$value->id}}"><i class="icon-link icon-white"></i> Get Link </a>
                                                             <br><br><a onclick="return confirm('Do you want to delete this product?')" href="{{url('/admin')}}/deleteVariation/{{$value->id}}"   class="btn btn-danger"><i class="icon-trash icon-white"></i> Del</a>
                                                         </center>

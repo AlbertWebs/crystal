@@ -223,7 +223,7 @@
 
 
 
-                        <textarea name="content" id="article_ckeditor" rows="10" cols="80"></textarea>
+                        <textarea name="content" id="article_ckeditor" rows="10" cols="80">{{$Product->content}}</textarea>
 
                         <script src="https://amanivehiclesounds.co.ke/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
                         <script>
@@ -234,7 +234,7 @@
                             <label for="limiter" class="control-label col-lg-4">What's in the Box</label>
 
                             <div class="col-lg-8">
-                                <textarea  name="box" class="form-control"></textarea>
+                                <textarea  name="box" class="form-control">{{$Product->box}}</textarea>
                                 <p class="help-block">Brief Description whats in the box</p>
                             </div>
                         </div>
@@ -243,7 +243,7 @@
                             <label for="limiter" class="control-label col-lg-4">Warranty Statement</label>
 
                             <div class="col-lg-8">
-                                <textarea  name="warranty" class="form-control"></textarea>
+                                <textarea  name="warranty" class="form-control">{{$Product->warranty}}</textarea>
                                 <p class="help-block">Product Warranty</p>
                             </div>
                         </div>
