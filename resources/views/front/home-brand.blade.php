@@ -50,13 +50,13 @@
                             <div class="label-group">
                                 <?php $HotProduct = DB::table('orders_products')->where('products_id',$BrandsProducts->id)->get() ?>
                                 @if($HotProduct->isEmpty())
-        
+
                                 @else
                                 <div class="product-label label-hot">HOT</div>
                                 @endif
                                 @if($BrandsProducts->offer == 1)
                                 <span class="product-label label-sale">
-                                -<?php 
+                                -<?php
                                     $Original = $BrandsProducts->price_raw;
                                     $OfferPrice = $BrandsProducts->price;
                                     $percentage = ($OfferPrice*100)/$Original;
@@ -64,8 +64,8 @@
                                     echo $less
                                 ?>%
                                 </span>
-                                @else 
-                                
+                                @else
+
                                 @endif
                             </div>
                             <div class="btn-icon-group">
@@ -97,7 +97,7 @@
                                     <!-- End .ratings -->
                                     <span class="tooltiptext tooltip-top"></span>
                                 </div><!-- End .product-ratings -->
-                                @else 
+                                @else
                                 <?php $ReviewsAvg = DB::table('reviews')->where('product_id',$BrandsProducts->id)->avg('rating'); ?>
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:{{$ReviewsAvg}}%"></span>
@@ -108,46 +108,46 @@
                             </div><!-- End .product-container -->
                             @if($BrandsProducts->offer == 1)
                                 @if (session()->has('rates'))
-                                
+
                                     <?php
                                         $rates = Session::get('rates');
-                                        $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                                        $Rates = DB::table('rates')->where('rates',$rates)->get();
                                     ?>
-                                    
+
                                     @foreach ($Rates as $rt)
                                     <div class="price-box">
                                         <del class="old-price">{{$rt->symbol}}<?php $total = $BrandsProducts->price_raw*$rt->rates; echo ceil($total) ?></del>
                                         <span class="product-price">{{$rt->symbol}}<?php $total = $BrandsProducts->price*$rt->rates; echo ceil($total) ?></span>
                                     </div><!-- End .price-box -->
                                     @endforeach
-                                
+
                                 @else
                                 <div class="price-box">
                                     <del class="old-price">Ksh {{$BrandsProducts->price_raw}}</del>
                                     <span class="product-price">ksh {{$BrandsProducts->price}}</span>
                                 </div><!-- End .price-box -->
                                 @endif
-                                
-                            @else 
-                        
+
+                            @else
+
                             {{--  --}}
                             @if (session()->has('rates'))
-                                
+
                                     <?php
                                         $rates = Session::get('rates');
-                                        $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                                        $Rates = DB::table('rates')->where('rates',$rates)->get();
                                     ?>
-                                    
+
                                     @foreach ($Rates as $rt)
                                     <div class="price-box">
-                                       
+
                                         <span class="product-price">{{$rt->symbol}}<?php $total = $BrandsProducts->price*$rt->rates; echo ceil($total) ?></span>
                                     </div><!-- End .price-box -->
                                     @endforeach
-                                
+
                                 @else
                                 <div class="price-box">
-                                 
+
                                     <span class="product-price">ksh {{$BrandsProducts->price}}</span>
                                 </div><!-- End .price-box -->
                                 @endif
@@ -156,7 +156,7 @@
                         </div><!-- End .product-details -->
                     </div>
                     @endforeach
-                  
+
                 </div>
             </div>
             @endforeach

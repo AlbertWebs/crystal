@@ -14,9 +14,11 @@
         </div>
     </nav>
 
-    <div id="map"></div>
+    <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.266044126078!2d36.827792!3d-1.2839931!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69ba04f279949126!2sCrystal%20Car%20Audio!5e0!3m2!1sen!2ske!4v1648821969454!5m2!1sen!2ske" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
     <?php $SiteSettings = DB::table('sitesettings')->get() ?>
-    @foreach ($SiteSettings as $Settings) 
+    @foreach ($SiteSettings as $Settings)
     <div class="container contact-us-container">
         <div class="contact-info">
             <div class="row">

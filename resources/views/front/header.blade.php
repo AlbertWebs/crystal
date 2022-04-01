@@ -1,5 +1,5 @@
 <?php $SiteSettings = DB::table('sitesettings')->get() ?>
-@foreach ($SiteSettings as $Settings)  
+@foreach ($SiteSettings as $Settings)
 <header class="header">
     <div class="header-top">
         <div class="container">
@@ -10,7 +10,7 @@
                     <a href="#">
                         <?php
                              $rates = Session::get('rates');
-                             $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                             $Rates = DB::table('rates')->where('rates',$rates)->get();
                         ?>
                         @foreach ($Rates as $rt)
                         <div class="info-box-content">
@@ -28,12 +28,12 @@
 
             <div class="header-right header-dropdowns ml-0 ml-md-auto w-md-100">
                 <div class="header-dropdown ">
-                    
+
                     @if (session()->has('rates'))
                     <a href="#">
                         <?php
                              $rates = Session::get('rates');
-                             $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                             $Rates = DB::table('rates')->where('rates',$rates)->get();
                         ?>
                         @foreach ($Rates as $rt)
                             {{$rt->currency}}
@@ -172,9 +172,9 @@
                         <div class="menu-depart">
                             <?php $Categories = DB::table('category')->get(); ?>
                             @foreach ($Categories as $cat)
-                            <a href="{{url('/')}}/products/{{$cat->slung}}"><i class="icon-category-sound-video"></i>{{$cat->cat}}</a> 
+                            <a href="{{url('/')}}/products/{{$cat->slung}}"><i class="icon-category-sound-video"></i>{{$cat->cat}}</a>
                             @endforeach
-                            
+
 
                         </div>
                     </li>
@@ -193,7 +193,7 @@
                     <li >
                         <a href="{{url('/')}}/our-portfolio">Installation</a>
                     </li>
-                  
+
                     <li><a href="{{url('/')}}/find-us" rel="noopener" target="_blank">Contact Us</a>
                     </li>
                     <li class="float-right"><a href="#" class="pr-0">Special Offers</a></li>

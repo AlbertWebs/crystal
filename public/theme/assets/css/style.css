@@ -5156,9 +5156,10 @@ figure .porto-loading-icon {
 }
 .product-default a {
   color: inherit;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  text-align: center;
 }
 .product-default a:hover {
   color: #08C;

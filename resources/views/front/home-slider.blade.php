@@ -6,7 +6,7 @@
         'nav': true
     }">
         @foreach($Slider as $slide)
-       
+
                 <div class="banner intro-slide2" style="background: url({{asset('theme/assets/images/demoes/demo42/slider/slide2.jpg')}}) rgb(255, 255, 255); min-height: 530px; background-position: left center; background-repeat: no-repeat;">
                     <div class="container">
                         <div class="wrapper">
@@ -33,12 +33,12 @@
                                             @foreach ($Brand as $item)
                                             <h6 style="color:#ffffff; padding:5px;">{{$item->name}}</h6>
                                             @endforeach
-                                            
+
                                         </div>
                                         <h3 class="banner-subtitle pt-1 mb-1">{{$slide->meta}}</h3>
                                         <h2 class="banner-title pb-1">{{$slide->name}}</h2>
 
-                                        
+
 
                                         <?php $SubTotal = $slide->price; ?>
                                         @if (session()->has('rates'))
@@ -95,10 +95,10 @@
                         </div>
                     </div>
                 </div>
-            
+
         @endforeach
 
-        
+
 
     </div>
     {{-- End Slider --}}

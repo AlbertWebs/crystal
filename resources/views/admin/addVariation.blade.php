@@ -214,7 +214,6 @@
 
                         <div class="col-lg-8">
                         <div class="make-switch" data-on="success" data-off="danger">
-
                                     <input name="combo" type="checkbox" />
                                 </div>
                         </div>
