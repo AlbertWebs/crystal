@@ -54,7 +54,7 @@
                         <h1 class="product-title">{{$Product->name}}</h1>
 
                         <div class="product-nav">
-                            <?php 
+                            <?php
                                 $ProductID = $Product->id;
                                 $ProductNext = $ProductID+1;
                                 $ProductPrev = $ProductID-1;
@@ -64,9 +64,9 @@
 
                             @else
                                 <?php
-                                 $ProductPrevFetch = App\Models\Product::find($ProductPrev); 
+                                 $ProductPrevFetch = App\Models\Product::find($ProductPrev);
                                 ?>
-                                
+
                                 <div class="product-prev">
                                     <a href="{{url('/')}}/product/{{$ProductPrevFetch->slung}}">
                                         <span class="product-link"></span>
@@ -81,11 +81,11 @@
                                             </span>
                                         </span>
                                     </a>
-                                </div>   
-                                
+                                </div>
+
                             @endif
 
-                           
+
                             <?php $ProductNextFetch = App\Models\Product::find($ProductNext); ?>
 
                             @if($ProductNextFetch==null)
@@ -107,7 +107,7 @@
                                     </a>
                                 </div>
                             @endif
-                        
+
                         </div>
 
                         {{-- <div class="ratings-container">
@@ -122,8 +122,8 @@
                         <hr class="short-divider">
 
                         <div class="price-box">
-                            <span class="product-price"> 
-                                
+                            <span class="product-price">
+
                                 @if($Product->offer == 1)
                                     @if (session()->has('rates'))
 
@@ -131,19 +131,19 @@
                                     $rates = Session::get('rates');
                                     $Rates = DB::table('rates')->where('rates', $rates)->get();
                                     ?>
-                                        
+
                                         @foreach ($Rates as $rt)
-                                        
+
                                         {{$rt->symbol}}<?php $total = $Product->price * $rt->rates;
                                     echo ceil($total) ?>
-                                    
+
                                         @endforeach
 
                                     @else
                                     ksh {{$Product->price}}
                                     @endif
 
-                                    @else 
+                                    @else
 
                                     {{--  --}}
                                     @if (session()->has('rates'))
@@ -152,7 +152,7 @@
                                     $rates = Session::get('rates');
                                     $Rates = DB::table('rates')->where('rates', $rates)->get();
                                     ?>
-                                        
+
                                         @foreach ($Rates as $rt)
                                         {{$rt->symbol}}<?php $total = $Product->price * $rt->rates;
                                     echo ceil($total) ?>
@@ -199,7 +199,7 @@
                             <div class="product-single-qty">
                                 <input class="horizontal-quantity form-control" type="text">
                             </div><!-- End .product-single-qty -->
-                            
+
                             <a href="{{url('/')}}/shopping-cart/add-to-cart/{{$Product->id}}" class=" add-to-cart btn-add-cart btn btn-dark add-cart mr-2 product-type-simple" title="Add to Cart">Add to
                                 Cart</a>
 
@@ -257,48 +257,31 @@
                     <div class="tab-pane fade show active" id="product-desc-content" role="tabpanel"
                         aria-labelledby="product-tab-desc">
                         <div class="product-desc-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, nostrud ipsum
-                                consectetur sed do, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat.</p>
-                            <ul>
-                                <li>Any Product types that You want - Simple,
-                                    Configurable</li>
-                                <li>Downloadable/Digital Products, Virtual
-                                    Products</li>
-                                <li>Inventory Management with Backordered items
-                                </li>
-                            </ul>
-                            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. </p>
+                            {!!html_entity_decode($Product->content)!!}
                         </div><!-- End .product-desc-content -->
                     </div><!-- End .tab-pane -->
 
                     <div class="tab-pane fade" id="product-tags-content" role="tabpanel"
                         aria-labelledby="product-tab-tags">
                         <table class="table table-striped mt-2">
+                            <a href="#">
+                                <img width="100" src="{{url('/')}}/uploads/product/{{$Product->image_one}}" alt="Product Manufacturer Image">
+                            </a>
+                            <p><strong>Type</strong> <?php $CategoryName = DB::table('category')->where('id',$Product->cat)->get();  ?> @foreach($CategoryName as $Cat) {{$Cat->cat}} @endforeach</p>
+                            <p><strong>Brand</strong> {{$Product->brand}}</p>
+                            @if($Product->extras == null)
+
+                            @else
+                                <?php $ExtraArray = json_decode($Product->extras,JSON_UNESCAPED_SLASHES);  $CountArray = count($ExtraArray);  $init = 0;  ?>
+
                             <tbody>
+                                @foreach ($ExtraArray as $key => $value)
                                 <tr>
-                                    <th>Weight</th>
-                                    <td>23 kg</td>
+                                    <th>{{$value['title']}}</th>
+                                    <td>{{$value['value']}}</td>
                                 </tr>
-
-                                <tr>
-                                    <th>Dimensions</th>
-                                    <td>12 × 24 × 35 cm</td>
-                                </tr>
-
-                                <tr>
-                                    <th>Color</th>
-                                    <td>Black, Green, Indigo</td>
-                                </tr>
-
-                                <tr>
-                                    <th>Size</th>
-                                    <td>Large, Medium, Small</td>
-                                </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div><!-- End .tab-pane -->

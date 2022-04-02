@@ -2,26 +2,41 @@
     <div class="header-top">
         <div class="container">
             <div class="header-left">
-                <div class="header-dropdown">
-                    <a href="#">USD</a>
+                <div class="header-dropdown ">
+
+                    @if (session()->has('rates'))
+                    <a href="#">
+                        <?php
+                             $rates = Session::get('rates');
+                             $Rates = DB::table('rates')->where('rates',$rates)->get();
+                        ?>
+                        @foreach ($Rates as $rt)
+                            {{$rt->currency}}
+                        @endforeach
+                    </a>
+                    @else
+                    <a href="{{url('/')}}/currency-swap/KES">KES</a>
+                    @endif
                     <div class="header-menu">
                         <ul>
-                            <li><a href="#">EUR</a></li>
-                            <li><a href="#">USD</a></li>
+                            <li><a  href="{{url('/')}}/currency-swap/KES">KES</a></li>
+                            <li><a href="{{url('/')}}/currency-swap/USD">USD</a></li>
+                            <li><a href="{{url('/')}}/currency-swap/GBP">GBP</a></li>
                         </ul>
-                    </div>
-                </div>
+                    </div><!-- End .header-menu -->
+                </div><!-- End .header-dropown -->
 
-                <div class="header-dropdown">
+                <div class="header-dropdown mr-auto mr-md-0">
                     <a href="#"><i class="flag-us flag"></i>ENG</a>
                     <div class="header-menu">
                         <ul>
-                            <li><a href="#"><i class="flag-us flag mr-2"></i>ENG</a>
+                            <li>
+                                <a id="lang" href="#"><i class="flag-us flag mr-2"></i>ENG</a>
                             </li>
-                            <li><a href="#"><i class="flag-fr flag mr-2"></i>FRA</a></li>
+                            {{-- <li><a href="#"><i class="flag-ke flag mr-2"></i>SWA</a></li> --}}
                         </ul>
                     </div><!-- End .header-menu -->
-                </div>
+                </div><!-- End .header-dropown -->
             </div>
 
             <div class="header-right d-none d-lg-flex">
