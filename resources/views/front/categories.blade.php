@@ -1,7 +1,31 @@
 @extends('front.master-cat')
 @section('content')
 <main class="main">
-
+    <div class="category-banner-container bg-gray">
+        <div class="container">
+            <div class="category-banner banner p-0">
+                <div class="row align-items-center no-gutters m-0 text-center text-lg-left">
+                    <div
+                        class="col-md-4 col-xl-2 offset-xl-2 d-flex justify-content-center justify-content-lg-start my-5 my-lg-0">
+                        <div class="d-flex flex-column justify-content-center">
+                            <h3 class="text-left text-light text-uppercase m-0">extra</h3>
+                            <h2 class="text-uppercase m-b-1">20% off</h2>
+                            <h3 class="font-weight-bold text-uppercase heading-border ml-0 m-b-3">Bikes</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-4 text-md-center my-5 my-lg-0"
+                        style="background-image: url(assets/images/demoes/demo27/banners/shop-banner-bg.png);">
+                        <img class="d-inline-block" src="{{asset('theme/assets/images/demoes/demo27/banners/shop-banner.png')}}"
+                            alt="banner" width="400" height="242">
+                    </div>
+                    <div class="col-md-3 my-5 my-lg-0">
+                        <h4 class="font5 line-height-1 m-b-4">Summer Sale</h4>
+                        <a href="#" class="btn btn-teritary btn-lg ml-0">Shop All Sale</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
@@ -12,14 +36,42 @@
         </div>
     </nav>
 
-
+    <div class="container">
+        <?php $AllCategories = DB::table('category')->get(); ?>
+        <section class="simple-section mt-5" style="margin:0 auto;">
+            <h4 class="heading-bottom-border text-uppercase">Categories</h4>
+            <div class="row">
+                @foreach ($AllCategories as $item)
+                <div class="col-lg-2 col-sm-4 col-6"  style="margin:0 auto;">
+                    <div class="product-category">
+                        <a href="{{url('/')}}/products/{{$item->slung}}">
+                            <figure>
+                                <img src="{{url('/')}}/uploads/categories/{{$item->image}}" width="300" height="300"
+                                    alt="{{$item->cat}}">
+                            </figure>
+                            <div class="category-content">
+                                <h3>{{$item->cat}}</h3>
+                                <span>
+                                    <mark class="count">
+                                        <?php echo count($Pro = DB::table('product')->where('cat',$item->id)->get()) ?>
+                                    </mark>
+                                     products</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </section>
+    </div><!-- End .container -->
     {{--  --}}
+    <?php $Categories = DB::table('product')->get(); ?>
 
     <div class="container">
         <div class="row main-content">
             <div class="col-lg-12">
                 <div class="row">
-                    @foreach ($Products as $categories)
+                    @foreach ($Categories as $categories)
                     <div class="col-6 col-sm-4 col-xl-3">
                         <div class="product-default">
                             <figure>
@@ -136,9 +188,20 @@
                         </div><!-- End .select-custom -->
                     </div><!-- End .toolbox-item -->
 
-                    {{$Products}}
-
-
+                    <ul class="pagination toolbox-item">
+                        <li class="page-item disabled">
+                            <a class="page-link page-link-btn" href="#"><i class="icon-angle-left"></i></a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><span class="page-link">...</span></li>
+                        <li class="page-item">
+                            <a class="page-link page-link-btn" href="#"><i class="icon-angle-right"></i></a>
+                        </li>
+                    </ul>
                 </nav>
             </div><!-- End .col-lg-9 -->
 

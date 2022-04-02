@@ -41,8 +41,8 @@
 
                                 <span class="cart-product-info">
                                     <span class="cart-product-qty">{{$CartItem->qty}}</span>
-                                    × 
-                                    
+                                    ×
+
                                     @if($Product->offer == 1)
                                     @if (session()->has('rates'))
 
@@ -50,19 +50,19 @@
                                     $rates = Session::get('rates');
                                     $Rates = DB::table('rates')->where('rates', $rates)->get();
                                     ?>
-                                        
+
                                         @foreach ($Rates as $rt)
-                                        
+
                                         {{$rt->symbol}}<?php $total = $Product->price * $rt->rates;
                                     echo ceil($total) ?>
-                                    
+
                                         @endforeach
 
                                     @else
                                     ksh {{$Product->price}}
                                     @endif
 
-                                    @else 
+                                    @else
 
                                     {{--  --}}
                                     @if (session()->has('rates'))
@@ -71,7 +71,7 @@
                                     $rates = Session::get('rates');
                                     $Rates = DB::table('rates')->where('rates', $rates)->get();
                                     ?>
-                                        
+
                                         @foreach ($Rates as $rt)
                                         {{$rt->symbol}}<?php $total = $Product->price * $rt->rates;
                                     echo ceil($total) ?>
@@ -101,7 +101,7 @@
                 <div class="dropdown-cart-total">
                     <span>SUBTOTAL:</span>
 
-                    
+
                     <span class="cart-total-price float-right">
                         <?php $SubTotals = Cart::subtotal(); $SubTotal = str_replace(',', '', $SubTotals);  ?>
                         @if (session()->has('rates'))
