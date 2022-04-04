@@ -26,12 +26,16 @@
                             </figure>
                             <div class="category-content">
                                 <h3>{{$item->name}}</h3>
-                                <span>
-                                    <mark class="count">
-                                        <?php echo count($Pro = DB::table('product')->where('brand',$item->name)->get()) ?>
-                                    </mark>
-                                     products
-                                </span>
+                                <center>
+                                    <span>
+                                        <strong>
+                                            <mark class="count">
+                                                <?php echo count($Pro = DB::table('product')->where('brand',$item->name)->get()) ?>
+                                            </mark>
+                                            products
+                                        </strong>
+                                    </span>
+                                </center>
                             </div>
                         </a>
                     </div>
