@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $SiteSettings = DB::table('sitesettings')->get() ?>
-@foreach ($SiteSettings as $Settings)    
+@foreach ($SiteSettings as $Settings)
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
+
 
     {{-- SEO --}}
     {!! SEOMeta::generate() !!}
@@ -27,7 +27,7 @@
     @include('front.google')
 
     <!-- Favicon -->
-    
+
     <link rel="preload" href="{{asset('theme/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
         crossorigin="anonymous">
     <link rel="preload" href="{{asset('theme/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2')}}" as="font" type="font/woff2"
@@ -57,7 +57,7 @@
 
 <body>
 
-    <div id="google_translate_element"></div> 
+    <div id="google_translate_element"></div>
     <div class="page-wrapper">
 
         @include('front.notice')
@@ -168,7 +168,7 @@
         </footer>
     </div><!-- End .page-wrapper -->
 
- 
+
 
     <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
 
@@ -178,7 +178,7 @@
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
                     <li><a href="{{url('/')}}">Home</a></li>
-                   
+
                     <li><a href="{{url('/')}}/shop-by-brand">Our Brands</a></li>
 
                     <li><a href="{{url('/')}}/shop-by-categories">Browse Categories</a></li>
@@ -186,7 +186,7 @@
                     <li><a href="{{url('/')}}/products">Products</a></li>
 
                     <li><a href="{{url('/')}}/our-portfolio">Installation</a></li>
-                    
+
                 </ul>
 
                 <ul class="mobile-menu mt-2 mb-2">
@@ -227,35 +227,7 @@
         </div><!-- End .mobile-menu-wrapper -->
     </div><!-- End .mobile-menu-container -->
 
-    <div class="sticky-navbar">
-        <div class="sticky-info">
-            <a href="demo42.html">
-                <i class="icon-home"></i>Home
-            </a>
-        </div>
-        <div class="sticky-info">
-            <a href="demo42-shop.html" class="">
-                <i class="icon-bars"></i>Categories
-            </a>
-        </div>
-        <div class="sticky-info">
-            <a href="wishlist.html" class="">
-                <i class="icon-wishlist-2"></i>Wishlist
-            </a>
-        </div>
-        <div class="sticky-info">
-            <a href="login.html" class="">
-                <i class="icon-user-2"></i>Account
-            </a>
-        </div>
-        <div class="sticky-info">
-            <a href="cart.html" class="">
-                <i class="icon-shopping-cart position-relative">
-                    <span class="cart-count badge-circle">3</span>
-                </i>Cart
-            </a>
-        </div>
-    </div>
+    @include('front.mobile')
 
     <div class="newsletter-popup mfp-hide bg-img" id="newsletter-popup-form"
         style="background: #f1f1f1 no-repeat center/cover url({{asset('theme/assets/images/newsletter_popup_bg.jpg')}})">
@@ -301,29 +273,29 @@
     <script src="{{asset('theme/assets/js/jquery.plugin.min.js')}}"></script>
 
     {{--  --}}
-    
+
 
     <!-- Main JS File -->
     <script src="{{asset('theme/assets/js/main.min.js')}}"></script>
 
     {{-- Translator --}}
-    <script type="text/javascript"> 
+    <script type="text/javascript">
         $(document).ready(function(){
             $("#lang").click(
-            //    
-            function googleTranslateElementInit() { 
+            //
+            function googleTranslateElementInit() {
                 new google.translate.TranslateElement(
-                    {pageLanguage: 'en'}, 
+                    {pageLanguage: 'en'},
                     'google_translate_element'
-                ); 
-            
-            // 
+                );
+
+            //
             });
         })
-       
-    </script> 
-      
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+
+    </script>
+
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     {{-- Google Translate --}}
 
     {{--  --}}
@@ -335,7 +307,7 @@
     <script>
        $( document ).ready(function() {
            $('.hide_{{$CartItem->rowId}}').hide();
-          //update cart    
+          //update cart
                $.ajaxSetup({
 
                    headers: {
@@ -368,7 +340,7 @@
                                $('.hide_{{$CartItem->rowId}}').hide(1000);
 
                        }
-                       
+
                    });
 
                });
@@ -434,7 +406,7 @@
                                            //Submit The Order
                                            window.open('{{url('/')}}/shopping-cart/checkout/placeOrder','_self')
                                        }else{
-                                           
+
                                            $('#veryfyID').html('Error Verifying Transaction. Wrong Transaction Code or Amount <i style="font-size:20px;color:red" class="fa fa-frown-o"></i>')
                                        }
                                    }
@@ -465,13 +437,13 @@
                                window.open('{{url('/')}}/shopping-cart/checkout/placeOrder','_self')
                            }, 5000);
                            },
-                           timeout: 5000 
+                           timeout: 5000
                     });
                    });
-       
-               
 
-               
+
+
+
 
            });
        </script>
@@ -497,7 +469,7 @@
 
          </script>
          {{--  --}}
-        
+
    @include('front.schema')
    @include('checkout.coupon')
 </body>

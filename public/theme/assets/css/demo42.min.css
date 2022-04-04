@@ -36,3 +36,8 @@
 .price-box{
     margin:0 auto !important;
 }
+@media (max-width: 767px) {
+    .home-slider{
+        display:none !important;
+    }
+}

@@ -164,8 +164,10 @@
                                     {{--  --}}
                                     @endif
 
+
                             </span>
                         </div><!-- End .price-box -->
+                        <br><br>
 
                         <div class="product-desc">
                             <p>
@@ -192,6 +194,24 @@
                                 <strong><a href="#" class="product-category">{{$Product->brand}}</a></strong>,
                                 {{-- <strong><a href="#" class="product-category">Nissan</a></strong> --}}
                             </li>
+                            <?php $Variations = DB::table('variations')->where('product_id',$Product->id)->get();  ?>
+                            @if($Variations->isEmpty())
+
+                            @else
+
+                                {{--  --}}
+                                <div class="product-single-filter">
+                                    <label><strong>variations:</strong></label>
+                                    <ul class="config-size-list">
+                                        @foreach ($Variations as $item)
+                                        <li><a href="{{url('/')}}/product/{{$item->slung}}" class="d-flex align-items-center justify-content-center">{{$item->name}}</a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                {{--  --}}
+
+                            @endif
                         </ul>
 
                         <div class="product-action">
@@ -224,7 +244,7 @@
                                     title="Mail"></a>
                             </div><!-- End .social-icons -->
 
-                            <a href="wishlist.html" class="btn-icon-wish add-wishlist" title="Add to Wishlist"><i
+                            <a href="{{url('/')}}/wishlist/add-to-wishlist/{{$Product->id}}" class="btn-icon-wish add-wishlist" title="Add to Wishlist"><i
                                     class="icon-wishlist-2"></i><span>Add to
                                     Wishlist</span></a>
                         </div><!-- End .product single-share -->
@@ -392,195 +412,123 @@
                 <h2 class="section-title">Related Products</h2>
 
                 <div class="products-slider owl-carousel owl-theme dots-top dots-small dots-simple">
-                    <div class="product-default inner-quickview inner-icon">
+                    <?php $Relevant = DB::table('product')->where('cat',$Product->cat)->get(); ?>
+                    @foreach ($Relevant as $new)
+                    <div class="product-default inner-quickview inner-icon" style="border:1px solid #f4f4f4">
                         <figure>
-                            <a href="demo42-product.html">
-                                <img src="{{asset('theme/assets/images/demoes/demo42/product/product6-300x300.jpg')}}" width="300"
-                                    height="300" alt="product">
-                            </a>
-                            <div class="btn-icon-group">
-                                <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                        class="icon-shopping-cart"></i></a>
-                            </div>
-                            <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                View</a>
-                        </figure>
-                        <div class="product-details">
-                            <div class="category-wrap">
-                                <div class="category-list">
-                                    <a href="#">Fluids &amp; Chemicals</a>,
-                                    <a href="#">Hot Deals</a>
-                                </div>
-                                <a href="wishlist.html" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                            </div>
-                            <h3 class="product-title">
-                                <a href="demo42-product.html">Product Short Name</a>
-                            </h3>
-                            <div class="ratings-container">
-                                <div class="product-ratings">
-                                    <span class="ratings" style="width:80%"></span>
-                                    <!-- End .ratings -->
-                                    <span class="tooltiptext tooltip-top"></span>
-                                </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
-                            <div class="price-box">
-                                <span class="product-price">$299.00</span>
-                            </div><!-- End .price-box -->
-                        </div><!-- End .product-details -->
-                    </div>
-
-                    <div class="product-default inner-quickview inner-icon">
-                        <figure>
-                            <a href="demo42-product.html">
-                                <img src="{{asset('theme/assets/images/demoes/demo42/product/product11-300x300.jpg')}}" width="300"
-                                    height="300" alt="product">
-                            </a>
-                            <div class="btn-icon-group">
-                                <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                        class="icon-shopping-cart"></i></a>
-                            </div>
-                            <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                View</a>
-                        </figure>
-                        <div class="product-details">
-                            <div class="category-wrap">
-                                <div class="category-list">
-                                    <a href="#">Sound &amp; Video</a>
-                                </div>
-                                <a href="wishlist.html" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                            </div>
-                            <h3 class="product-title">
-                                <a href="demo42-product.html">Product Short Name</a>
-                            </h3>
-                            <div class="ratings-container">
-                                <div class="product-ratings">
-                                    <span class="ratings" style="width:80%"></span>
-                                    <!-- End .ratings -->
-                                    <span class="tooltiptext tooltip-top">4.00</span>
-                                </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
-                            <div class="price-box">
-                                <span class="product-price">$299.00</span>
-                            </div><!-- End .price-box -->
-                        </div><!-- End .product-details -->
-                    </div>
-
-                    <div class="product-default inner-quickview inner-icon">
-                        <figure>
-                            <a href="demo42-product.html">
-                                <img src="{{asset('theme/assets/images/demoes/demo42/product/product5-300x300.jpg')}}" width="300"
-                                    height="300" alt="product">
-                            </a>
-                            <div class="btn-icon-group">
-                                <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                        class="icon-shopping-cart"></i></a>
-                            </div>
-                            <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                View</a>
-                        </figure>
-                        <div class="product-details">
-                            <div class="category-wrap">
-                                <div class="category-list">
-                                    <a href="#">Hot Deals</a>,
-                                    <a href="#">Steering Wheels</a>
-                                </div>
-                                <a href="wishlist.html" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                            </div>
-                            <h3 class="product-title">
-                                <a href="demo42-product.html">Product Short Name</a>
-                            </h3>
-                            <div class="ratings-container">
-                                <div class="product-ratings">
-                                    <span class="ratings" style="width:80%"></span>
-                                    <!-- End .ratings -->
-                                    <span class="tooltiptext tooltip-top"></span>
-                                </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
-                            <div class="price-box">
-                                <span class="product-price">$55.00</span>
-                            </div><!-- End .price-box -->
-                        </div><!-- End .product-details -->
-                    </div>
-
-                    <div class="product-default inner-quickview inner-icon">
-                        <figure>
-                            <a href="demo42-product.html">
-                                <img src="{{asset('theme/assets/images/demoes/demo42/product/product7-300x300.jpg')}}" width="300"
-                                    height="300" alt="product">
+                            <a href="{{url('/')}}/product/{{$new->slung}}">
+                                <img src="{{url('/')}}/uploads/product/{{$new->thumbnail}}" width="300"
+                                    height="300" alt="{{$new->name}}">
                             </a>
                             <div class="label-group">
-                                <span class="product-label label-hot">HOT</span>
-                                <span class="product-label label-sale">-35%</span>
+                                <?php $HotProduct = DB::table('orders_products')->where('products_id',$new->id)->get() ?>
+                                @if($HotProduct->isEmpty())
+
+                                @else
+                                <div class="product-label label-hot">HOT</div>
+                                @endif
+                                @if($new->offer == 1)
+                                <span class="product-label label-sale">
+                                -<?php
+                                    $Original = $new->price_raw;
+                                    $OfferPrice = $new->price;
+                                    $percentage = ($OfferPrice*100)/$Original;
+                                    $less = 100-ceil($percentage);
+                                    echo $less
+                                ?>%
+                                </span>
+                                @else
+
+                                @endif
                             </div>
                             <div class="btn-icon-group">
-                                <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
+                                <a href="{{url('/')}}/shopping-cart/add-to-cart/{{$new->id}}" class="add-to-cart btn-icon btn-add-cart product-type-simple"><i
                                         class="icon-shopping-cart"></i></a>
                             </div>
-                            <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
+                            <a href="{{url('/')}}/product-quick-view/{{$new->slung}}" class="btn-quickview" title="Quick View">Quick
                                 View</a>
                         </figure>
                         <div class="product-details">
                             <div class="category-wrap">
                                 <div class="category-list">
-                                    <a href="#">Interior Accessories</a>
+                                    <?php $Category = DB::table('category')->where('id',$new->cat)->get(); ?>
+                                    @foreach($Category as $cat)
+                                    <a  href="{{url('/')}}/products/{{$cat->slung}}">{{$cat->cat}}</a>
+                                    @endforeach
                                 </div>
-                                <a href="wishlist.html" class="btn-icon-wish"><i class="icon-heart"></i></a>
+                                <a href="{{url('/')}}/wishlist/add-to-wishlist/{{$new->id}}" class="btn-icon-wish" title="wishlist"><i
+                                        class="icon-heart"></i></a>
                             </div>
                             <h3 class="product-title">
-                                <a href="demo42-product.html">Product Short Name</a>
+                                <a target="new" href="{{url('/')}}/product/{{$new->slung}}">{{$new->name}}</a>
                             </h3>
                             <div class="ratings-container">
+                                <?php $Reviews = DB::table('reviews')->where('product_id',$new->id)->get(); ?>
+                                @if($Reviews->isEmpty())
                                 <div class="product-ratings">
                                     <span class="ratings" style="width:0%"></span>
                                     <!-- End .ratings -->
                                     <span class="tooltiptext tooltip-top"></span>
                                 </div><!-- End .product-ratings -->
-                            </div><!-- End .product-container -->
-                            <div class="price-box">
-                                <span class="product-price">$299.00</span>
-                            </div><!-- End .price-box -->
-                        </div><!-- End .product-details -->
-                    </div>
-
-                    <div class="product-default inner-quickview inner-icon">
-                        <figure>
-                            <a href="demo42-product.html">
-                                <img src="{{asset('theme/assets/images/demoes/demo42/product/product13-300x300.jpg')}}" width="300"
-                                    height="300" alt="product">
-                            </a>
-                            <div class="label-group">
-                                <span class="product-label label-sale">-17%</span>
-                            </div>
-                            <div class="btn-icon-group">
-                                <a href="#" class="btn-icon btn-add-cart product-type-simple"><i
-                                        class="icon-shopping-cart"></i></a>
-                            </div>
-                            <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View">Quick
-                                View</a>
-                        </figure>
-                        <div class="product-details">
-                            <div class="category-wrap">
-                                <div class="category-list">
-                                    <a href="#">Auto Parts</a>
-                                </div>
-                                <a href="wishlist.html" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                            </div>
-                            <h3 class="product-title">
-                                <a href="demo42-product.html">Product Short Name</a>
-                            </h3>
-                            <div class="ratings-container">
+                                @else
+                                <?php $ReviewsAvg = DB::table('reviews')->where('product_id',$new->id)->avg('rating'); ?>
                                 <div class="product-ratings">
-                                    <span class="ratings" style="width:80%"></span>
+                                    <span class="ratings" style="width:{{$ReviewsAvg}}%"></span>
                                     <!-- End .ratings -->
                                     <span class="tooltiptext tooltip-top"></span>
                                 </div><!-- End .product-ratings -->
+                                @endif
                             </div><!-- End .product-container -->
-                            <div class="price-box">
-                                <del class="old-price">$59.00</del>
-                                <span class="product-price">$49.00</span>
-                            </div><!-- End .price-box -->
+                            @if($new->offer == 1)
+                                @if (session()->has('rates'))
+
+                                    <?php
+                                        $rates = Session::get('rates');
+                                        $Rates = DB::table('rates')->where('rates',$rates)->get();
+                                    ?>
+
+                                    @foreach ($Rates as $rt)
+                                    <div class="price-box">
+                                        <del class="old-price">{{$rt->symbol}}<?php $total = $new->price_raw*$rt->rates; echo ceil($total) ?></del>
+                                        <span class="product-price">{{$rt->symbol}}<?php $total = $new->price*$rt->rates; echo ceil($total) ?></span>
+                                    </div><!-- End .price-box -->
+                                    @endforeach
+
+                                @else
+                                <div class="price-box">
+                                    <del class="old-price">Ksh {{$new->price_raw}}</del>
+                                    <span class="product-price">ksh {{$new->price}}</span>
+                                </div><!-- End .price-box -->
+                                @endif
+
+                            @else
+
+                            {{--  --}}
+                            @if (session()->has('rates'))
+
+                                    <?php
+                                        $rates = Session::get('rates');
+                                        $Rates = DB::table('rates')->where('rates',$rates)->get();
+                                    ?>
+
+                                    @foreach ($Rates as $rt)
+                                    <div class="price-box">
+
+                                        <span class="product-price">{{$rt->symbol}}<?php $total = $new->price*$rt->rates; echo ceil($total) ?></span>
+                                    </div><!-- End .price-box -->
+                                    @endforeach
+
+                                @else
+                                <div class="price-box">
+
+                                    <span class="product-price">ksh {{$new->price}}</span>
+                                </div><!-- End .price-box -->
+                                @endif
+                            {{--  --}}
+                            @endif
                         </div><!-- End .product-details -->
                     </div>
+                    @endforeach
                 </div><!-- End .products-slider -->
             </div><!-- End .products-section -->
         </div><!-- End .container -->

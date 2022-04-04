@@ -26,7 +26,7 @@
 <!-- End .home-slider -->
     {{-- @include('front.home-slider') --}}
 
-    @include('front.home-filter')
+    {{-- @include('front.home-filter') --}}
 
     @include('front.home-combo')
 
