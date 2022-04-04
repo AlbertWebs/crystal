@@ -24,7 +24,7 @@ use App\Http\Controllers\DropzoneController;
 Route::get('/', [HomeController::class, 'index_home'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home-page');
 Route::get('/product-quick-view/{slung}', [HomeController::class, 'product_quick_view'])->name('product-quick-view');
-Route::get('/products', [HomeController::class, 'products'])->name('products');
+Route::get('/products', [HomeController::class, 'categories'])->name('products');
 Route::get('/products/category', [HomeController::class, 'products_category'])->name('category');
 
 //
