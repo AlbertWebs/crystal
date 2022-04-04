@@ -24,7 +24,7 @@ use App\Http\Controllers\DropzoneController;
 Route::get('/', [HomeController::class, 'index_home'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home-page');
 Route::get('/product-quick-view/{slung}', [HomeController::class, 'product_quick_view'])->name('product-quick-view');
-Route::get('/products', [HomeController::class, 'categories'])->name('products');
+Route::get('/products', [HomeController::class, 'categories'])->name('categories');
 Route::get('/products/category', [HomeController::class, 'products_category'])->name('category');
 
 //
@@ -57,7 +57,7 @@ Route::get('/product-tags/{slung}', [App\Http\Controllers\HomeController::class,
 
 // Products
 Route::group(['prefix'=>'products'], function(){
-	Route::get('/', [App\Http\Controllers\HomeController::class, 'all'])->name('all');
+	Route::get('/', [App\Http\Controllers\HomeController::class, 'categories'])->name('all');
 	Route::get('/shop-by-category', [App\Http\Controllers\HomeController::class, 'categories'])->name('shop-by-category');
 	Route::get('/shop-by-brand', [App\Http\Controllers\HomeController::class, 'brand'])->name('shop-by-brand');
 	Route::get('/{slung}', [App\Http\Controllers\HomeController::class, 'product_category'])->name('product-category');
