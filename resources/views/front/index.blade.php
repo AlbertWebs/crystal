@@ -37,10 +37,10 @@
             <div class="col-md-4 appear-animate" data-animation-name="fadeInLeftShorter">
                 <h3 class="custom-title">Special Offers</h3>
                 <div class="owl-carousel owl-theme dots-simple">
-                    <?php $SpecialOffers = DB::table('product')->where('offer','1')->where('special','1')->get(); ?>
+                    <?php $SpecialOffers = DB::table('product')->where('offer','1')->get(); ?>
                     @foreach ($SpecialOffers as $special)
                     <div class="banner banner1"
-                        style="background: url('{{url('/')}}/uploads/product/{{$special->thumbnail}}') rgb(232, 127, 59); background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 40.2rem;">
+                        style="background: url('{{url('/')}}/uploads/product/{{$special->offer_banner}}') rgb(29,160,152); background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 40.2rem;">
                         <div class="banner-content banner-layer-middle position-absolute">
 
                             {{-- <img src="{{asset('theme/assets/images/demoes/demo42/shop_brand1.png')}}" width="232" height="28"

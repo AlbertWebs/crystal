@@ -6,12 +6,12 @@
    data-animation-delay="400">
    <div class="d-lg-flex align-items-center">
       <h3 class="custom-title divider">Customer Favorites</h3>
-      <a href="demo42-shop.html" class="sicon-title">VIEW ALL<i
+      <a href="{{url('/')}}/products/shop-by-category" class="sicon-title">VIEW ALL<i
          class="fas fa-arrow-right"></i></a>
    </div>
-   
+
    @foreach ($Favorite as $suggest)
-   <div class="product-default left-details product-widget">
+   <div class="product-default left-details product-widget" style="border:1px solid #f4f4f4">
       <figure>
          <a href="{{url('/')}}/product/{{$suggest->slung}}">
          <img src="{{url('/')}}/uploads/product/{{$suggest->thumbnail}}" width="95" height="95" alt="{{$suggest->name}}">
@@ -36,7 +36,7 @@
                <span class="tooltiptext tooltip-top"></span>
             </div>
             <!-- End .product-ratings -->
-            @else 
+            @else
             <?php $ReviewsAvg = DB::table('reviews')->where('product_id',$suggest->id)->avg('rating'); ?>
             <div class="product-ratings">
                <span class="ratings" style="width:{{$ReviewsAvg}}%"></span>
@@ -51,7 +51,7 @@
          @if (session()->has('rates'))
          <?php
             $rates = Session::get('rates');
-            $Rates = DB::table('rates')->where('rates',$rates)->get();    
+            $Rates = DB::table('rates')->where('rates',$rates)->get();
             ?>
          @foreach ($Rates as $rt)
          <div class="price-box">
@@ -67,12 +67,12 @@
          </div>
          <!-- End .price-box -->
          @endif
-         @else 
+         @else
          {{--  --}}
          @if (session()->has('rates'))
          <?php
             $rates = Session::get('rates');
-            $Rates = DB::table('rates')->where('rates',$rates)->get();    
+            $Rates = DB::table('rates')->where('rates',$rates)->get();
             ?>
          @foreach ($Rates as $rt)
          <div class="price-box">

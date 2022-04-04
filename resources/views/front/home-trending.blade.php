@@ -3,7 +3,7 @@
 @if($Trending->isEmpty())
 
 @else
-<section class="product-section1" style="background-color: #f4f4f4;">
+<section class="product-section1" style="background-color: #f4f4f4 !important;">
     <div class="container">
         <h2 class="title title-underline pb-1 appear-animate" data-animation-name="fadeInLeftShorter">Hot
             Deals</h2>
@@ -25,7 +25,7 @@
                 }
             }">
             @foreach ($Trending as $item)
-            <div class="product-default inner-quickview inner-icon">
+            <div class="product-default inner-quickview inner-icon" style="border:1px solid #f4f4f4">
                 <figure>
                     <a href="{{url('/')}}/product/{{$item->slung}}">
                         <img src="{{url('/')}}/uploads/product/{{$item->thumbnail}}" width="300"
@@ -40,7 +40,7 @@
                         @endif
                         @if($item->offer == 1)
                         <span class="product-label label-sale">
-                        -<?php 
+                        -<?php
                             $Original = $item->price_raw;
                             $OfferPrice = $item->price;
                             $percentage = ($OfferPrice*100)/$Original;
@@ -48,8 +48,8 @@
                             echo $less
                         ?>%
                         </span>
-                        @else 
-                        
+                        @else
+
                         @endif
                     </div>
                     <div class="btn-icon-group">
@@ -81,7 +81,7 @@
                             <!-- End .ratings -->
                             <span class="tooltiptext tooltip-top"></span>
                         </div><!-- End .product-ratings -->
-                        @else 
+                        @else
                         <?php $ReviewsAvg = DB::table('reviews')->where('product_id',$item->id)->avg('rating'); ?>
                         <div class="product-ratings">
                             <span class="ratings" style="width:{{$ReviewsAvg}}%"></span>
@@ -92,46 +92,46 @@
                     </div><!-- End .product-container -->
                     @if($item->offer == 1)
                         @if (session()->has('rates'))
-                        
+
                             <?php
                                 $rates = Session::get('rates');
-                                $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                                $Rates = DB::table('rates')->where('rates',$rates)->get();
                             ?>
-                            
+
                             @foreach ($Rates as $rt)
                             <div class="price-box">
                                 <del class="old-price">{{$rt->symbol}}<?php $total = $item->price_raw*$rt->rates; echo ceil($total) ?></del>
                                 <span class="product-price">{{$rt->symbol}}<?php $total = $item->price*$rt->rates; echo ceil($total) ?></span>
                             </div><!-- End .price-box -->
                             @endforeach
-                        
+
                         @else
                         <div class="price-box">
                             <del class="old-price">Ksh {{$item->price_raw}}</del>
                             <span class="product-price">ksh {{$item->price}}</span>
                         </div><!-- End .price-box -->
                         @endif
-                        
-                    @else 
+
+                    @else
 
                     {{--  --}}
                     @if (session()->has('rates'))
-                        
+
                             <?php
                                 $rates = Session::get('rates');
-                                $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                                $Rates = DB::table('rates')->where('rates',$rates)->get();
                             ?>
-                            
+
                             @foreach ($Rates as $rt)
                             <div class="price-box">
-                               
+
                                 <span class="product-price">{{$rt->symbol}}<?php $total = $item->price*$rt->rates; echo ceil($total) ?></span>
                             </div><!-- End .price-box -->
                             @endforeach
-                        
+
                         @else
                         <div class="price-box">
-                         
+
                             <span class="product-price">ksh {{$item->price}}</span>
                         </div><!-- End .price-box -->
                         @endif

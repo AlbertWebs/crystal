@@ -271,8 +271,8 @@ class HomeController extends Controller
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers';
 
             // infinite Scroll
-
-            return view('front.categories', compact('keywords','page_title','page_name'));
+            $Categories = DB::table('product')->paginate('24');
+            return view('front.categories', compact('keywords','page_title','page_name','Categories'));
     }
 
     }

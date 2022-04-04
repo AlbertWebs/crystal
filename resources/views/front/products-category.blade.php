@@ -20,7 +20,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     @foreach ($Products as $categories)
-                    <div class="col-6 col-sm-4 col-xl-3">
+                    <div class="col-6 col-sm-2 col-lg-2 col-xl-2" style="border:1px solid #f4f4f4">
                         <div class="product-default">
                             <figure>
                                 <a href="{{url('/')}}/product/{{$categories->slung}}">

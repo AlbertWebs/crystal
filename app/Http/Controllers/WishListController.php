@@ -34,7 +34,7 @@ class WishListController extends Controller
         $SiteSettings = DB::table('sitesettings')->get();
         $page_name = 'Your Cart';
         $keywords = 'Amani Vehicle Sounds Wishlist';
-        
+
         return view('cart.wishlist', compact('keywords','page_name','page_title','SiteSettings'));
         }
     }
@@ -49,7 +49,6 @@ class WishListController extends Controller
             $UserIP = Request::ip();
             Wishlist::add($ProductID, $UserIP, 'session');
         }
-        // Return something
         return Redirect::back();
     }
 

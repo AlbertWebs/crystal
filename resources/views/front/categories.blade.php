@@ -1,7 +1,7 @@
 @extends('front.master-cat')
 @section('content')
 <main class="main">
-    <div class="category-banner-container bg-gray">
+    {{-- <div class="category-banner-container bg-gray">
         <div class="container">
             <div class="category-banner banner p-0">
                 <div class="row align-items-center no-gutters m-0 text-center text-lg-left">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
@@ -42,7 +42,7 @@
             <h4 class="heading-bottom-border text-uppercase">Categories</h4>
             <div class="row">
                 @foreach ($AllCategories as $item)
-                <div class="col-lg-2 col-sm-4 col-6"  style="margin:0 auto;">
+                <div class="col-lg-2 col-sm-4 col-6"  style="margin:0 auto; border:2px solid #4db7b3; padding-bottom:10px; border-radius:10px;">
                     <div class="product-category">
                         <a href="{{url('/')}}/products/{{$item->slung}}">
                             <figure>
@@ -64,15 +64,17 @@
             </div>
         </section>
     </div><!-- End .container -->
+    <br><br>
+    <hr>
     {{--  --}}
-    <?php $Categories = DB::table('product')->get(); ?>
+
 
     <div class="container">
         <div class="row main-content">
             <div class="col-lg-12">
                 <div class="row">
                     @foreach ($Categories as $categories)
-                    <div class="col-6 col-sm-4 col-xl-3">
+                    <div class="col-6 col-sm-2 col-lg-2 col-xl-2" style="border:1px solid #f4f4f4">
                         <div class="product-default">
                             <figure>
                                 <a href="{{url('/')}}/product/{{$categories->slung}}">
@@ -188,20 +190,7 @@
                         </div><!-- End .select-custom -->
                     </div><!-- End .toolbox-item -->
 
-                    <ul class="pagination toolbox-item">
-                        <li class="page-item disabled">
-                            <a class="page-link page-link-btn" href="#"><i class="icon-angle-left"></i></a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><span class="page-link">...</span></li>
-                        <li class="page-item">
-                            <a class="page-link page-link-btn" href="#"><i class="icon-angle-right"></i></a>
-                        </li>
-                    </ul>
+                    {{$Categories}}
                 </nav>
             </div><!-- End .col-lg-9 -->
 

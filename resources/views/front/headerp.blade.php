@@ -47,7 +47,7 @@
                         <ul>
                             <li><a href="dashboard.html">My Account</a></li>
                             <li><a href="cart.html">Cart</a></li>
-                            <li><a href="wishlist.html">My Wishlist</a></li>
+                            <li><a href="{{url('/')}}/wishlist">My Wishlist</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="#" class="login-link">Log in</a></li>
                         </ul>
@@ -107,7 +107,7 @@
                     </form>
                 </div><!-- End .header-search -->
 
-                <a href="wishlist.html" class="header-icon">
+                <a href="{{url('/')}}/wishlist" class="header-icon">
                     <i class="icon-wishlist-2 line-height-1"></i>
                 </a>
 
