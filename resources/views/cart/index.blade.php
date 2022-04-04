@@ -10,7 +10,7 @@
                 <a href="{{url('/')}}/shopping-cart/checkout">Checkout</a>
             </li>
             <li class="disabled">
-                <a href="cart.html">Order Complete</a>
+                <a href="{{url('/')}}/shopping-cart">Order Complete</a>
             </li>
         </ul>
 
@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             @foreach($CartItems as $CartItem)
-                                <?php 
+                                <?php
                                     $Products = DB::table('product')->where('id',$CartItem->id)->get();
                                 ?>
                                 @foreach($Products as $Product)
@@ -68,19 +68,19 @@
                                     $rates = Session::get('rates');
                                     $Rates = DB::table('rates')->where('rates', $rates)->get();
                                     ?>
-                                        
+
                                         @foreach ($Rates as $rt)
-                                        
+
                                         {{$rt->symbol}}<?php $total = $Product->price * $rt->rates;
                                     echo ceil($total) ?>
-                                    
+
                                         @endforeach
 
                                     @else
                                     ksh {{$Product->price}}
                                     @endif
 
-                                    @else 
+                                    @else
 
                                     {{--  --}}
                                     @if (session()->has('rates'))
@@ -89,7 +89,7 @@
                                     $rates = Session::get('rates');
                                     $Rates = DB::table('rates')->where('rates', $rates)->get();
                                     ?>
-                                        
+
                                         @foreach ($Rates as $rt)
                                         {{$rt->symbol}}<?php $total = $Product->price * $rt->rates;
                                     echo ceil($total) ?>
@@ -111,38 +111,38 @@
                                                 <?php $Qty = $CartItem->qty ?>
                                                 @if($Product->offer == 1)
                                                 @if (session()->has('rates'))
-            
+
                                                     <?php
                                                 $rates = Session::get('rates');
                                                 $Rates = DB::table('rates')->where('rates', $rates)->get();
                                                 ?>
-                                                    
+
                                                     @foreach ($Rates as $rt)
-                                                    
+
                                                     {{$rt->symbol}}<?php $total = ($Qty*$Product->price) * $rt->rates;
                                                 echo ceil($total) ?>
-                                                
+
                                                     @endforeach
-            
+
                                                 @else
                                                 ksh {{$Product->price}}
                                                 @endif
-            
-                                                @else 
-            
+
+                                                @else
+
                                                 {{--  --}}
                                                 @if (session()->has('rates'))
-            
+
                                                     <?php
                                                 $rates = Session::get('rates');
                                                 $Rates = DB::table('rates')->where('rates', $rates)->get();
                                                 ?>
-                                                    
+
                                                     @foreach ($Rates as $rt)
                                                     {{$rt->symbol}}<?php $total = ($Qty*$Product->price) * $rt->rates;
                                                 echo ceil($total) ?>
                                                     @endforeach
-            
+
                                                 @else
                                                 ksh {{$Qty*$Product->price}}
                                                 @endif
@@ -154,11 +154,11 @@
                                 @endforeach
                             @endforeach
 
-                           
+
                         </tbody>
 
 
-                        
+
                     </table>
                 </div><!-- End .cart-table-container -->
             </div><!-- End .col-lg-8 -->
