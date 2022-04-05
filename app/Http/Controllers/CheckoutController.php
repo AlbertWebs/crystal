@@ -41,7 +41,7 @@ use Twitter;
 class CheckoutController extends Controller
 {
 
-  
+
     public function index(){
         $keywords = '';
         $SEOSettings = DB::table('seosettings')->get();
@@ -58,9 +58,9 @@ class CheckoutController extends Controller
         $page_title = 'Checkout';
         $CartItems = Cart::content();
         $SiteSettings = DB::table('sitesettings')->get();
-        $page_name = 'Cobfirm'; 
+        $page_name = 'Cobfirm';
         $keywords = '';
-        
+
         if(Auth::check()){
             // return redirect()->route('cart/checkout/payment','CheckoutController@payment');
             return redirect()->route('payment');
@@ -69,7 +69,7 @@ class CheckoutController extends Controller
             return view('checkout.index', compact('keywords','CartItems','page_title','SiteSettings','page_name'));
         }
     }
-         
+
         //Perfom a check to ensure that the cart is not empty
     }
 
@@ -107,13 +107,13 @@ class CheckoutController extends Controller
                         Session::put('coupon-code', $code);
                         Session::put('coupon-total', $NewCartTotal);
 
-                        
+
                         // Update coupon code status
                         $updateDetails = array(
                             'status'=>"0",
                         );
                         DB::table('coupon_codes')->where('code',$code)->update($updateDetails);
-                        
+
 
                         // End Processsing
                         $message = "The coupon has been applied";
@@ -122,14 +122,14 @@ class CheckoutController extends Controller
                         $message = "You have already used that coupon";
                         return $message;
                     }
-                    
+
                 }else{
                     $message = "The Coupon code is Invalid";
                     return $message;
                 }
             }
-        }        
-       
+        }
+
     }
 
     public function remove_coupon($code){
@@ -147,12 +147,12 @@ class CheckoutController extends Controller
 
     }
 
- 
+
 
     public function payment(){
         // Check For Empty Carts
         $cart = Cart::count();
-       
+
         if($cart == 0){
             // Redirect To Cart
             return redirect()->route('payment');
@@ -169,9 +169,9 @@ class CheckoutController extends Controller
                 $Shipping = 400;
             }
 
-            // Shipping session 
+            // Shipping session
             session()->put('Shipping', $Shipping);
-        
+
 
             // Create an invoice, Mail and Register
             if(Session::has('Invoice')){
@@ -196,7 +196,7 @@ class CheckoutController extends Controller
                         }
                 }
             }
-            
+
             if(Session::has('coupon-total')){
                 $totalWithCoupon = Session::get('coupon-total');
                 // AmountVariables
@@ -237,10 +237,10 @@ class CheckoutController extends Controller
                     $ShippingFee = $Shipping;
                     $TotalCost = $FormatTotalCart+$ShippingFee;
                 }
-                // 
+                //
             }
-            
-            
+
+
             if(Session::has('Invoice')){
 
             }else{
@@ -259,14 +259,14 @@ class CheckoutController extends Controller
                      $email = Auth::user()->email;
                      $name = Auth::user()->name;
                     //  ReplyMessage::mailclientinvoice($email,$name,$InvoiceNumber,$ShippingFee,$TotalCost);
-               
+
                 }else{
                     // The Invoice already Exists
-                   
+
                 }
             }
             session()->put('TotalCost', $TotalCost);
-            //Go to payments page     
+            //Go to payments page
             $keywords = '';
             $SEOSettings = DB::table('seosettings')->get();
             foreach ($SEOSettings as $Settings) {
@@ -274,7 +274,7 @@ class CheckoutController extends Controller
                 SEOMeta::setDescription('Vehicle Sounds Systems in Kenya, Car Sound Systems in Kenya, Car alarm Systems in Kenya' . $Settings->welcome . '');
                 SEOMeta::setCanonical('' . $Settings->url . '');
                 OpenGraph::setDescription('' . $Settings->welcome . '');
-                OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . ''); 
+                OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
                 OpenGraph::setUrl('' . $Settings->url . '');
                 OpenGraph::addProperty('type', 'articles');
                 Twitter::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
@@ -293,14 +293,14 @@ class CheckoutController extends Controller
     public function payments(){
         // Check For Empty Carts
         $cart = Cart::count();
-       
+
         if($cart == 0){
             // Redirect To Cart
             return redirect()->route('payment');
         }else{
             // $ip = \Request::ip();
             $ip = '154.76.108.131';
-         
+
 
             $data = \Location::get($ip);
             // Get The Delivery Charge
@@ -317,9 +317,9 @@ class CheckoutController extends Controller
             // echo $ip;
             // die();
 
-            // Shipping session 
+            // Shipping session
             session()->put('Shipping', $Shipping);
-        
+
 
             // Create an invoice, Mail and Register
             if(Session::has('Invoice')){
@@ -344,7 +344,7 @@ class CheckoutController extends Controller
                         }
                 }
             }
-            
+
             if(Session::has('coupon-total')){
                 $totalWithCoupon = Session::get('coupon-total');
                 // AmountVariables
@@ -385,10 +385,10 @@ class CheckoutController extends Controller
                     $ShippingFee = $Shipping;
                     $TotalCost = $FormatTotalCart+$ShippingFee;
                 }
-                // 
+                //
             }
-            
-            
+
+
             if(Session::has('Invoice')){
 
             }else{
@@ -407,14 +407,14 @@ class CheckoutController extends Controller
                      $email = Auth::user()->email;
                      $name = Auth::user()->name;
                     //  ReplyMessage::mailclientinvoice($email,$name,$InvoiceNumber,$ShippingFee,$TotalCost);
-               
+
                 }else{
                     // The Invoice already Exists
-                   
+
                 }
             }
             session()->put('TotalCost', $TotalCost);
-            //Go to payments page     
+            //Go to payments page
             $keywords = '';
             $SEOSettings = DB::table('seosettings')->get();
             foreach ($SEOSettings as $Settings) {
@@ -422,7 +422,7 @@ class CheckoutController extends Controller
                 SEOMeta::setDescription('Vehicle Sounds Systems in Kenya, Car Sound Systems in Kenya, Car alarm Systems in Kenya' . $Settings->welcome . '');
                 SEOMeta::setCanonical('' . $Settings->url . '');
                 OpenGraph::setDescription('' . $Settings->welcome . '');
-                OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . ''); 
+                OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
                 OpenGraph::setUrl('' . $Settings->url . '');
                 OpenGraph::addProperty('type', 'articles');
                 Twitter::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
@@ -438,7 +438,7 @@ class CheckoutController extends Controller
         }
     }
 
-    
+
 
     public function shipping_method(){
         $page_name = 'Cobfirm';
@@ -471,7 +471,7 @@ class CheckoutController extends Controller
             return view('checkout.checkout_billing', compact('keywords','CartItems','page_title','SiteSettings','page_name'));
         }
         else{
-            
+
             return view('checkout.index', compact('keywords','CartItems','page_title','SiteSettings','page_name'));
         }
     }
@@ -499,16 +499,16 @@ class CheckoutController extends Controller
         return view('checkout.checkout_confirm', compact('keywords','CartItems','page_title','SiteSettings','page_name'));
         }
     }
-    
+
     public function placeOrder(Request $request){
 
             // Mail Invoice
             $email = Auth::user()->email;
             $name = Auth::user()->name;
-           
+
             Orders::createOrder();
             //destroy cart
-            
+
             $page_title = 'Thank you!';
             $name = Auth::user()->name;
             $email = Auth::user()->email;
@@ -517,7 +517,7 @@ class CheckoutController extends Controller
             $pricee = Cart::content();
             foreach ($pricee as $key => $value) {
                 $price = $value->price;
-            
+
             $budget = 'Order';
             $content = 'Order';
 
@@ -528,7 +528,7 @@ class CheckoutController extends Controller
             ReplyMessage::mailclient($email,$name,$InvoiceNumber,$ShippingFee,$TotalCost);
             // ReplyMessage::mailmerchantCOD($email,$name,$phone,$value->price,$value->name);
             ReplyMessage::mailmerchant($email,$name,$phone);
-    
+
             Cart::destroy();
             // Destrony Invoice & Order Sessions
             session()->forget('Invoice');
@@ -543,41 +543,41 @@ class CheckoutController extends Controller
             SEOMeta::setDescription(''.$Settings->welcome.'');
             SEOMeta::setCanonical(''.$Settings->url.'/clientarea/thankyou');
 
-            OpenGraph::setDescription(''.$Settings->welcome.''); 
+            OpenGraph::setDescription(''.$Settings->welcome.'');
             OpenGraph::setTitle(''.$Settings->sitename.' - '.$Settings->welcome.'');
             OpenGraph::setUrl(''.$Settings->url.'/clientarea/thanksyou');
             OpenGraph::addProperty('type', 'articles');
-            
-            
+
+
             Twitter::setTitle(''.$Settings->sitename.' - '.$Settings->welcome.'');
             Twitter::setSite(''.$Settings->twitter.'');
             $id = Auth::user()->id;
             $page_name = '';
             $page_title = '';
             $keywords = 'Amani Vehicle Sounds';
-        
+
             $page_title = 'Thank You for your order';
             Session::forget('coupon');
             Session::forget('coupon-code');
             Session::forget('coupon-total');
 
-   
+
             return view('dashboard.thankyou',compact('page_title','page_name','page_title','keywords'));
 
             /** Load The Thank You Page */
             }
     }
 }
-    
+
 
     public function placeOrderGet(Request $request){
             // Mail Invoice
             $email = Auth::user()->email;
             $name = Auth::user()->name;
-           
+
             Orders::createOrder();
             //destroy cart
-            
+
             $page_title = 'Thank you!';
             $name = Auth::user()->name;
             $email = Auth::user()->email;
@@ -586,7 +586,7 @@ class CheckoutController extends Controller
             $pricee = Cart::content();
             foreach ($pricee as $key => $value) {
                 $price = $value->price;
-            
+
             $budget = 'Order';
             $content = 'Order';
 
@@ -597,7 +597,7 @@ class CheckoutController extends Controller
             ReplyMessage::mailclient($email,$name,$InvoiceNumber,$ShippingFee,$TotalCost);
             // ReplyMessage::mailmerchantCOD($email,$name,$phone,$value->price,$value->name);
             ReplyMessage::mailmerchant($email,$name,$phone);
-    
+
             Cart::destroy();
             // Destrony Invoice & Order Sessions
             session()->forget('Invoice');
@@ -612,19 +612,19 @@ class CheckoutController extends Controller
             SEOMeta::setDescription(''.$Settings->welcome.'');
             SEOMeta::setCanonical(''.$Settings->url.'/clientarea/thankyou');
 
-            OpenGraph::setDescription(''.$Settings->welcome.''); 
+            OpenGraph::setDescription(''.$Settings->welcome.'');
             OpenGraph::setTitle(''.$Settings->sitename.' - '.$Settings->welcome.'');
             OpenGraph::setUrl(''.$Settings->url.'/clientarea/thanksyou');
             OpenGraph::addProperty('type', 'articles');
-            
-            
+
+
             Twitter::setTitle(''.$Settings->sitename.' - '.$Settings->welcome.'');
             Twitter::setSite(''.$Settings->twitter.'');
             $id = Auth::user()->id;
             $page_name = '';
             $page_title = '';
             $keywords = 'Amani Vehicle Sounds';
-        
+
             $page_title = 'Thank You for your order';
             Session::forget('coupon');
             Session::forget('coupon-code');
@@ -647,19 +647,19 @@ class CheckoutController extends Controller
         SEOMeta::setDescription(''.$Settings->welcome.'');
         SEOMeta::setCanonical(''.$Settings->url.'/clientarea/thankyou');
 
-        OpenGraph::setDescription(''.$Settings->welcome.''); 
+        OpenGraph::setDescription(''.$Settings->welcome.'');
         OpenGraph::setTitle(''.$Settings->sitename.' - '.$Settings->welcome.'');
         OpenGraph::setUrl(''.$Settings->url.'/clientarea/thanksyou');
         OpenGraph::addProperty('type', 'articles');
-        
-        
+
+
         Twitter::setTitle(''.$Settings->sitename.' - '.$Settings->welcome.'');
         Twitter::setSite(''.$Settings->twitter.'');
         $id = Auth::user()->id;
         $page_name = '';
         $page_title = '';
         $keywords = 'Amani Vehicle Sounds';
-       
+
         $page_title = 'Thank You for your purchase';
         Session::forget('coupon');
         Session::forget('coupon-code');
@@ -684,7 +684,7 @@ class CheckoutController extends Controller
             Twitter::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
             Twitter::setSite('' . $Settings->twitter . '');
         $page_title = 'Checkout';
-        $description = 
+        $description =
         //Insert to orders table
         $orders = new orders;
         $orders->user_id = Auth::user()->id;
@@ -710,7 +710,7 @@ class CheckoutController extends Controller
             //redirect back to complete checkout
             $CartItems = Cart::content();
             return Redirect::back();
-           
+
         }else{
              //check pasword matching
              if($password_inSecured == $password_confirm){
@@ -722,28 +722,28 @@ class CheckoutController extends Controller
                 $User->password = Hash::make($password_inSecured);
                 $User->save();
                 //Login the user
-                
+
                 $user = User::where('email','=',$email)->first();
                 Auth::loginUsingId($user->id, TRUE);
 
-                
+
 
                 return Redirect::back();
              }else{
                 Session::flash('message', "Passwords Did Not Match");
                 return Redirect::back();
              }
-          
+
         }
 
-     } 
-     
+     }
+
     public function create(Request $request){
         $name = $request->name;
         $email = $request->email;
         $password_confirm = $request->password_confirm;
         $password = $request->password;
-        
+
         $User = DB::table('users')->where('email',$email)->get();
         $Check = count($User);
         if($password == $password_confirm){
@@ -759,8 +759,8 @@ class CheckoutController extends Controller
                 $User->mobile = $request->mobile;
                 $User->town = $request->town;
                 $User->password = $password;
-                $User->save(); 
-                
+                $User->save();
+
                 if($request->newsletter == 'on'){
                     // Add to Mailling List
                     $email = $request->email;
@@ -768,7 +768,7 @@ class CheckoutController extends Controller
                     $Subscriber->email = $email;
                     $Subscriber->save();
                 }
-               
+
 
                 // Notify Client
                 ReplyMessage::messageClient($request->email,$request->name);
@@ -787,16 +787,16 @@ class CheckoutController extends Controller
             // Return with form Data
             return Redirect::back()->withInput($request->input());
         }
-            
-        
+
+
     }
 
-    
+
 
     public function login(Request $request){
-        
+
         $email = $request->email;
-        $password = $request->password; 
+        $password = $request->password;
         $userdata = array(
             'email'     => $email,
             'password'  => $password
@@ -807,53 +807,53 @@ class CheckoutController extends Controller
             $user = User::where('email','=',$email)->first();
             Auth::loginUsingId($user->id, TRUE);
             return Redirect::back();
-            
-    
-        } else {        
-    
+
+
+        } else {
+
             Session::flash('message_error', "Wrong Username Or Password");
             return Redirect::back();
-    
+
         }
 
     }
 
-    
+
     public function updateShipping(Request $request){
         $id = Auth::user()->id;
-       
 
-            
+
+
             $updateDetails = array(
                 'name'=>$request->name,
                 'town'=>$request->town,
                 'location'=>$request->location,
                 'mobile'=>$request->mobile,
- 
-            
+
+
             );
-           
+
             DB::table('users')->where('id',$id)->update($updateDetails);
 
             Session::flash('message', "Delivery Address Updated!");
             return Redirect::back();
-    
+
     }
     public function save(Request $request){
         $id = Auth::user()->id;
-       
+
         $CartItems = Cart::content();
         if($request->email == Auth::user()->email ){
-            
+
             $updateDetails = array(
                 'name'=>$request->name,
                 'address'=>$request->address,
                 'location'=>$request->location,
                 'mobile'=>$request->phone,
                 'town'=>$request->town,
-            
+
             );
-           
+
             DB::table('users')->where('id',$id)->update($updateDetails);
 
             $page_name ='Shipping Method';
@@ -869,7 +869,7 @@ class CheckoutController extends Controller
                 'location'=>$request->location,
                 'mobile'=>$request->phone,
                 'town'=>$request->town,
-            
+
             );
             DB::table('users')->where('id',$id)->update($updateDetails);
             $page_name ='Shipping Method';
@@ -888,10 +888,10 @@ class CheckoutController extends Controller
 
     public function stk(){
         $mpesa= new \Safaricom\Mpesa\Mpesa();
-       
+
           $BusinessShortCode = "174379";
           $TransactionType = 'CustomerPayBillOnline';
-          $Timestamp = date('YmdHis'); 
+          $Timestamp = date('YmdHis');
           $PartyA = '254723014032';
           $PhoneNumber = '254723014032';
           $CallbackURL = 'https://crystalcaraudio.com/payments/callback_url.php';
@@ -902,7 +902,7 @@ class CheckoutController extends Controller
           $Amount = '1';
           $PartyB = '254723014032';
           $$Remarks = '';
- 
+
         $stkPushSimulation=$mpesa->STKPushSimulation($BusinessShortCode, $LipaNaMpesaPasskey, $TransactionType, $Amount, $PartyA, $PartyB, $PhoneNumber, $CallBackURL, $AccountReference, $TransactionDesc, $Remarks);
     }
 }

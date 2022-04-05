@@ -201,8 +201,8 @@
                 popupMessage: 'Hello, how can we help you?', //Popup Message
                 showPopup: true, //Enables popup display
                 buttonImage: '<img src="https://amanivehiclesounds.co.ke/uploads/icon/whatsapp.svg" />', //Button Image
-                //headerColor: 'crimson', //Custom header color
-                //backgroundColor: 'crimson', //Custom background button color
+                // headerColor: 'Jungle Green', //Custom header color
+                // backgroundColor: 'Jungle Green', //Custom background button color
                 position: "left" //Position: left | right
 
             });
