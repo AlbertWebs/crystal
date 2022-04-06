@@ -15,7 +15,7 @@
         </a>
     </div>
     <div class="sticky-info">
-        <a href="{{url('/')}}/http://localhost:8000/products/shop-by-category" class="">
+        <a href="{{url('/')}}/products/shop-by-category" class="">
             <i class="icon-user-2"></i>Account
         </a>
     </div>
