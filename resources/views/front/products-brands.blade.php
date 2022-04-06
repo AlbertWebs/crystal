@@ -2,6 +2,7 @@
 @section('content')
 <main class="main">
 
+
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
             <ol class="breadcrumb">
@@ -11,49 +12,14 @@
         </div>
     </nav>
 
-    <div class="container">
-        <?php $Brands = DB::table('brands')->get(); ?>
-        <section class="simple-section mt-5" style="margin:0 auto;">
-            <h4 class="heading-bottom-border text-uppercase">Brands</h4>
-            <div class="row">
-                @foreach ($Brands as $item)
-                <div class="col-lg-1 col-sm-2 col-6"  style="margin:0 auto; border:2px solid #DEB992; padding-bottom:10px; border-radius:10px;">
-                    <div class="product-category">
-                        <a href="{{url('/')}}/products/brand/{{$item->name}}">
-                            <figure>
-                                <img src="{{url('/')}}/uploads/brands/{{$item->image}}" width="300" height="300"
-                                    alt="{{$item->name}}">
-                            </figure>
-                            <div class="category-content" style="text-align:center">
-                                <h3>{{$item->name}}</h3>
-                                <center>
-                                    <span>
-                                        <strong>
-                                            <mark class="count">
-                                                <?php echo count($Pro = DB::table('product')->where('brand',$item->name)->get()) ?>
-                                            </mark>
-                                            products
-                                        </strong>
-                                    </span>
-                                </center>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </section>
-    </div><!-- End .container -->
-    <br><br>
-    <hr>
-    {{--  --}}
 
+    {{--  --}}
 
     <div class="container">
         <div class="row main-content">
             <div class="col-lg-12">
                 <div class="row">
-                    @foreach ($Categories as $categories)
+                    @foreach ($Products as $categories)
                     <div class="col-6 col-sm-2 col-lg-2 col-xl-2" style="border:1px solid #f4f4f4">
                         <div class="product-default">
                             <figure>
@@ -170,7 +136,9 @@
                         </div><!-- End .select-custom -->
                     </div><!-- End .toolbox-item -->
 
-                    {{$Categories}}
+                    {{$Products}}
+
+
                 </nav>
             </div><!-- End .col-lg-9 -->
 

@@ -22,7 +22,7 @@
             }">
             <?php $Brands = DB::table('brands')->limit('4')->get(); ?>
             @foreach ($Brands as $brands)
-            <div class="brand-box" >
+            <div class="brand-box" style="border: 2px solid #DEB992; border-radius:10px;">
                 <div class="brand-name">
                     <h3>Shop {{$brands->name}}:</h3>
                     <img src="{{url('/')}}/uploads/brands/{{$brands->image}}" width="140" height="60"
@@ -41,7 +41,7 @@
                     }">
                     <?php $BrandProducts = DB::table('product')->where('brand',$brands->name)->limit(4)->inRandomOrder()->get(); ?>
                     @foreach($BrandProducts as $BrandsProducts)
-                    <div class="product-default inner-quickview inner-icon" style="border:1px solid #f4f4f4">
+                    <div class="product-default inner-quickview inner-icon" style="border:1px solid #f4f4f4; border-radius:10px;">
                         <figure>
                             <a href="{{url('/')}}/product/{{$BrandsProducts->slung}}">
                                 <img src="{{url('/')}}/uploads/product/{{$BrandsProducts->thumbnail}}" width="300"
