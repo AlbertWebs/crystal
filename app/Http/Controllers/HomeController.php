@@ -380,7 +380,7 @@ class HomeController extends Controller
                 foreach ($products as $key => $product) {
                 $output.='<tr>'.
 
-                '<td style="padding:10px 10px 10px 10px;"><a style="color:#66139B; visibility:visible;" href="'.$url.'/'.$product->slung.'"><b>'.$product->title.'</b></a></td>'.
+                '<td style="padding:10px 10px 10px 10px;"><a style="color:#1DA098; visibility:visible;" href="'.$url.'/'.$product->slung.'"><b>'.$product->title.'</b></a></td>'.
 
                 '</tr>';
                 }
@@ -406,7 +406,7 @@ class HomeController extends Controller
                     Twitter::setTitle('' . $Settings->sitename. '');
                     Twitter::setSite('@crystalcaraudio');
                     // Set Session Here
-
+                    $heading = $value->title;
                     // End Session Here
                     $page_name = $value->title;
                     $page_title = 'Products';
@@ -414,7 +414,7 @@ class HomeController extends Controller
                     $search_results_category = '';
                     $keywords = "$value->title, $value->keywords";
                     $Products = DB::table('product')->where('tag',$value->id)->paginate(20);
-                    return view('front.tags', compact('Category','keywords','page_title', 'Products', 'page_name','search_results','search_results_category'));
+                    return view('front.tags', compact('heading','Category','keywords','page_title', 'Products', 'page_name','search_results','search_results_category'));
             }
         }
     }
@@ -582,6 +582,63 @@ class HomeController extends Controller
 
 
         $Products = DB::table('product')->where('code', 'like', '%' . $request->keyword . '%')->orWhere('name', 'like', '%' . $request->keyword . '%')->paginate(200);
+        $page_name = $request->search;
+        $page_title = $request->search;
+        $search_results = $search;
+        $search_results_category = 'All Categories';
+        $SEOSettings = DB::table('seosettings')->get();
+        foreach ($SEOSettings as $Settings) {
+            SEOMeta::setTitle('Our Products | ' . $Settings->sitename .'');
+            SEOMeta::setDescription('Pioneer Car Speakers, Sony Car Speakers, Kenwood Car speakers, Kenwood speakers, Sony Speakers' . $Settings->welcome . '');
+            SEOMeta::setCanonical('' . $Settings->url . '/search-results/');
+            OpenGraph::setDescription('' . $Settings->welcome . '');
+            OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
+            OpenGraph::setUrl('' . $Settings->url . '/search-results/');
+            OpenGraph::addProperty('type', 'website');
+            Twitter::setTitle('' . $Settings->sitename. '');
+            Twitter::setSite('@crystalcaraudio');
+            $ProductsCategory = DB::table('category')->where('keywords', 'like', '%' . $request->search . '%')->limit(4)->get();
+            $ProductsTag = DB::table('tags')->where('title', 'like', '%' . $request->search . '%')->limit(1)->get();
+            $ProductsBrand = DB::table('brands')->where('name', 'like', '%' . $request->search . '%')->limit(1)->get();
+
+            // Call Route
+            // return redirect()->route('search-results', ['ProductsTag'=>$ProductsTag,'ProductsBrand'=>$ProductsBrand,'ProductsCategory'=>$ProductsCategory]);
+
+            return view('front.search-results', compact('ProductsCategory','ProductsTag','ProductsBrand','page_title','keywords', 'Products', 'page_name', 'search_results', 'search_results_category','search'));
+
+
+        }
+
+
+
+
+    }
+
+    public function searchsites(Request $request)
+    {
+        $keywords = '';
+        $category = $request->category;
+        $search = $request->keyword;
+
+        if(Auth::user()){
+            $User = Auth::user()->email;
+        }else{
+            $User = \Request::ip();
+        }
+
+        // Add keyword
+        $Search = Search::where('keyword',$search)->get();
+        if($Search->isEmpty()){
+            $SModel = new Search;
+            $SModel->keyword = $search;
+            $SModel->user = $User;
+            $SModel->save();
+        }else{
+
+        }
+
+
+        $Products = DB::table('product')->where('code', 'like', '%' . $request->keyword . '%')->orWhere('name', 'like', '%' . $request->keyword . '%')->orWhere('cat', 'like', '%' . $request->cat . '%')->paginate(200);
         $page_name = $request->search;
         $page_title = $request->search;
         $search_results = $search;

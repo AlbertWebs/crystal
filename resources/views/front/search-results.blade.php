@@ -7,13 +7,13 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{url('/')}}">Tags</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{$heading}}</li>
+                <li class="breadcrumb-item"><a href="{{url('/')}}">Search Results</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{$search}}</li>
             </ol>
         </div>
     </nav>
 
-    <h1 style="display:none">{{$heading}}</h1>
+
     <hr>
     {{--  --}}
 

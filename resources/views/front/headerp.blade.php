@@ -40,16 +40,20 @@
             </div>
 
             <div class="header-right d-none d-lg-flex">
-                <p class="top-message text-uppercase mr-2">Default Welcome Msg</p>
+                <p class="top-message text-uppercase mr-2">Number #1 Car Audio Dealer in Kenya</p>
                 <div class="header-dropdown dropdown-expanded">
                     <a href="#">Links</a>
                     <div class="header-menu">
                         <ul>
-                            <li><a href="dashboard.html">My Account</a></li>
-                            <li><a href="cart.html">Cart</a></li>
+                            <li><a href="{{url('/')}}/dashboard">My Account</a></li>
+                            <li><a href="{{url('/')}}/shopping-cart">Cart</a></li>
+                            <li><a href="{{url('/')}}/checkout">Checkout</a></li>
                             <li><a href="{{url('/')}}/wishlist">My Wishlist</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="#" class="login-link">Log in</a></li>
+                            @if(Auth::user())
+                            <li><a href="{{url('/')}}/dashboard" class="login-link"><i class="fas fa-user"></i> {{Auth::user()->name}}</a></li>
+                            @else
+                            <li><a href="{{url('/')}}/dashboard" class="login-link"> <i class="fas fa-user"></i>Log In</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -90,21 +94,32 @@
                 <div
                     class="header-icon header-search header-search-inline header-search-category w-lg-max text-right d-none d-sm-block">
                     <a href="#" class="search-toggle" role="button"><i class="icon-magnifier"></i></a>
-                    <form action=" #" method="get">
+                    <form action="{{url('/search-results')}}" method="get">
                         <div class="header-search-wrapper">
-                            <input type="search" class="form-control" name="q" id="q"
+                            <input type="search" class="form-control" name="keyword" id="search"
                                 placeholder="I'm searching for..." required>
-                            <div class="select-custom font2">
-                                <select id="cat" name="cat">
-                                    <?php $Categories = DB::table('category')->get(); ?>
-                                    @foreach ($Categories as $cat)
-                                    <option value="{{$cat->id}}">{{$cat->cat}}</option>
-                                    @endforeach
-                                </select>
-                            </div><!-- End .select-custom -->
+                                <div class="select-custom font2">
+                                    <select id="cat" name="cat">
+                                        <?php $Categories = DB::table('category')->get(); ?>
+                                        @foreach ($Categories as $cat)
+                                        <option value="{{$cat->id}}">{{$cat->cat}}</option>
+                                        @endforeach
+                                    </select>
+                                </div><!-- End .select-custom -->
                             <button class="btn icon-magnifier" title="search" type="submit"></button>
                         </div><!-- End .header-search-wrapper -->
                     </form>
+                    <!-- Livesearch Results -->
+                    {{-- <div style="background-image: url('{{url('/')}}/uploads/preloaders/preloader.gif');" class="text-center" id="loading-image">Loading.....</div> --}}
+                    <table class="table  table-hover" style="position:absolute; background-color:rgba(255,255,255,0.9); color:#000;  z-index: 1000; max-width: 638px;">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        </table>
+            <!-- Live seach Results -->
+            {{--  --}}
                 </div><!-- End .header-search -->
 
                 <a href="{{url('/')}}/wishlist" class="header-icon">

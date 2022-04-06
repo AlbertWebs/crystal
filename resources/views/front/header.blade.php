@@ -112,14 +112,25 @@
                 <div
                     class="header-icon header-search header-search-inline header-search-category w-lg-max text-right mb-0">
                     <a href="#" class="search-toggle" role="button"><i class="icon-search-3"></i></a>
-                    <form action="#" method="get">
+                    <form action="{{url('/search-results')}}" method="get">
                         <div class="header-search-wrapper">
-                            <input type="search" class="form-control" autocomplete="off" name="q" id="q" placeholder="Search..."
+                            <input type="search" class="form-control" autocomplete="off" name="keyword" id="search" placeholder="Search..."
                                 required>
 
                             <button class="btn icon-magnifier p-0" title="search" type="submit"></button>
                         </div><!-- End .header-search-wrapper -->
                     </form>
+                            <!-- Livesearch Results -->
+                    {{-- <div style="background-image: url('{{url('/')}}/uploads/preloaders/preloader.gif');" class="text-center" id="loading-image">Loading.....</div> --}}
+                    <table class="table  table-hover" style="position:absolute; background-color:rgba(255,255,255,0.9); color:#000;  z-index: 1000; max-width: 638px;">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        </table>
+            <!-- Live seach Results -->
+            {{--  --}}
                 </div><!-- End .header-search -->
 
                 <span class="separator d-none d-lg-block"></span>

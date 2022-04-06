@@ -231,6 +231,27 @@
 
     </script>
 
+     <!-- Live Search Scripts -->
+     <script type="text/javascript">
+        $(document).ready(function(){
+            $('.loading-image').hide();
+        });
+        $('#search').on('keyup',function(){
+            // Add preloader
+            $('.loading-image').show();
+            $value=$(this).val();
+            $.ajax({
+            type : 'get',
+            url : '{{url('/')}}/search',
+            data:{'search':$value},
+            success:function(data){
+            $('.loading-image').hide();
+            $('tbody').html(data);
+            }
+            });
+        })
+    </script>
+
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     {{-- Google Translate --}}
 </body>
