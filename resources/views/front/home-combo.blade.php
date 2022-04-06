@@ -34,7 +34,7 @@
             <div class="category-content">
                 <h3 class="category-title">{{$item->name}}</h3>
                 <ul class="sub-categories">
-                    {!! $item->meta !!}
+                    {{-- {!! $item->meta !!} --}}
                 </ul>
             </div>
         </div>

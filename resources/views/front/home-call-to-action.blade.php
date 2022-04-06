@@ -28,7 +28,7 @@
             L267.05-231.66c-7.71-9.83-21.92-11.54-31.75-3.84l-456.96,358.45C-231.49,130.66-233.2,144.87-225.5,154.7z">
         </path>
         <path class="appear-animate appear-animate-svg" data-animation-name="customLineAnim"
-            data-animation-delay="300" data-animation-duration="5000" fill="none" stroke="#FFF"
+            data-animation-delay="300" data-animation-duration="5000" fill="none" stroke="#DEB992"
             stroke-width="1.5" stroke-miterlimit="10"
             d="M416-21l202.27,292.91c5.42,7.85,3.63,18.59-4.05,24.25L198,603"></path>
     </svg>

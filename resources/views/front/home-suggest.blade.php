@@ -27,7 +27,7 @@
                             </a>
                         </figure>
                         <div class="product-details">
-                            <div class="category-list">
+                            <div class="category-list" style="margin:0 auto">
                                 <?php $Category = DB::table('category')->where('id',$suggest->cat)->get(); ?>
                                 @foreach($Category as $cat)
                                 <a  href="{{url('/')}}/products/{{$cat->slung}}">{{$cat->cat}}</a>
