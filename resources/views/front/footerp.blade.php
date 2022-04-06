@@ -15,7 +15,14 @@
                 <div class="col-md-8 col-lg-9 p-0">
                     <div class="instagram-carousel owl-carousel owl-theme" data-owl-options="{
                             'items': 2,
+                            'loop': 'true',
+                            'slideTransition': 'linear',
+                            'autoplaySpeed': '6000',
+                            'smartSpeed': '6000',
+                            'autoplayTimeout':'1000',
+                            'autoplayHoverPause':'true',
                             'dots': false,
+                            'autoplay': true,
                             'responsive': {
                                 '480': {
                                     'items': 3
