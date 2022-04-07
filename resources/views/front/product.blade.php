@@ -68,7 +68,11 @@
                                 $ProductID = $Product->id;
                                 $ProductNext = $ProductID+1;
                                 $ProductPrev = $ProductID-1;
+
                             ?>
+
+
+
 
                             @if($ProductPrev<1)
 
@@ -76,6 +80,10 @@
                                 <?php
                                  $ProductPrevFetch = App\Models\Product::find($ProductPrev);
                                 ?>
+
+                                @if($ProductPrevFetch == null)
+
+                                @else
 
                                 <div class="product-prev">
                                     <a href="{{url('/')}}/product/{{$ProductPrevFetch->slung}}">
@@ -92,6 +100,8 @@
                                         </span>
                                     </a>
                                 </div>
+
+                                @endif
 
                             @endif
 
