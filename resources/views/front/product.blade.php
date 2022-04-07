@@ -31,8 +31,14 @@
                             <div class="product-single-carousel owl-carousel owl-theme show-nav-hover">
                                 <div class="product-item">
                                     <img class="product-single-image"
-                                        src="{{asset('theme/assets/images/demoes/demo42/product/product14-600x600.jpg')}}"
-                                        data-zoom-image="assets/images/demoes/demo42/product/product14-800x800.jpg')}}"
+                                        src="{{url('/')}}/uploads/product/{{$Product->fb_pixels}}"
+                                        data-zoom-image="{{url('/')}}/uploads/product/{{$Product->fb_pixels}}"
+                                        width="468" height="468" alt="product" />
+                                </div>
+                                <div class="product-item">
+                                    <img class="product-single-image"
+                                        src="{{url('/')}}/uploads/product/{{$Product->thumbnail}}"
+                                        data-zoom-image="{{url('/')}}/uploads/product/{{$Product->thumbnail}}"
                                         width="468" height="468" alt="product" />
                                 </div>
                             </div>
@@ -44,7 +50,11 @@
 
                         <div class="prod-thumbnail owl-dots">
                             <div class="owl-dot">
-                                <img src="{{asset('theme/assets/images/demoes/demo42/product/product14-150x150.jpg')}}" width="110"
+                                <img src="{{url('/')}}/uploads/product/{{$Product->fb_pixels}}" width="110"
+                                    height="110" alt="product-thumbnail" />
+                            </div>
+                            <div class="owl-dot">
+                                <img src="{{url('/')}}/uploads/product/{{$Product->thumbnail}}" width="110"
                                     height="110" alt="product-thumbnail" />
                             </div>
                         </div>
