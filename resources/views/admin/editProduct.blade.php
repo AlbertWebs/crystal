@@ -309,7 +309,7 @@
 
                             </select>
                         </div>
-                        </div>
+                    </div>
 
 
                     <div class="form-group">
@@ -350,22 +350,22 @@
                     <!-- Brands -->
 
                     <div class="form-group">
-                    <label class="control-label col-lg-4">Brand</label>
+                        <label class="control-label col-lg-4">Brand</label>
 
 
 
 
-                    <div class="col-lg-8">
-                        <select name="brand" data-placeholder="Choose Sub Category" class="form-control chzn-select" tabindex="2">
-                           <option selected="selected" value="{{$Product->brand}}">{{$Product->brand}}</option>
+                        <div class="col-lg-8">
+                            <select name="brand" data-placeholder="Choose Sub Category" class="form-control chzn-select" tabindex="2">
+                            <option selected="selected" value="{{$Product->brand}}">{{$Product->brand}}</option>
 
-                           <?php $ThebrandList = DB::table('brands')->get(); ?>
-                           @foreach($ThebrandList as $brandvalue)
-                              <option value="{{$brandvalue->name}}">{{$brandvalue->name}}</option>
-                           @endforeach
+                            <?php $ThebrandList = DB::table('brands')->get(); ?>
+                            @foreach($ThebrandList as $brandvalue)
+                                <option value="{{$brandvalue->name}}">{{$brandvalue->name}}</option>
+                            @endforeach
 
-                        </select>
-                    </div>
+                            </select>
+                        </div>
                     </div>
                     <!-- Brands -->
 
@@ -386,25 +386,25 @@
                                     <input name="combo" type="checkbox" {{$stockValue}} />
                                 </div>
                         </div>
-                        </div>
+                    </div>
 
                     <!-- Stock Control -->
                     <div class="form-group">
-                    <label class="control-label col-lg-4">In stock</label>
+                        <label class="control-label col-lg-4">In stock</label>
 
-                    <div class="col-lg-8">
-                    <div class="make-switch" data-on="success" data-off="danger">
-                                <?php
-                                   $Stock = $Product->stock;
-                                   if($Stock == 'In Stock'){
-                                       $stockValue = 'checked';
-                                   }else{
-                                       $stockValue = 'Out of Stock';
-                                   }
-                                ?>
-                                <input name="stock" type="checkbox" {{$stockValue}} />
-                            </div>
-                    </div>
+                        <div class="col-lg-8">
+                        <div class="make-switch" data-on="success" data-off="danger">
+                                    <?php
+                                    $Stock = $Product->stock;
+                                    if($Stock == 'In Stock'){
+                                        $stockValue = 'checked';
+                                    }else{
+                                        $stockValue = 'Out of Stock';
+                                    }
+                                    ?>
+                                    <input name="stock" type="checkbox" {{$stockValue}} />
+                                </div>
+                        </div>
                     </div>
 
 

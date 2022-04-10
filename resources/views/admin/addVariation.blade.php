@@ -60,12 +60,22 @@
                 <input type="hidden" name="product_id" value="{{$Product->id}}">
 
                  <div class="form-group">
+                        <label for="text1" class="control-label col-lg-4">Parent Product</label>
+
+                        <div class="col-lg-8">
+                            <input id="limiter-text" type="text" id="text1" name="parent" value="{{$Product->name}}"  class="form-control" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="text1" class="control-label col-lg-4">Product Name</label>
 
                         <div class="col-lg-8">
                             <input id="limiter-text" type="text" id="text1" name="name" value="" placeholder="e.g Studios Website " class="form-control" />
                         </div>
                     </div>
+
+
 
                     <div class="form-group">
                         <label for="text1" class="control-label col-lg-4">Product Price</label>
@@ -88,7 +98,7 @@
                         <label for="limiter" class="control-label col-lg-4">Meta Data</label>
 
                         <div class="col-lg-8">
-                            <textarea id="limiter" name="meta" class="form-control"></textarea>
+                            <textarea id="limiter" name="meta" class="form-control">{{$Product->meta}}</textarea>
                             <p class="help-block">Brief Description of the product for SEO</p>
                         </div>
                     </div>
@@ -102,7 +112,6 @@
                             <p class="help-block">bnfse4NXo0k</p>
                         </div>
                     </div>
-
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Google Product Category</label>
@@ -125,59 +134,60 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4">Category</label>
+                    <label class="control-label col-lg-4">Category</label>
 
-                        <?php
-                                $CatID = $Product->cat;
-                                $TheCategory = DB::table('category')->where('id',$CatID)->get();
+                    <?php
+                            $CatID = $Product->cat;
+                            $TheCategory = DB::table('category')->where('id',$CatID)->get();
 
-                        ?>
+                    ?>
 
 
 
-                        <div class="col-lg-8">
-                            <select name="cat" id="cat" data-placeholder="Choose Category" class="form-control chzn-select" tabindex="2">
-                            <option selected="selected" value="{{$Product->cat}}">@foreach($TheCategory as $valuee){{$valuee->cat}} @endforeach</option>
-                            <?php $TheCategoryList = DB::table('category')->get(); ?>
-                            @foreach($TheCategoryList as $value)
-                                <option value="{{$value->id}}">{{$value->cat}}</option>
-                            @endforeach
-                            </select>
-                        </div>
+                    <div class="col-lg-8">
+                        <select name="cat" id="cat" data-placeholder="Choose Category" class="form-control chzn-select" tabindex="2">
+                          <option selected="selected" value="{{$Product->cat}}">@foreach($TheCategory as $valuee){{$valuee->cat}} @endforeach</option>
+                           <?php $TheCategoryList = DB::table('category')->get(); ?>
+                           @foreach($TheCategoryList as $value)
+                              <option value="{{$value->id}}">{{$value->cat}}</option>
+                           @endforeach
+                        </select>
+                    </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4">Sub Category</label>
+                    <label class="control-label col-lg-4">Sub Category</label>
 
 
-                        <?php
-                                $CatID = $Product->sub_cat;
-                                $TheCategory = DB::table('sub_category')->where('id',$CatID)->get();
+                    <?php
+                            $CatID = $Product->sub_cat;
+                            $TheCategory = DB::table('sub_category')->where('id',$CatID)->get();
 
-                        ?>
+                    ?>
 
-                        <div class="col-lg-8">
-                            <select name="sub_cat" id="sub_cat"  data-placeholder="Choose Sub Category" class="form-control" tabindex="2">
-                            <option selected="selected" value="{{$Product->sub_cat}}">@foreach($TheCategory as $valuee){{$valuee->name}} @endforeach</option>
+                    <div class="col-lg-8">
+                        <select name="sub_cat" id="sub_cat"  data-placeholder="Choose Sub Category" class="form-control" tabindex="2">
+                           <option selected="selected" value="{{$Product->sub_cat}}">@foreach($TheCategory as $valuee){{$valuee->name}} @endforeach</option>
 
 
-                            </select>
-                        </div>
+                        </select>
                     </div>
-
-
-
-
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Tags</label>
 
+                        <?php
+                                $TagID = $Product->tag;
+                                $TheCategory = DB::table('tags')->where('id',$TagID)->get();
+
+                        ?>
 
 
 
                         <div class="col-lg-8">
                             <select name="tag" data-placeholder="Choose tag" class="form-control chzn-select" tabindex="2">
-
+                              <option selected="selected" value="{{$Product->tag}}">@foreach($TheCategory as $valuee){{$valuee->title}} @endforeach</option>
                                <?php $TheCategoryList = DB::table('tags')->get(); ?>
                                @foreach($TheCategoryList as $value)
                                   <option value="{{$value->id}}">{{$value->title}}</option>
@@ -185,40 +195,103 @@
 
                             </select>
                         </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Replaced With</label>
+
+
+
+
+
+                        <div class="col-lg-8">
+                            <select name="replaced" data-placeholder="Replaced With" class="form-control chzn-select" tabindex="2">
+                              <?php
+                                    $replacedvalue = $Product->replaced;
+                              ?>
+                               @if($replacedvalue == 0)
+                               <option selected="selected" value="0">
+                                   None
+                               </option>
+                               @else
+                               <option selected="selected" value="{{$replacedvalue}}">
+                               <?php $ProductID = app\Product::find($replacedvalue) ?>
+                               {{$ProductID->name}}
+                               </option>
+                               @endif
+
+
+                               <?php $TheCategoryList = DB::table('product')->get(); ?>
+                               @foreach($TheCategoryList as $value)
+                                  <option value="{{$value->id}}">{{$value->name}}</option>
+                               @endforeach
+
+                            </select>
                         </div>
+                        </div>
+
 
 
                     <!-- Brands -->
 
                     <div class="form-group">
-                    <label class="control-label col-lg-4">Brand</label>
+                        <label class="control-label col-lg-4">Brand</label>
 
 
 
 
-                    <div class="col-lg-8">
-                        <select name="brand" data-placeholder="Choose Sub Category" class="form-control chzn-select" tabindex="2">
+                        <div class="col-lg-8">
+                            <select name="brand" data-placeholder="Choose Sub Category" class="form-control chzn-select" tabindex="2">
+                            <option selected="selected" value="{{$Product->brand}}">{{$Product->brand}}</option>
 
+                            <?php $ThebrandList = DB::table('brands')->get(); ?>
+                            @foreach($ThebrandList as $brandvalue)
+                                <option value="{{$brandvalue->name}}">{{$brandvalue->name}}</option>
+                            @endforeach
 
-                           <?php $ThebrandList = DB::table('brands')->get(); ?>
-                           @foreach($ThebrandList as $brandvalue)
-                              <option value="{{$brandvalue->name}}">{{$brandvalue->name}}</option>
-                           @endforeach
-
-                        </select>
+                            </select>
+                        </div>
                     </div>
-                    </div>
+                    <!-- Brands -->
+
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Combo</label>
 
                         <div class="col-lg-8">
                         <div class="make-switch" data-on="success" data-off="danger">
-                                    <input name="combo" type="checkbox" />
+                                    <?php
+                                       $Stock = $Product->combo;
+                                       if($Stock == '1'){
+                                           $stockValue = 'checked';
+                                       }else{
+                                           $stockValue = 'Out of Stock';
+                                       }
+                                    ?>
+                                    <input name="combo" type="checkbox" {{$stockValue}} />
                                 </div>
                         </div>
                     </div>
-                    <!-- Brands -->
+
+                    <!-- Stock Control -->
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">In stock</label>
+
+                        <div class="col-lg-8">
+                        <div class="make-switch" data-on="success" data-off="danger">
+                                    <?php
+                                    $Stock = $Product->stock;
+                                    if($Stock == 'In Stock'){
+                                        $stockValue = 'checked';
+                                    }else{
+                                        $stockValue = 'Out of Stock';
+                                    }
+                                    ?>
+                                    <input name="stock" type="checkbox" {{$stockValue}} />
+                                </div>
+                        </div>
+                    </div>
 
 
 
