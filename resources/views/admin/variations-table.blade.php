@@ -76,7 +76,12 @@
                                                     <br>
                                                     Price : {{$value->price}} <br>
                                                     Web Code : {{$value->code}}<br>
-                                                    Brand:{{$value->brand}}
+                                                    Brand:{{$value->brand}}<br>
+                                                    <?php $GetProduct = DB::table('product')->where('id',$value->product_id)->get(); ?>
+                                                    @foreach ($GetProduct as $GetVar)
+                                                    Parent: <strong>{{$GetVar->name}}</strong>
+                                                    @endforeach
+
 
                                                     </td>
 
