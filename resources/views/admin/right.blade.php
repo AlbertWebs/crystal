@@ -27,6 +27,7 @@
                 <button type="button" onclick="window.open('{{url('/admin/videos')}}','_self')" class="btn btn-primary btn-block"> Videos </button>
                 {{-- <button type="button" onclick="window.open('{{url('/admin/gpc')}}','_self')" class="btn btn-warning btn-block"> GPC</button> --}}
                 <button type="button" onclick="window.open('{{url('/admin/categories')}}','_self')" class="btn btn-warning btn-block"> Categories</button>
+                <button type="button" onclick="window.open('{{url('/admin/variations-table')}}','_self')" class="btn btn-warning btn-block"> All Variations</button>
                 <button type="button" onclick="window.open('{{url('/admin/tags')}}','_self')" class="btn btn-success btn-block"> Tags </button>
                 <button type="button" onclick="window.open('{{url('/admin/brands')}}','_self')" class="btn btn-warning btn-block"> Brands</button>
                 <button type="button" onclick="window.open('{{url('/admin/services')}}','_self')" class="btn btn-warning btn-block"> Services</button>

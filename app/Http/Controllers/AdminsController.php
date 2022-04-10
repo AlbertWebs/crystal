@@ -1381,6 +1381,15 @@ public function Products(){
     return view('admin.products',compact('page_title','Product','page_name'));
 }
 
+public function variations_table(){
+    $Product = Variation::all();
+    $page_title = 'list';
+    $page_name = 'All Products';
+    return view('admin.variations-table',compact('page_title','Product','page_name'));
+}
+
+
+
 
 public function productslte(){
     $Product = Product::all();
