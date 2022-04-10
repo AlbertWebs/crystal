@@ -59,7 +59,7 @@
                                 -<?php
                                     $Original = $BrandsProducts->price_raw;
                                     if($Original < 1){
-                                        $Original == 1;
+                                        $Original = 1;
                                     }
                                     $OfferPrice = $BrandsProducts->price;
                                     $percentage = ($OfferPrice*100)/$Original;
