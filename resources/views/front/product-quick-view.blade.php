@@ -13,14 +13,18 @@
 					<!---->
 					@if($product->offer == 1)
 					<div class="product-label label-sale">
-						-<?php 
+						-<?php
 						     $Original = $product->price_raw;
+                             if($Original < 1)
+                             {
+                                $Original = 1;
+                             }
 							 $OfferPrice = $product->price;
 							 $percentage = ($OfferPrice*100)/$Original;
                              $less = 100-ceil($percentage);
 							 echo $less
 						 ?>%
-						
+
 					</div>
 					@endif
 				</div>
@@ -95,7 +99,7 @@
 					<img src="{{url('/')}}/uploads/product/{{$product->image_three}}" />
 				</div>
 				@endif
-				
+
 			</div>
 		</div><!-- End .product-single-gallery -->
 
@@ -109,41 +113,41 @@
 					<div class="product-ratings">
 						<span class="ratings" style="width:0%"></span><!-- End .ratings -->
 					</div><!-- End .product-ratings -->
-                   
+
 					<a href="#" class="rating-link">( <?php echo count($Reviews); ?> Review(s) )</a>
 					@else
 					<?php $ReviewsAvg = DB::table('reviews')->where('product_id',$product->id)->avg('rating'); ?>
 					<div class="product-ratings">
 						<span class="ratings" style="width:{{$ReviewsAvg}}%"></span><!-- End .ratings -->
 					</div><!-- End .product-ratings -->
-                   
+
 					<a href="#" class="rating-link">( <?php echo count($Reviews); ?> Reviews )</a>
 					@endif
-					
+
 				</div><!-- End .ratings-container -->
 
 				<hr class="short-divider">
 
 				{{-- Check Currency --}}
 				@if (session()->has('rates'))
-                    
+
                         <?php
                              $rates = Session::get('rates');
-                             $Rates = DB::table('rates')->where('rates',$rates)->get();    
+                             $Rates = DB::table('rates')->where('rates',$rates)->get();
                         ?>
-						
+
 						@foreach ($Rates as $rt)
                         <div class="price-box">
 							<span class="product-price"> {{$rt->symbol}}<?php $total = $product->price*$rt->rates; echo ceil($total) ?></span>
 						</div><!-- End .price-box -->
 						@endforeach
-                    
+
                 @else
 
 				@endif
 				{{-- End currency check --}}
-				
-				
+
+
 				<div class="product-desc">
 					<p>
 						{{$product->meta}}
@@ -160,7 +164,7 @@
 					<li>
 						CATEGORY:
 						<strong>
-							
+
 							<?php $Category = DB::table('category')->where('id',$product->cat)->get(); ?>
                             @foreach($Category as $cat)
                             <a target="new" href="{{url('/')}}/products/{{$cat->slung}}" class="product-category">{{$cat->cat}}</a>
@@ -202,7 +206,7 @@
 						@if($product->offer == 1)
 						<del class="old-price"><span>{{$rt->symbol}}<?php $total = $product->price_raw*$rt->rates; echo ceil($total) ?></span></del>
 						<span class="product-price">{{$rt->symbol}}<?php $total = $product->price*$rt->rates; echo ceil($total) ?></span>
-						@else 
+						@else
 						<del class="old-price"><span>KES<?php $total = $product->price_raw*1; echo ceil($total) ?></span></del>
 						<span class="product-price">KES<?php $total = $product->price*1; echo ceil($total) ?></span>
 						@endif
@@ -215,7 +219,7 @@
 						<button class="btn btn-dark" title="Add to Cart"><span class="fas fa-cart-plus"></span> Add to Cart</button>
 					</form>
 
-					
+
 				</div><!-- End .product-action -->
 
 				<hr class="divider mb-0 mt-0">
@@ -229,8 +233,8 @@
 						<a href="https://twitter.com/intent/tweet?text={{$product->name}} {{url('/')}}/product/{{$product->slung}}" class="social-icon social-twitter icon-twitter" target="_blank" title="Twitter"></a>
 						<a href="https://www.linkedin.com/sharing/share-offsite/?url={{url('/')}}/product/{{$product->slung}}" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank"
 							title="Linkedin"></a>
-					
-						
+
+
 					</div><!-- End .social-icons -->
 
 					<a href="#" class="btn-icon-wish add-wishlist" title="Add to Wishlist"><i

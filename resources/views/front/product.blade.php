@@ -451,6 +451,9 @@
                                 <span class="product-label label-sale">
                                 -<?php
                                     $Original = $new->price_raw;
+                                    if($Original < 1){
+                                        $Original = 1;
+                                    }
                                     $OfferPrice = $new->price;
                                     $percentage = ($OfferPrice*100)/$Original;
                                     $less = 100-ceil($percentage);
