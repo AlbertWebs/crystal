@@ -32,7 +32,7 @@
                 </figure>
             </a>
             <div class="category-content">
-                <h3 class="category-titles" style="max-width:500px; text-align:center;">{{$item->name}}</h3>
+                <h3 class="category-titles" style="text-align:center;">{{$item->name}}</h3>
                 <ul class="sub-categories">
                     {{-- {!! $item->meta !!} --}}
                 </ul>
