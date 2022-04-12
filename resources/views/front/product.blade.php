@@ -20,7 +20,7 @@
 
             <div class="product-single-container product-single-default">
                 <div class="cart-message d-none">
-                    <strong class="single-cart-notice">“Product Short Name”</strong>
+                    <strong class="single-cart-notice">“{{$Product->name}}”</strong>
                     <span>has been added to your cart.</span>
                 </div>
 
