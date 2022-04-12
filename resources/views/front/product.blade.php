@@ -286,11 +286,11 @@
                             Information</a>
                     </li>
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" id="product-tab-reviews" data-toggle="tab"
                             href="#product-reviews-content" role="tab" aria-controls="product-reviews-content"
                             aria-selected="false">Reviews (1)</a>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 <div class="tab-content">
@@ -305,7 +305,7 @@
                         aria-labelledby="product-tab-tags">
                         <table class="table table-striped mt-2">
                             <a href="#">
-                                <img width="100" src="{{url('/')}}/uploads/product/{{$Product->image_one}}" alt="Product Manufacturer Image">
+                                <img width="100" src="{{url('/')}}/uploads/product/{{$Product->fb_pixels}}" alt="Product Manufacturer Image">
                             </a>
                             <p><strong>Type</strong> <?php $CategoryName = DB::table('category')->where('id',$Product->cat)->get();  ?> @foreach($CategoryName as $Cat) {{$Cat->cat}} @endforeach</p>
                             <p><strong>Brand</strong> {{$Product->brand}}</p>
@@ -328,7 +328,7 @@
 
                     <div class="tab-pane fade" id="product-reviews-content" role="tabpanel"
                         aria-labelledby="product-tab-reviews">
-                        <div class="product-reviews-content">
+                        {{-- <div class="product-reviews-content">
                             <h3 class="reviews-title">1 review for Men Black Sports Shoes</h3>
 
                             <div class="comment-list">
@@ -423,7 +423,8 @@
                                     <input type="submit" class="btn btn-primary" value="Submit">
                                 </form>
                             </div><!-- End .add-product-review -->
-                        </div><!-- End .product-reviews-content -->
+                        </div> --}}
+                        <!-- End .product-reviews-content -->
                     </div><!-- End .tab-pane -->
                 </div><!-- End .tab-content -->
             </div><!-- End .product-single-tabs -->
