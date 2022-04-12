@@ -387,7 +387,7 @@
                                             <div class="card">
 										        <div class="card-header" id="heading-4">
 										            <h2 class="card-title">
-										                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+										                <a class="collapsed btn btn-outline-primary-2 btn-order btn-block" style="border-radius:10px;" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
 										                    Order With WhatsApp <span class="fab fa-whatsapp"></span>
 										                </a>
 										            </h2>
