@@ -1,8 +1,8 @@
 @extends('front.master-payments')
 @section('content')
-  <!-- offer block end  --> 
+  <!-- offer block end  -->
   <br><br>
-  
+
   <div id="blog-page-contain">
     <div class="container">
       <div class="row">
@@ -56,11 +56,11 @@
                 </div>
                  <div class="form-group">
                      <div class="col-lg-12 col-md-12" id="TheCapcha">
-                        <div class="g-recaptcha" data-sitekey="6Ld1MOEZAAAAAFA0hpFQ4DKf0Si330YkpOpKtrH1" data-callback="correctCaptcha"></div>
+                        <div class="g-recaptcha" data-sitekey="6Leqv2ofAAAAAJId976kwIWten6PR-hft0GJyvI1" data-callback="correctCaptcha"></div>
                         <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en"></script>
                     </div>
                     </div>
-                
+
                 <br><br>
                <div class="clearfix"></div>
                     <div class="col-md-12">
@@ -79,20 +79,20 @@
                 <div class="form-group">
                   <input type="password" name="password" placeholder="Password" id="InputPassword2" class="form-control"  required>
                 </div>
-                
-                
+
+
                      <div class="form-group">
                      <div class="col-lg-12 col-md-12" id="TheCapcha">
-                        <div class="g-recaptcha" data-sitekey="6Ld1MOEZAAAAAFA0hpFQ4DKf0Si330YkpOpKtrH1" data-callback="correctCaptcha"></div>
+                        <div class="g-recaptcha" data-sitekey="6Leqv2ofAAAAAJId976kwIWten6PR-hft0GJyvI1" data-callback="correctCaptcha"></div>
                         <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=en"></script>
                     </div>
                     </div>
-                
+
                 <br><br>
                 <div class="clearfix"></div>
                 <div class="clearfix"></div>
                 <div class="clearfix"></div>
-                
+
                 <div class="col-md-12">
                     <div class="checkout-form-list create-acc">
                         <input id="cbox" type="checkbox" name="remember" value="1">
@@ -108,7 +108,7 @@
                 </div>
               </form>
             </div>
-            
+
         </div>
       </div>
     </div>
