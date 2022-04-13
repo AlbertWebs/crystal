@@ -68,28 +68,28 @@
                                                 @foreach($Products as $Product)
 		                						<tr>
 		                							<td><a href="{{url('/')}}/product/{{$Product->slung}}">{{$Product->name}} <strong>x</strong> {{$CartItem->qty}}</a></td>
-		                							<td>KES {{$CartItem->price}}</td>
+		                							<td><strong>KES</strong> {{$CartItem->price}}</td>
 		                						</tr>
                                                 @endforeach
                                                 @endforeach
 
 
 		                						<tr class="summary-subtotal">
-		                							<td>Subtotal:</td>
+		                							<td><strong>Subtotal:</strong></td>
 		                							<td>{{Cart::subtotal()}}</td>
 		                						</tr><!-- End .summary-subtotal -->
 		                						<tr>
-		                							<td>Shipping:</td>
-		                							<td>KES {{$Shipping}}</td>
+		                							<td><strong>Shipping:</strong></td>
+		                							<td><strong>KES</strong> {{$Shipping}}</td>
 		                						</tr>
                                                 <tr>
-		                							<td>Coupon Discount:</td>
-		                							<td>KES {{ Session::get('coupon')}}</td>
+		                							<td><strong>Coupon Discount:</strong></td>
+		                							<td><strong>KES</strong> {{ Session::get('coupon')}}</td>
 		                						</tr>
 
 		                						<tr class="summary-total">
-		                							<td>Total:</td>
-		                							<td>KES
+		                							<td><strong>Total:</strong></td>
+		                							<td><strong>KES</strong>
                                                         <?php
                                                           //remove comma
                                                           $Subtotal = Cart::subtotal();
@@ -105,164 +105,28 @@
 		                					</tbody>
 		                				</table><!-- End .table table-summary -->
 
+
+
 		                				<div class="accordion-summary" id="accordion-payment">
-										    <div class="card">
-										        <div class="card-header" id="heading-1">
-										            <h2 class="card-title">
-										                <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-										                    M-PESA PayBill
-										                </a>
-										            </h2>
-										        </div><!-- End .card-header -->
-										        <div id="collapse-1" class="collapse" aria-labelledby="heading-1" data-parent="#accordion-payment">
-										            <div class="card-body">
-										                {{--  --}}
-                                                        <p>
-                                                        <ul style="color:#333333">
-                                                            <li style="border-bottom:1px solid #666666">Go to your MPESA menu</li>
-                                                            <li style="border-bottom:1px solid #666666">Select Lipa Na MPESA</li>
-                                                            <li style="border-bottom:1px solid #666666">Select PayBill</li>
-                                                            <?php $SettingsTill = DB::table('sitesettings')->get(); ?>
-                                                            @foreach($SettingsTill as $set)
-                                                            <li style="border-bottom:1px solid #666666">Enter the Business Number <strong>{{$set->till}}</strong> </li>
-                                                            @endforeach
-                                                            <!-- Invoice Number -->
-                                                            <li style="border-bottom:1px solid #666666">Enter Account Number <strong>{{$InvoiceNumber}}</strong></li>
-                                                            <!-- Invoice Number -->
-                                                            <li style="border-bottom:1px solid #666666">Enter Amount KSH
-                                                              <strong>
-                                                              <?php
-                                                                if(Session::has('campaign')){
-                                                                    $cost = Cart::total();
-                                                                    $percentage = 10;
-                                                                    $PrepeTotalCart = str_replace( ',', '', $cost );
-                                                                    $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                    $discount = ($percentage / 100) * $FormatTotalCart;
-                                                                    $TotalCart = ($FormatTotalCart - $discount);
-                                                                }else{
-                                                                    $cost = Cart::total();
-                                                                    $percentage = 10;
-                                                                    $WithCoupon = Session::get('coupon-total');
-                                                                    $PrepeTotalCart = str_replace( ',', '', $WithCoupon );
-                                                                    $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                    $TotalCart = $FormatTotalCart;
-                                                                }
-
-                                                                  $PrepeTotalCart = str_replace( ',', '', $TotalCart );
-                                                                  $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                  $ShippingFee = $Shipping;
-                                                                  $TotalCost = $FormatTotalCart+$ShippingFee;
-                                                                  echo $TotalCost;
-
-                                                              ?>
-                                                              </strong>
-                                                            </li>
-                                                            <li style="border-bottom:1px solid #666666">Then press ok to confirm</li>
-                                                            <li style="border-bottom:1px solid #666666">Enter the transaction code below</li>
-                                                            <li style="border-bottom:1px solid #666666">Click verify to verify payment</li>
-                                                            <form method="POST" action="#" id="verify">
-                                                              {{ csrf_field() }}
-                                                              <input type="hidden" name="invoice" value="{{$InvoiceNumber}}">
-                                                                    <?php
-                                                                        if(Session::has('campaign')){
-                                                                            $cost = Cart::total();
-                                                                            $percentage = 10;
-                                                                            $PrepeTotalCart = str_replace( ',', '', $cost );
-                                                                            $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                            $discount = ($percentage / 100) * $FormatTotalCart;
-                                                                            $TotalCart = ($FormatTotalCart - $discount);
-                                                                        }else{
-                                                                            $cost = Cart::total();
-                                                                            $percentage = 10;
-                                                                            $WithCoupon = Session::get('coupon-total');
-                                                                            $PrepeTotalCart = str_replace( ',', '', $WithCoupon );
-                                                                            $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                            $TotalCart = $FormatTotalCart;
-                                                                        }
-
-                                                                        $PrepeTotalCart = str_replace( ',', '', $TotalCart );
-                                                                        $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                        $ShippingFee = $Shipping;
-                                                                        $TotalCost = $FormatTotalCart+$ShippingFee;
-
-
-                                                                    ?>
-                                                              <input type="hidden" name="amount" value="{{$TotalCost}}">
-                                                              <div class="col-md-12">
-                                                                  <div class="form-group">
-                                                                      <p for="email">Enter Your MPESA Transaction Code <span>*</span></p>
-                                                                      <input type="text" name="TransactionID" class="form-control" required placeholder="NJL4E9WJ96" id="email" autocomplete="off">
-                                                                  </div>
-                                                                <div class="pull-left"><button id="veryfyID" class="btn btn-outline-primary-2 btn-order btn-block" type="submit"> Veryfy Payment &nbsp;<i class="fa fa-arrow-right"></i> </button></div>
-                                                              </div>
-                                                            </form>
-
-                                                        </ul>
-                                                        </p>
-                                                        {{--  --}}
-										            </div><!-- End .card-body -->
-										        </div><!-- End .collapse -->
-										    </div><!-- End .card -->
-
-
 
                                             @if($location == 'Nairobi')
-										    <div class="card">
-										        <div class="card-header" id="heading-3">
-										            <h2 class="card-title">
-										                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-										                    Cash on delivery
-										                </a>
-										            </h2>
-										        </div><!-- End .card-header -->
-										        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-payment">
-										            <div class="card-body">
-                                                        <form method="POST" action="{{url('/shopping-cart/checkout/placeOrder')}}" id="verify">
-                                                            {{ csrf_field() }}
-                                                            <input type="hidden" name="invoice" value="{{$InvoiceNumber}}">
-                                                                  <?php
-                                                                      if(Session::has('campaign')){
-                                                                          $cost = Cart::total();
-                                                                          $percentage = 10;
-                                                                          $PrepeTotalCart = str_replace( ',', '', $cost );
-                                                                          $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                          $discount = ($percentage / 100) * $FormatTotalCart;
-                                                                          $TotalCart = ($FormatTotalCart - $discount);
-                                                                      }else{
-                                                                          $cost = Cart::total();
-                                                                          $percentage = 10;
-                                                                          $WithCoupon = Session::get('coupon-total');
-                                                                          $PrepeTotalCart = str_replace( ',', '', $WithCoupon );
-                                                                          $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                          $TotalCart = $FormatTotalCart;
-                                                                      }
-
-                                                                      $PrepeTotalCart = str_replace( ',', '', $TotalCart );
-                                                                      $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                      $ShippingFee = $Shipping;
-                                                                      $TotalCost = $FormatTotalCart+$ShippingFee;
-
-
-                                                                  ?>
-                                                            <input type="hidden" name="amount" value="{{$TotalCost}}">
-                                                            <div class="col-md-12">
-                                                                {{-- <div class="form-group">
-                                                                    <textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery" spellcheck="false"></textarea>
-                                                                </div> --}}
-                                                            {{--  --}}
-                                                            <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-                                                                <span class="btn-text">Place Order Now</span>
-                                                                <span class="btn-hover-text">Proceed to Chekout</span>
-                                                            </button>
-                                                            {{--  --}}
+                                                <div class="container" style="padding:30px;">
+                                                    <div class="col-lg-12">
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <a href="https://wa.me/254790721397?text=Hello, my name is {{Auth::user()->name}}, I am placing an order for :{{$Product->name}} Quantity:{{$CartItem->qty}}" class="btn btn-primary btn-icon-right btn-rounded btn-md">
+                                                                    <span class="btn-text">Order With WhatsApp</span> <i class="fab fa-whatsapp"></i>
+                                                                </a>
                                                             </div>
-                                                        </form>
-										            </div><!-- End .card-body -->
-										        </div><!-- End .collapse -->
-										    </div><!-- End .card -->
+                                                            <div class="col-lg-6">
+                                                                <a title="Cash On Delivery" href="https://wa.me/254790721397?text=Hello, my name is {{Auth::user()->name}}, I am placing an order for :{{$Product->name}} Quantity:{{$CartItem->qty}}" class="btn btn-primary btn-icon-right btn-rounded btn-md">
+                                                                    <span class="btn-text">Place Order Now</span> <i class="fa fa-shopping-cart"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
 
-                                            {{--  --}}
-
+                                                    </div>
+                                                </div>
                                             @endif
 
 
@@ -296,23 +160,23 @@
                                                     @foreach($Products as $Product)
                                                     <tr>
                                                         <td><a href="{{url('/')}}/product/{{$Product->slung}}">{{$Product->name}} <strong>x</strong> {{$CartItem->qty}}</a></td>
-                                                        <td>KES {{$CartItem->price}}</td>
+                                                        <td><strong>KES</strong> {{$CartItem->price}}</td>
                                                     </tr>
                                                     @endforeach
                                                 @endforeach
 
 
 		                						<tr class="summary-subtotal">
-		                							<td>Subtotal:</td>
+		                							<td><strong>Subtotal:</strong></td>
 		                							<td>{{Cart::subtotal()}}</td>
 		                						</tr><!-- End .summary-subtotal -->
 		                						<tr>
-		                							<td>Shipping:</td>
-		                							<td>KES {{$Shipping}}</td>
+		                							<td><strong>Shipping:</strong></td>
+		                							<td><strong>KES</strong> {{$Shipping}}</td>
 		                						</tr>
 		                						<tr class="summary-total">
-		                							<td>Total:</td>
-		                							<td>KES
+		                							<td><strong>Total:</strong></td>
+		                							<td><strong>KES</strong>
                                                         <?php
                                                           //remove comma
                                                           $Subtotal = Cart::subtotal();
@@ -331,100 +195,31 @@
 
 
                                             @if($location == 'Nairobi')
-                                            <div class="card">
-										        <div class="card-header" id="heading-3">
-										            <h2 class="card-title">
-										                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-										                    Cash on delivery
-										                </a>
-										            </h2>
-										        </div><!-- End .card-header -->
-										        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-payment">
-										            <div class="card-body">
-                                                        <form method="POST" action="{{url('/shopping-cart/checkout/placeOrder')}}" id="verify">
-                                                            {{ csrf_field() }}
-                                                            <input type="hidden" name="invoice" value="{{$InvoiceNumber}}">
-                                                                  <?php
-                                                                      if(Session::has('campaign')){
-                                                                          $cost = Cart::total();
-                                                                          $percentage = 10;
-                                                                          $PrepeTotalCart = str_replace( ',', '', $cost );
-                                                                          $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                          $discount = ($percentage / 100) * $FormatTotalCart;
-                                                                          $TotalCart = ($FormatTotalCart - $discount);
-                                                                      }else{
-                                                                          $cost = Cart::total();
-                                                                          $percentage = 10;
-                                                                          $PrepeTotalCart = str_replace( ',', '', $cost );
-                                                                          $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                          $TotalCart = $FormatTotalCart;
-                                                                      }
 
-                                                                      $PrepeTotalCart = str_replace( ',', '', $TotalCart );
-                                                                      $FormatTotalCart = round($PrepeTotalCart, 0);
-                                                                      $ShippingFee = $Shipping;
-                                                                      $TotalCost = $FormatTotalCart+$ShippingFee;
-
-
-                                                                  ?>
-                                                            <input type="hidden" name="amount" value="{{$TotalCost}}">
-                                                            <div class="col-md-12">
-                                                                {{-- <div class="form-group">
-                                                                    <textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery" spellcheck="false"></textarea>
-                                                                </div> --}}
-                                                            {{--  --}}
-                                                            <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-                                                                <span class="btn-text">Place Order Now</span>
-                                                                <span class="btn-hover-text">Proceed to Chekout</span>
-                                                            </button>
-                                                            {{--  --}}
+                                                <div class="container" style="padding:30px;">
+                                                    {{-- <div class="col-lg-12"> --}}
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <a href="https://wa.me/254790721397?text=Hello, my name is {{Auth::user()->name}}, I am placing an order for :{{$Product->name}} Quantity:{{$CartItem->qty}}" class="btn btn-primary btn-icon-right btn-rounded btn-md">
+                                                                    <span class="btn-text">Order With WhatsApp</span> <i class="fab fa-whatsapp"></i>
+                                                                </a>
                                                             </div>
-                                                        </form>
-										            </div><!-- End .card-body -->
-										        </div><!-- End .collapse -->
-										    </div><!-- End .card -->
-                                            {{--  --}}
-                                            <div class="card">
-										        <div class="card-header" id="heading-4">
-										            <h2 class="card-title">
-										                <a class="collapsed btn btn-outline-primary-2 btn-order btn-block" style="border-radius:10px;" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-										                    Order With WhatsApp <span class="fab fa-whatsapp"></span>
-										                </a>
-										            </h2>
-										        </div><!-- End .card-header -->
-										        <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-payment">
-										            <div class="card-body">
-                                                        <form method="POST" action="{{url('/shopping-cart/checkout/placeOrder')}}" id="verify">
-                                                            @foreach($CartItems as $CartItem)
-                                                            <?php
-                                                                            $Products = DB::table('product')->where('id',$CartItem->id)->get();
-                                                            ?>
-                                                            @foreach($Products as $Product)
-                                                            {{-- <tr>
-                                                                <td><a href="{{url('/')}}/product/{{$Product->slung}}">{{$Product->name}} <strong>x</strong> {{$CartItem->qty}}</a></td>
-                                                                <td>KES {{$CartItem->price}}</td>
-                                                            </tr> --}}
-                                                            @endforeach
-                                                            @endforeach
-
-                                                            <a href="https://wa.me/254790721397?text=Hello, my name is {{Auth::user()->name}}, I am placing an order for :{{$Product->name}} Quantity:{{$CartItem->qty}}" class="btn btn-outline-primary-2 btn-order btn-block">
-                                                                <span class="btn-text">Place Order Now</span>
-                                                            </a>
-                                                            {{--  --}}
+                                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                                <a title="Cash On Delivery" href="{{url('/')}}/shopping-cart/checkout/placeOrder" class="btn btn-primary btn-icon-right btn-rounded btn-md">
+                                                                    <span class="btn-text">Place Order Now</span> <i class="fa fa-shopping-cart"></i>
+                                                                </a>
                                                             </div>
-                                                        </form>
-										            </div><!-- End .card-body -->
-										        </div><!-- End .collapse -->
-										    </div><!-- End .card -->
-                                            {{--  --}}
+                                                        </div>
+
+                                                    {{-- </div> --}}
+                                                </div>
+
+
                                             @endif
 
 
 										</div><!-- End .accordion -->
-                                        {{-- <button href="{{url('/')}}/dashboard" type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
-		                					<span class="btn-text"> Save and Proceed <i class="icon-arrow-right"></i></span>
-		                					<span class="btn-hover-text">Proceed to Place Order</span>
-                                        </button> --}}
+
 
 
 		                			</div><!-- End .summary -->
