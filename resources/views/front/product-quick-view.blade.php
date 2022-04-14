@@ -178,45 +178,17 @@
 				</ul>
 
 				{{-- Variations here --}}
-				<div class="product-filters-container">
-					<div class="product-single-filter">
-						<label>Variations:</label>
-						<ul class="config-size-list">
-							<li><a href="javascript:;" class="d-flex align-items-center justify-content-center">XL</a>
-							</li>
-							<li class=""><a href="javascript:;"
-									class="d-flex align-items-center justify-content-center">L</a></li>
-							<li class=""><a href="javascript:;"
-									class="d-flex align-items-center justify-content-center">M</a></li>
-							<li class=""><a href="javascript:;"
-									class="d-flex align-items-center justify-content-center">S</a></li>
-						</ul>
-					</div>
 
-					<div class="product-single-filter">
-						<label></label>
-						<a class="font1 text-uppercase clear-btn" href="#">Clear</a>
-					</div>
-					<!---->
-				</div>
 				{{-- Variations --}}
 
 				<div class="product-action">
-					<div class="price-box product-filtered-price">
-						@if($product->offer == 1)
-						<del class="old-price"><span>{{$rt->symbol}}<?php $total = $product->price_raw*$rt->rates; echo ceil($total) ?></span></del>
-						<span class="product-price">{{$rt->symbol}}<?php $total = $product->price*$rt->rates; echo ceil($total) ?></span>
-						@else
-						<del class="old-price"><span>KES<?php $total = $product->price_raw*1; echo ceil($total) ?></span></del>
-						<span class="product-price">KES<?php $total = $product->price*1; echo ceil($total) ?></span>
-						@endif
-					</div>
+
                     <form>
 						<div class="product-single-qty">
 							<input class="horizontal-quantity form-control" type="text" />
 						</div><!-- End .product-single-qty -->
 
-						<button class="btn btn-dark" title="Add to Cart"><span class="fas fa-cart-plus"></span> Add to Cart</button>
+						<a href="{{url('/')}}/shopping-cart/add-to-cart/{{$product->id}}" class="btn btn-dark" title="Add to Cart"><span class="fas fa-cart-plus"></span> Add to Cart</a>
 					</form>
 
 
