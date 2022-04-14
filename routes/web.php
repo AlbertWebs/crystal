@@ -66,7 +66,7 @@ Route::group(['prefix'=>'products'], function(){
 
 // Single Product
 Route::get('product/{slung}', [App\Http\Controllers\HomeController::class, 'product_single'])->name('product-single');
-Route::get('product-variation/{slung}', [App\Http\Controllers\HomeController::class, 'product_single_variation'])->name('product-single');
+Route::get('product-variation/{slung}', [App\Http\Controllers\HomeController::class, 'product_single_variation'])->name('product-single-variation');
 
 // Product Helpers
 Route::get('/popup/{slung}', [App\Http\Controllers\HomeController::class, 'popup'])->name('popup');

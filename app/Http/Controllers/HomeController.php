@@ -447,9 +447,11 @@ class HomeController extends Controller
     }
 
     public function product_single_variation($title){
+        $Products = DB::table('variations')->where('slung',$title)->get();
+
         Session::forget('Category');
         $SEOSettings = DB::table('seosettings')->get();
-        $Products = DB::table('product')->where('slung',$title)->get();
+
         foreach ($Products as $key => $value) {
             foreach ($SEOSettings as $Settings) {
                 SEOMeta::setTitle(' '.$value->name.' | ' . $Settings->sitename .'');
@@ -464,7 +466,7 @@ class HomeController extends Controller
                 $page_name = 'details';
                 $Copyright = DB::table('copyright')->get();
                 $page_title = $title;
-                $Products = DB::table('variations')->where('slung',$title)->get();
+
                 $keywords = $value->name;
                 return view('front.product-variation', compact('keywords','page_title', 'Products', 'page_name'));
             }

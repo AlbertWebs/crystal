@@ -214,7 +214,7 @@
                                 <strong><a href="#" class="product-category">{{$Product->brand}}</a></strong>,
                                 {{-- <strong><a href="#" class="product-category">Nissan</a></strong> --}}
                             </li>
-                            <?php $Variations = DB::table('variations')->where('product_id',$Product->id)->get();  ?>
+                            <?php $Variations = DB::table('variations')->where('product_id',$Product->product_id)->get();  ?>
                             @if($Variations->isEmpty())
 
                             @else
