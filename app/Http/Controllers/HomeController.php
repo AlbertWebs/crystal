@@ -446,6 +446,35 @@ class HomeController extends Controller
 
     }
 
+    public function product_single_variation($title){
+        Session::forget('Category');
+        $SEOSettings = DB::table('seosettings')->get();
+        $Products = DB::table('product')->where('slung',$title)->get();
+        foreach ($Products as $key => $value) {
+            foreach ($SEOSettings as $Settings) {
+                SEOMeta::setTitle(' '.$value->name.' | ' . $Settings->sitename .'');
+                SEOMeta::setDescription(''.$value->meta.'');
+                SEOMeta::setCanonical('' . $Settings->url . '/product-variation/'.$title.'');
+                OpenGraph::setDescription(''.$value->meta.'');
+                OpenGraph::setTitle(' '.$value->name.' | ' . $Settings->sitename .'');
+                OpenGraph::setUrl('' . $Settings->url . '/product-variation/'.$title.'');
+                OpenGraph::addProperty('type', 'product.item');
+                Twitter::setTitle('' . $Settings->sitename. '');
+                Twitter::setSite('@crystalcaraudio');
+                $page_name = 'details';
+                $Copyright = DB::table('copyright')->get();
+                $page_title = $title;
+                $Products = DB::table('variations')->where('slung',$title)->get();
+                $keywords = $value->name;
+                return view('front.product-variation', compact('keywords','page_title', 'Products', 'page_name'));
+            }
+        }
+
+
+    }
+
+
+
 
     public function terms()
     {
