@@ -1,7 +1,9 @@
+
 <footer class="footer font2">
     <div class="footer-top">
         <div class="instagram-box bg-dark">
             <div class="row m-0 align-items-center">
+                @isset($data['instagram_feed'])
                 <div class="instagram-follow col-md-4 col-lg-3 d-flex align-items-center">
                     <div class="info-box">
                         <i class="fab fa-instagram text-white mr-4"></i>
@@ -38,8 +40,10 @@
                                 }
                             }
                         }">
-                        <img src="{{asset('theme/assets/images/demoes/demo27/instagram/instagram1.jpg')}}" alt="instagram"
+                        @foreach($data['instagram_feed'] as $item)
+                        <img src="{{$item['url']}}" alt="Amani Vehicle Sounds"
                             width="240" height="240">
+                        @endforeach
                         <img src="{{asset('theme/assets/images/demoes/demo27/instagram/instagram2.jpg')}}" alt="instagram"
                             width="240" height="240">
                         <img src="{{asset('theme/assets/images/demoes/demo27/instagram/instagram3.jpg')}}" alt="instagram"
@@ -52,6 +56,8 @@
                             width="240" height="240">
                     </div>
                 </div>
+                @endisset
+
             </div>
         </div>
         <div class="container">
@@ -170,3 +176,4 @@
         </div><!-- End .footer-bottom -->
     </div><!-- End .container -->
 </footer><!-- End .footer -->
+

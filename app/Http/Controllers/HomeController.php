@@ -24,6 +24,9 @@ use App\Models\Newsletters;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use AmrShawky\LaravelCurrency\Facade\Currency;
+use Vinkla\Instagram\Instagram;
+use Dymantic\InstagramFeed\Profile;
+use Instagram\Api;
 class HomeController extends Controller
 {
     public function index_home(){
@@ -270,9 +273,14 @@ class HomeController extends Controller
             $keywords = 'Car Sound Systems, Car Alarm Systems, Car Surveillance Systems,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers';
 
+            $profile = \Dymantic\InstagramFeed\Profile::where('username', 'stagepassav')->first();
+            $data = [
+                'instagram_feed' => Profile::where('username', 'stagepassav')->first()->feed(24),
+            ];
+
             // infinite Scroll
             $Categories = DB::table('product')->paginate('24');
-            return view('front.categories', compact('keywords','page_title','page_name','Categories'));
+            return view('front.categories', compact('keywords','page_title','page_name','Categories','data'));
     }
 
     }

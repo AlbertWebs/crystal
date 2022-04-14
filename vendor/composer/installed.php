@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '7e33c10264a2edcb7b1362d09cc025ab7e9cb26c',
+    'reference' => '687e9e63e98ec7b9953ef21976554679113c20f2',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -168,6 +168,15 @@
       array (
       ),
       'reference' => '7a8c6e56ab3ffcc538d05e8155bb42269abf1a0c',
+    ),
+    'dymantic/laravel-instagram-feed' => 
+    array (
+      'pretty_version' => 'v2.6.0',
+      'version' => '2.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '88d5c69034a8690b0056cb91f8139cfadc552724',
     ),
     'egulias/email-validator' => 
     array (
@@ -544,7 +553,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '7e33c10264a2edcb7b1362d09cc025ab7e9cb26c',
+      'reference' => '687e9e63e98ec7b9953ef21976554679113c20f2',
     ),
     'laravel/sail' => 
     array (

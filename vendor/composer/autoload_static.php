@@ -17,10 +17,10 @@ class ComposerStaticInitb7cc547abc509b8b4ce818cc91d47960
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
@@ -169,6 +169,7 @@ class ComposerStaticInitb7cc547abc509b8b4ce818cc91d47960
         ),
         'D' => 
         array (
+            'Dymantic\\InstagramFeed\\' => 23,
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Inflector\\' => 19,
@@ -522,6 +523,10 @@ class ComposerStaticInitb7cc547abc509b8b4ce818cc91d47960
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+        ),
+        'Dymantic\\InstagramFeed\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src',
         ),
         'Dotenv\\' => 
         array (
@@ -1258,6 +1263,20 @@ class ComposerStaticInitb7cc547abc509b8b4ce818cc91d47960
         'Dotenv\\Util\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Regex.php',
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'Dymantic\\InstagramFeed\\AccessToken' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/AccessToken.php',
+        'Dymantic\\InstagramFeed\\AccessTokenController' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/AccessTokenController.php',
+        'Dymantic\\InstagramFeed\\Commands\\CreateBasicProfile' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Commands/CreateBasicProfile.php',
+        'Dymantic\\InstagramFeed\\Commands\\RefreshAuthorizedFeeds' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Commands/RefreshAuthorizedFeeds.php',
+        'Dymantic\\InstagramFeed\\Commands\\RefreshTokens' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Commands/RefreshTokens.php',
+        'Dymantic\\InstagramFeed\\Exceptions\\AccessTokenRequestException' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Exceptions/AccessTokenRequestException.php',
+        'Dymantic\\InstagramFeed\\Exceptions\\BadTokenException' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Exceptions/BadTokenException.php',
+        'Dymantic\\InstagramFeed\\Exceptions\\RequestTokenException' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Exceptions/RequestTokenException.php',
+        'Dymantic\\InstagramFeed\\Instagram' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Instagram.php',
+        'Dymantic\\InstagramFeed\\InstagramFeedServiceProvider' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/InstagramFeedServiceProvider.php',
+        'Dymantic\\InstagramFeed\\Mail\\FeedRefreshFailed' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Mail/FeedRefreshFailed.php',
+        'Dymantic\\InstagramFeed\\MediaParser' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/MediaParser.php',
+        'Dymantic\\InstagramFeed\\Profile' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/Profile.php',
+        'Dymantic\\InstagramFeed\\SimpleClient' => __DIR__ . '/..' . '/dymantic/laravel-instagram-feed/src/SimpleClient.php',
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailValidator.php',

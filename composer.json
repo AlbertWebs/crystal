@@ -9,6 +9,7 @@
         "amrshawky/laravel-currency": "^4.0",
         "artesaos/seotools": "^0.20.2",
         "bumbummen99/shoppingcart": "^4.0",
+        "dymantic/laravel-instagram-feed": "^2.6",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "javcorreia/laravel-wishlist": "^2.0",
