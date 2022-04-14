@@ -749,14 +749,14 @@ class AdminsController extends Controller
     }
 
     public function add_Slider(Request $request){
-        $path = 'uploads/slider';
+        $path = 'uploads/sliders';
         $file = $request->file('image');
         $filename = $file->getClientOriginalName();
         $file->move($path, $filename);
         $image = $filename;
         $Slider = new Slider;
-        $Slider->name = $request->name;
-        $Slider->content = $request->content;
+
+        $Slider->product_id = $request->product_id;
         $Slider->image = $image;
         $Slider->save();
         Session::flash('message', "Slider Image Has Been Added");
@@ -771,7 +771,7 @@ class AdminsController extends Controller
     }
 
     public function edit_Slider(Request $request, $id){
-        $path = 'uploads/slider';
+        $path = 'uploads/sliders';
         if(isset($request->image)){
             $file = $request->file('image');
             $filename = $file->getClientOriginalName();
@@ -781,17 +781,17 @@ class AdminsController extends Controller
             $image = $request->image_cheat;
         }
         $updateDetails = array(
-            'name'=>$request->name,
-            'content' =>$request->content,
+
+            'product_id' =>$request->product_id,
             'image' =>$image
         );
-        DB::table('slider')->where('id',$id)->update($updateDetails);
+        DB::table('sliders')->where('id',$id)->update($updateDetails);
         Session::flash('message', "Changes have been saved");
         return Redirect::back();
     }
 
     public function deleteSlider($id){
-        DB::table('slider')->where('id',$id)->delete();
+        DB::table('sliders')->where('id',$id)->delete();
         return Redirect::back();
     }
 

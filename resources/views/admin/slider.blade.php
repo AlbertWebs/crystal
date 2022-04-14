@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="wrap" >
-        
+
 
         <!-- HEADER SECTION -->
         @include('admin.top')
@@ -18,11 +18,11 @@
 
         <!--PAGE CONTENT -->
         <div id="content">
-             
+
             <div class="inner" style="min-height: 700px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        
+
                         <center><h2> Slider Images </h2></center>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 </div>
                   <!--END BLOCK SECTION -->
                 <hr />
-                 
+
                  <!-- COMMENT AND NOTIFICATION  SECTION -->
                    <div class="row">
                         <div class="col-lg-12">
@@ -54,7 +54,7 @@
                                                     <th>Name</th>
                                                     <th>Image</th>
                                                     <th>Edit</th>
-                                                   
+
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
@@ -63,30 +63,30 @@
                                                 <tr class="odd gradeX">
                                                     <td>{{$value->id}}</td>
                                                     <td>{{$value->name}}</td>
-                                                    
-                                                    <td><center><img width="200" height="200" src="{{url('/')}}/uploads/slider/{{$value->image}}"></center></td>
-                                                    
+
+                                                    <td><center><img width="100%" height="auto" src="{{url('/')}}/uploads/slider/{{$value->image}}"></center></td>
+
                                                     <td class="center"><a href="{{url('/admin')}}/editSlider/{{$value->id}}"   class="btn btn-info"><i class="icon-pencil icon-white"></i> Edit</a></td>
-                                                  
+
                                                     <td class="center"><a onclick="return confirm('Delete This Item?')" href="{{url('/admin')}}/deleteSlider/{{$value->id}}"   class="btn btn-danger"><i class="icon-trash icon-white"></i> Del</a></td>
-                                                  
+
                                                 </tr>
                                             @endforeach
-                                                
+
                                             </tbody>
                                         </table>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 <!-- END COMMENT AND NOTIFICATION  SECTION -->
-                
 
 
 
-                
+
+
             </div>
 
         </div>

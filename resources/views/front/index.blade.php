@@ -1,28 +1,44 @@
 @extends('front.master')
 @section('content')
 <main class="main">
+
+    <?php $Slider = DB::table('sliders')->get(); ?>
+    @if($Slider->isEmpty())
+
+    @else
     <section class="home-slider owl-carousel owl-theme text-uppercase nav-big bg-gray" data-owl-options="{
         'loop': false
     }">
 
 
-    <div class="home-slide home-slide2 banner">
-        <img class="slide-bg" src="{{asset('theme/assets/images/demoes/demo14/slider/slide-2.jpg')}}" alt="slider image" width="1120" height="500" style="background-color: #eee;">
 
+    @foreach ($Slider as $slider)
+
+    <div class="home-slide home-slide2 banner">
+        <img class="slide-bg" src="{{url('/')}}/uploads/sliders/{{$slider->image}}" alt="slider image" width="1120" height="500" style="background-color: #eee;">
+        <?php $Sliders = DB::table('product')->where('id',$slider->product_id)->get(); ?>
+        @foreach ($Sliders as $sliders)
         <div class="container">
             <div class="banner-layer banner-layer-middle banner-layer-left">
-                <h4 class="mb-0">Extra</h4>
-                <h3 class="m-b-2">20% off</h3>
-                <h3 class="m-b-3 heading-border" style="color:#1DA098">Accessories</h3>
-                <h2 class="m-b-4">Drones on sale</h2>
-                <a href="#" class="btn btn-block btn-dark" style="background-color: #1DA098">Shop All Sale</a>
+                <h4 class="mb-0">{{$sliders->brand}}</h4>
+                {{-- <h3 class="m-b-2">20% off</h3> --}}
+                <?php $Categories = DB::table('category')->where('id',$sliders->cat)->get(); ?>
+                @foreach($Categories as $cat)
+                <h3 class="m-b-3 heading-border" style="color:#1DA098">{{$cat->cat}}</h3>
+                @endforeach
+                <h2 class="m-b-4">{{$sliders->name}}</h2>
+                <a href="{{url('/')}}/product/{{$sliders->slung}}" class="btn btn-block btn-dark" style="background-color: #1DA098">Shop All Sale</a>
             </div>
         </div>
+        @endforeach
         <!-- End .container -->
     </div>
+    @endforeach
+
     <!-- End .home-slide -->
     <hr>
 </section>
+@endif
 <!-- End .home-slider -->
     {{-- @include('front.home-slider') --}}
 

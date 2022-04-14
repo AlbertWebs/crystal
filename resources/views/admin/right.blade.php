@@ -25,7 +25,7 @@
                 <button type="button" onclick="window.open('{{url('/admin/invoices')}}','_self')" class="btn btn-danger btn-block"> Invoices </button>
                 <button type="button" onclick="window.open('{{url('/admin/banner')}}','_self')" class="btn btn-primary btn-block"> Banners</button>
                 <button type="button" onclick="window.open('{{url('/admin/videos')}}','_self')" class="btn btn-primary btn-block"> Videos </button>
-                {{-- <button type="button" onclick="window.open('{{url('/admin/gpc')}}','_self')" class="btn btn-warning btn-block"> GPC</button> --}}
+                <button type="button" onclick="window.open('{{url('/admin/slider')}}','_self')" class="btn btn-warning btn-block"> Slider</button>
                 <button type="button" onclick="window.open('{{url('/admin/categories')}}','_self')" class="btn btn-warning btn-block"> Categories</button>
                 <button type="button" onclick="window.open('{{url('/admin/variations-table')}}','_self')" class="btn btn-warning btn-block"> All Variations</button>
                 <button type="button" onclick="window.open('{{url('/admin/tags')}}','_self')" class="btn btn-success btn-block"> Tags </button>

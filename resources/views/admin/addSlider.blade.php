@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="wrap" >
-        
+
 
         <!-- HEADER SECTION -->
         @include('admin.top')
@@ -18,13 +18,13 @@
 
         <!--PAGE CONTENT -->
         <div id="content">
-             
+
             <div class="inner" style="min-height: 700px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        
+
                         <center><h2> Add Slider </h2></center>
-                        
+
                     </div>
                 </div>
                   <hr />
@@ -39,13 +39,13 @@
                   <!--END BLOCK SECTION -->
                 <hr />
                    <!-- CHART & CHAT  SECTION -->
-              
+
                  <!--END CHAT & CHAT SECTION -->
-               
+
                   <!-- Inner Content Here -->
-                 
+
             <div class="inner">
-                
+
 
               <div class="row">
                <center>
@@ -55,7 +55,7 @@
                  </center>
 
                  <form class="form-horizontal" method="post"  action="{{url('/admin/add_Slider')}}" enctype="multipart/form-data">
-                    
+
                  <div class="form-group">
                         <label for="text1" class="control-label col-lg-4">Name</label>
 
@@ -64,35 +64,24 @@
                         </div>
                     </div>
 
-          
-                        <div class="col-lg-12">
-                            <div class="box">
-                                <header>
-                                    <div class="icons"><i class="icon-th-large"></i></div>
-                                    <h5>Slder Description</h5>
-                                    <ul class="nav pull-right">
-                                        <li>
-                                            <div class="btn-group">
-                                                <a class="accordion-toggle btn btn-xs minimize-box" data-toggle="collapse"
-                                                    href="#div-1">
-                                                    <i class="icon-minus"></i>
-                                                </a>
-                                                 <button class="btn btn-danger btn-xs close-box">
-                                                    <i
-                                                        class="icon-remove"></i>
-                                                </button>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </header>
-                                <div id="div-1" class="body collapse in">
-                                    
-                                        <textarea name="content" id="wysihtml5" class="form-control" rows="10"></textarea>
 
-                                    
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Product</label>
+
+                        <div class="col-lg-8">
+                            <select name="product_id" data-placeholder="Replaced With" class="form-control chzn-select" tabindex="2">
+
+
+
+                               <?php $TheCategoryList = DB::table('product')->get(); ?>
+                               @foreach($TheCategoryList as $value)
+                                  <option value="{{$value->id}}">{{$value->name}}</option>
+                               @endforeach
+
+                            </select>
                         </div>
+                        </div>
+
                     </div>
                     <center>
                     <div class="form-group col-lg-12">
@@ -113,10 +102,10 @@
                     <div class="col-lg-12 text-center">
                       <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i> Add Slider</button>
                     </div>
-                    
-                    
+
+
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    
+
                 <form>
 
 
@@ -125,7 +114,7 @@
 
 
 
-                
+
             </div>
 
         </div>

@@ -307,7 +307,7 @@ Route::get('/galleryList',  [AdminsController::class, 'galleryList'])->middlewar
 Route::post('/add_Gallery',  [AdminsController::class, 'add_Gallery'])->middleware('is_admin');
 
 //Slider
-Route::get('/slider', [AdminsController::class, 'slider'])->middleware('is_admin');
+Route::get('/slider ', [AdminsController::class, 'slider'])->middleware('is_admin');
 Route::get('/editSlider/{id}', [AdminsController::class, 'editSlider'])->middleware('is_admin');
 Route::get('/deleteSlider/{id}', [AdminsController::class, 'deleteSlider'])->middleware('is_admin');
 Route::post('/edit_Slider/{id}',  [AdminsController::class, 'edit_Slider'])->middleware('is_admin');

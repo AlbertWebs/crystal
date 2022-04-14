@@ -693,6 +693,7 @@ class ComposerStaticInitb7cc547abc509b8b4ce818cc91d47960
         'App\\Models\\Review' => __DIR__ . '/../..' . '/app/Models/Review.php',
         'App\\Models\\STKMpesaTransaction' => __DIR__ . '/../..' . '/app/Models/STKMpesaTransaction.php',
         'App\\Models\\Search' => __DIR__ . '/../..' . '/app/Models/Search.php',
+        'App\\Models\\Slider' => __DIR__ . '/../..' . '/app/Models/Slider.php',
         'App\\Models\\Special' => __DIR__ . '/../..' . '/app/Models/Special.php',
         'App\\Models\\Sub_Category' => __DIR__ . '/../..' . '/app/Models/Sub_Category.php',
         'App\\Models\\Subscriber' => __DIR__ . '/../..' . '/app/Models/Subscriber.php',

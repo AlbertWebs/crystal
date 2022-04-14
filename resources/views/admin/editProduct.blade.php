@@ -330,7 +330,7 @@
                                </option>
                                @else
                                <option selected="selected" value="{{$replacedvalue}}">
-                               <?php $ProductID = app\Product::find($replacedvalue) ?>
+                               <?php $ProductID = app\Models\Product::find($replacedvalue) ?>
                                {{$ProductID->name}}
                                </option>
                                @endif
