@@ -273,14 +273,14 @@ class HomeController extends Controller
             $keywords = 'Car Sound Systems, Car Alarm Systems, Car Surveillance Systems,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers';
 
-            $profile = \Dymantic\InstagramFeed\Profile::where('username', 'stagepassav')->first();
-            $data = [
-                'instagram_feed' => Profile::where('username', 'stagepassav')->first()->feed(24),
-            ];
+            // $profile = \Dymantic\InstagramFeed\Profile::where('username', 'stagepassav')->first();
+            // $data = [
+            //     'instagram_feed' => Profile::where('username', 'stagepassav')->first()->feed(24),
+            // ];
 
             // infinite Scroll
             $Categories = DB::table('product')->paginate('24');
-            return view('front.categories', compact('keywords','page_title','page_name','Categories','data'));
+            return view('front.categories', compact('keywords','page_title','page_name','Categories'));
     }
 
     }
