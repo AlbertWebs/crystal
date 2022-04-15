@@ -71,7 +71,7 @@
                 <div class="product-category appear-animate animated fadeInUpShorter appear-animation-visible" data-animation-name="fadeInUpShorter" style="animation-duration: 1000ms;">
                    <a href="{{url('/')}}/products/{{$item->slung}}">
                       <figure>
-                         <img src="{{url('/')}}/uploads/categories/{{$item->image}}" alt="{{$item->cat}}" width="280" height="240">
+                         <img style="border-radius:10px;" src="{{url('/')}}/uploads/categories/{{$item->image}}" alt="{{$item->cat}}" width="280" height="240">
                       </figure>
                       <div class="category-content" style="text-align:center">
                          <h3>{{$item->cat}}</h3>

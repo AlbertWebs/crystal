@@ -42,7 +42,7 @@
             <h4 class="heading-bottom-border text-uppercase">Categories</h4>
             <div class="row">
                 @foreach ($AllCategories as $item)
-                <div class="col-lg-2 col-sm-4 col-6"  style="margin:0 auto; border:2px solid #DEB992; padding-bottom:10px; border-radius:10px;">
+                <div class="col-lg-2 col-sm-4 col-6"  style="margin:0 auto;  padding-bottom:10px; border-radius:10px;">
                     <div class="product-category">
                         <a href="{{url('/')}}/products/{{$item->slung}}">
                             <figure>
