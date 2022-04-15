@@ -303,8 +303,12 @@
                             <a href="{{url('/')}}/product/{{$Product->slung}}">{{$Product->name}}</a>
                             online from
                             <a href="{{url('/')}}">Crystal Car Audio</a> , <a href="{{url('/')}}/products/{{$CategroyName->slung}}">{{$CategroyName->cat}}</a> category ,
-                            <a href="{{url('/')}}//products/brand/{{$Product->brand}}">{{$Product->brand}}</a>
-                            brand and we shall deliver to your preffered location in Kenya & beyond.
+                            @if($Product->brand == 'Others')
+
+                            @else
+                            <a href="{{url('/')}}//products/brand/{{$Product->brand}}">{{$Product->brand}}</a> brand
+                            @endif
+                             and we shall deliver to your preffered location in Kenya & beyond.
                             </h1>
 
                         </div><!-- End .product-desc-content -->
