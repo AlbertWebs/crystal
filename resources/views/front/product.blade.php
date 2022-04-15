@@ -298,6 +298,15 @@
                         aria-labelledby="product-tab-desc">
                         <div class="product-desc-content">
                             {!!html_entity_decode($Product->content)!!}
+                            <h1 style="font-size: 1.4rem; font-weight:600">
+                                Shop
+                            <a href="{{url('/')}}/product/{{$Product->slung}}">{{$Product->name}}</a>
+                            online from
+                            <a href="{{url('/')}}">Crystal Car Audio</a> , <a href="{{url('/')}}/products/{{$CategroyName->slung}}">{{$CategroyName->cat}}</a> category ,
+                            <a href="{{url('/')}}//products/brand/{{$Product->brand}}">{{$Product->brand}}</a>
+                            brand and we shall deliver to your preffered location in Kenya & beyond.
+                            </h1>
+
                         </div><!-- End .product-desc-content -->
                     </div><!-- End .tab-pane -->
 
@@ -433,7 +442,7 @@
                 <h2 class="section-title">Related Products</h2>
 
                 <div class="products-slider owl-carousel owl-theme dots-top dots-small dots-simple">
-                    <?php $Relevant = DB::table('product')->where('cat',$Product->cat)->get(); ?>
+                    <?php $Relevant = DB::table('product')->where('cat',$Product->cat)->inRandomOrder()->limit('15')->get(); ?>
                     @foreach ($Relevant as $new)
                     <div class="product-default inner-quickview inner-icon" style="border:1px solid #f4f4f4">
                         <figure>
