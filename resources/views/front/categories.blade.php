@@ -42,11 +42,11 @@
             <h4 class="heading-bottom-border text-uppercase">Categories</h4>
             <div class="row">
                 @foreach ($AllCategories as $item)
-                <div class="col-lg-2 col-sm-4 col-6"  style="margin:0 auto;  padding-bottom:10px; border-radius:10px;">
+                <div class="col-lg-3 col-sm-4 col-6"  style="margin:0 auto;  padding-bottom:10px; border-radius:10px;">
                     <div class="product-category">
                         <a href="{{url('/')}}/products/{{$item->slung}}">
                             <figure>
-                                <img src="{{url('/')}}/uploads/categories/{{$item->image}}" width="300" height="300"
+                                <img style="border-radius:10px" src="{{url('/')}}/uploads/categories/{{$item->image}}" width="300" height="300"
                                     alt="{{$item->cat}}">
                             </figure>
                             <div class="category-content" style="text-align:center">
