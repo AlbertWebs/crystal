@@ -26,7 +26,7 @@
                             </li>
                             <li>
                                 <span class="contact-info-label">Working Days/Hours:</span>
-                                Mon - Sun / 8:00 AM - 5:00 PM
+                                Mon - Sat / 8:00 AM - 6:00 PM Sun 9:00 AM-1:00 PM
                             </li>
                         </ul>
                     </div><!-- End .widget -->
@@ -37,12 +37,12 @@
                         <h4 class="widget-title pb-1">Quick Links</h4>
 
                         <ul class="links">
-                            <li><a href="#">Orders History</a></li>
-                            <li><a href="#">Advanced Search</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="demo1-about.html">About Us</a></li>
-                            <li><a href="#">Corporate Sales</a></li>
+                            <li><a href="{{url('/')}}/dashboard">Orders History</a></li>
+                            {{-- <li><a href="#">Advanced Search</a></li> --}}
+                            <li><a href="{{url('/')}}/dashboard">Login</a></li>
+                            <li><a href="{{url('/')}}/dashboard">Careers</a></li>
+                            <li><a href="{{url('/')}}/find-us">About Us</a></li>
+                            <li><a href="{{url('/')}}/find-us">Contact Us</a></li>
                         </ul>
                     </div><!-- End .widget -->
                 </div><!-- End .col-lg-3 -->
@@ -64,14 +64,14 @@
                     <div class="social-icons">
                         <a href="{{$Settings->facebook}}" class="social-icon social-facebook icon-facebook" target="_blank"
                             title="facebook"></a>
-                        <a href="{{$Settings->twitter}}" class="social-icon social-twitter icon-twitter" target="_blank"
-                            title="twitter"></a>
+                        {{-- <a href="{{$Settings->twitter}}" class="social-icon social-twitter icon-twitter" target="_blank"
+                            title="twitter"></a> --}}
                         <a href="{{$Settings->instagram}}" class="social-icon social-instagram icon-instagram mr-0" target="_blank"
                             title="instagram"></a>
-                        <a href="{{$Settings->linkedin}}" class="social-icon social-linkedin fab fa-linkedin-in mr-0" target="_blank"
-                            title="linkedin"></a>
-                        <a href="{{$Settings->youtube}}" class="social-icon social-youtube fab fa-youtube mr-0" target="_blank"
-                            title="youtube"></a>
+                        {{-- <a href="{{$Settings->linkedin}}" class="social-icon social-linkedin fab fa-linkedin-in mr-0" target="_blank"
+                            title="linkedin"></a> --}}
+                        {{-- <a href="{{$Settings->youtube}}" class="social-icon social-youtube fab fa-youtube mr-0" target="_blank"
+                            title="youtube"></a> --}}
                         <a target="new" href="https://goo.gl/maps/UimtpCyy1rMdrbXXA" class="social-icon social-youtube fa fa-map-marker mr-0" target="_blank"
                             title="youtube"></a>
                     </div><!-- End .social-icons -->

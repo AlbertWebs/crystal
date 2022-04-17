@@ -54,7 +54,7 @@ Route::get('/subscription-offers/{email}', [App\Http\Controllers\HomeController:
 
 // Tags
 Route::get('/product-tags/{slung}', [App\Http\Controllers\HomeController::class, 'product_tags'])->name('product_tags');
-
+Route::get('/shop-by-category', [App\Http\Controllers\HomeController::class, 'categories'])->name('shop-by-category');
 // Products
 Route::group(['prefix'=>'products'], function(){
 	Route::get('/', [App\Http\Controllers\HomeController::class, 'categories'])->name('all');

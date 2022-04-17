@@ -13,7 +13,7 @@
 
 
     @foreach ($Slider as $slider)
-<hr>
+<br>
     <div class="home-slide home-slide2 banner">
         <img class="slide-bg" src="{{url('/')}}/uploads/sliders/{{$slider->image}}" alt="slider image" width="1120" height="500" style="background-color: #eee;">
         <?php $Sliders = DB::table('product')->where('id',$slider->product_id)->get(); ?>
@@ -63,7 +63,7 @@
        }
        }
        }">
-       <?php $AllCategories = DB::table('category')->get(); ?>
+       <?php $AllCategories = DB::table('category')->where('id','30')->get(); ?>
        <div class="owl-stage-outer">
           <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1440px;">
             @foreach ($AllCategories as $item)

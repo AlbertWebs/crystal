@@ -86,7 +86,7 @@
                     <div class="social-icons my-3">
                         <a href="#" class="social-icon social-youtube fab fa-youtube" target="_blank"></a>
                         <a href="#" class="social-icon social-facebook icon-facebook" target="_blank"></a>
-                        <a href="#" class="social-icon social-twitter icon-twitter" target="_blank"></a>
+                        {{-- <a href="#" class="social-icon social-twitter icon-twitter" target="_blank"></a> --}}
                         <a href="#" class="social-icon social-linkedin fab fa-linkedin-in" target="_blank"></a>
                     </div><!-- End .social-icons -->
                 </div>
@@ -164,7 +164,8 @@
                             <li><a href="tel:{{$Settings->mobile}}">{{$Settings->mobile}}</a></li>
                             <li><a href="mailto:{{$Settings->email}}">{{$Settings->email}}</a></li>
                             <li><span class="contact-info-label">Working Days/Hours:</span>
-                                Mon - Sun / 8:00 AM - 5:00 PM</li>
+                                Mon - Sat / 8:00 AM - 6:00 PM Sun 9:00 AM-1:00 PM
+                            </li>
                         </ul>
                     </div><!-- End .widget -->
                 </div><!-- End .col-lg-3 -->

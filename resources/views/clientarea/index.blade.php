@@ -6,8 +6,8 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="demo4.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="category.html">Shop</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{url('/')}}/products/shop-by-category">Shop</a></li>
                         <li class="breadcrumb-item active" aria-current="page">
                             My Account
                         </li>
@@ -35,11 +35,6 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" id="download-tab" data-toggle="tab" href="#download" role="tab"
-                            aria-controls="download" aria-selected="false">Downloads</a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab"
                             aria-controls="address" aria-selected="false">Addresses</a>
                     </li>
@@ -54,10 +49,10 @@
                             aria-controls="edit" aria-selected="false">Shopping Addres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="wishlist.html">Wishlist</a>
+                        <a class="nav-link" href="{{url('/wishlist')}}">Wishlist</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.html">Logout</a>
+                        <a class="nav-link" href="{{url('/')}}/dashboard/logout">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -67,7 +62,7 @@
                         <p>
                             Hello <strong class="text-dark">Editor</strong> (not
                             <strong class="text-dark">Editor</strong>?
-                            <a href="login.html" class="btn btn-link ">Log out</a>)
+                            <a href="{{url('/')}}/dashboard/logout" class="btn btn-link ">Log out</a>)
                         </p>
 
                         <p>
@@ -124,7 +119,7 @@
 
                             <div class="col-6 col-md-4">
                                 <div class="feature-box text-center pb-4">
-                                    <a href="wishlist.html"><i class="sicon-heart"></i></a>
+                                    <a href="{{url('/')}}/wishlist"><i class="sicon-heart"></i></a>
                                     <div class="feature-box-content">
                                         <h3>WISHLIST</h3>
                                     </div>
@@ -133,7 +128,7 @@
 
                             <div class="col-6 col-md-4">
                                 <div class="feature-box text-center pb-4">
-                                    <a href="login.html"><i class="sicon-logout"></i></a>
+                                    <a href="{{url('/')}}/dashboard/logout"><i class="sicon-logout"></i></a>
                                     <div class="feature-box-content">
                                         <h3>LOGOUT</h3>
                                     </div>
@@ -159,6 +154,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if($Orders->isEmpty())
                                     <tr>
                                         <td class="text-center p-0" colspan="5">
                                             <p class="mb-5 mt-5">
@@ -166,11 +162,52 @@
                                             </p>
                                         </td>
                                     </tr>
+                                    @else
+
+                                    {{--  --}}
+                                        @foreach($Orders as $orders)
+                                            <tr>
+                                                    <td class="cart_price">
+                                                    <?php $OrderProducts = DB::table('orders_products')->where('orders_id',$orders->id)->get(); ?>
+                                                    @foreach($OrderProducts as $details)
+                                                        <p>Product Name :<?php $products = DB::table('product')->where('id',$details->products_id)->get();  ?>
+                                                        @foreach($products as $theProducts)
+                                                        {{$theProducts->name}}
+                                                        @endforeach
+
+                                                        </p>
+                                                        <p>Quantity: {{$details->qty}}</p>
+                                                        <p>Date: {{$details->created_at}}</p>
+                                                    @endforeach
+                                                    </td>
+                                                    <td class="cart_price">
+                                                        <?php $OrderProducts = DB::table('orders_products')->where('orders_id',$orders->id)->get(); ?>
+                                                        @foreach($OrderProducts as $details)
+                                                            <p>Date: {{$details->created_at}}</p>
+                                                        @endforeach
+                                                    </td>
+                                                    <td class="cart_price">
+                                                        <p class="">
+                                                        {{$orders->status}}
+                                                        </p>
+                                                    </td>
+
+                                                    <td class="cart_price">
+                                                    <p>Ksh {{$orders->total}}</p>
+                                                    </td>
+
+                                                    <td class="cart_price">
+                                                        <a @if($orders->status == 'completed') @else onclick="return confirm('You Can Only Review This Product If this Order Is Completed'); false" @endif href="{{url('/')}}/product/{{$theProducts->slung}}" class="btn btn-dark">Review <i class="fas fa-pencil-alt"></i></a>
+                                                    </td>
+
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                             <hr class="mt-0 mb-3 pb-2" />
 
-                            <a href="category.html" class="btn btn-dark">Go Shop</a>
+                            <a href="{{url('/')}}/products/shop-by-category" class="btn btn-dark">Go Shop</a>
                         </div>
                     </div>
                 </div><!-- End .tab-pane -->
@@ -180,7 +217,7 @@
                         <h3 class="account-sub-title d-none d-md-block"><i
                                 class="sicon-cloud-download align-middle mr-3"></i>Downloads</h3>
                         <div class="download-table-container">
-                            <p>No downloads available yet.</p> <a href="category.html"
+                            <p>No downloads available yet.</p> <a href="{{url('/')}}/products/shop-by-category"
                                 class="btn btn-primary text-transform-none mb-2">GO SHOP</a>
                         </div>
                     </div>
@@ -233,20 +270,11 @@
                     <div class="account-content">
                         <form action="#">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="acc-name">First name <span class="required">*</span></label>
-                                        <input type="text" class="form-control" placeholder="Editor"
+                                        <input value="{{Auth::user()->name}}" type="text" class="form-control" placeholder="Editor"
                                             id="acc-name" name="acc-name" required />
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="acc-lastname">Last name <span
-                                                class="required">*</span></label>
-                                        <input type="text" class="form-control" id="acc-lastname"
-                                            name="acc-lastname" required />
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +282,7 @@
                             <div class="form-group mb-2">
                                 <label for="acc-text">Display name <span class="required">*</span></label>
                                 <input type="text" class="form-control" id="acc-text" name="acc-text"
-                                    placeholder="Editor" required />
+                                    placeholder="Editor" value="{{Auth::user()->email}}" required />
                                 <p>This will be how your name will be displayed in the account section and
                                     in
                                     reviews</p>
@@ -263,7 +291,7 @@
 
                             <div class="form-group mb-4">
                                 <label for="acc-email">Email address <span class="required">*</span></label>
-                                <input type="email" class="form-control" id="acc-email" name="acc-email"
+                                <input value="{{Auth::user()->email}}" type="email" class="form-control" id="acc-email" name="acc-email"
                                     placeholder="editor@gmail.com" required />
                             </div>
 
@@ -308,40 +336,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>First name <span class="required">*</span></label>
-                                        <input type="text" class="form-control" required />
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Last name <span class="required">*</span></label>
-                                        <input type="text" class="form-control" required />
+                                        <label>Address <span class="required">*</span></label>
+                                        <input value="{{Auth::user()->address}}" type="text" class="form-control" required />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Company </label>
-                                <input type="text" class="form-control">
+                                <label>Country </label>
+                                <input value="{{Auth::user()->country}}" type="text" class="form-control">
                             </div>
 
-                            <div class="select-custom">
-                                <label>Country / Region <span class="required">*</span></label>
-                                <select name="orderby" class="form-control">
-                                    <option value="" selected="selected">British Indian Ocean Territory
-                                    </option>
-                                    <option value="1">Brunei</option>
-                                    <option value="2">Bulgaria</option>
-                                    <option value="3">Burkina Faso</option>
-                                    <option value="4">Burundi</option>
-                                    <option value="5">Cameroon</option>
-                                </select>
-                            </div>
+
 
                             <div class="form-group">
-                                <label>Street address <span class="required">*</span></label>
-                                <input type="text" class="form-control"
+                                <label>Location <span class="required">*</span></label>
+                                <input value="{{Auth::user()->Location}}" type="text" class="form-control"
                                     placeholder="House number and street name" required />
                                 <input type="text" class="form-control"
                                     placeholder="Apartment, suite, unit, etc. (optional)" required />
@@ -349,27 +359,24 @@
 
                             <div class="form-group">
                                 <label>Town / City <span class="required">*</span></label>
-                                <input type="text" class="form-control" required />
+                                <input type="text" value="{{Auth::user()->town}}" class="form-control" required />
                             </div>
 
                             <div class="form-group">
                                 <label>State / Country <span class="required">*</span></label>
-                                <input type="text" class="form-control" required />
+                                <input type="text" value="{{Auth::user()->country}}" class="form-control" required />
                             </div>
 
-                            <div class="form-group">
-                                <label>Postcode / ZIP <span class="required">*</span></label>
-                                <input type="text" class="form-control" required />
-                            </div>
+
 
                             <div class="form-group mb-3">
                                 <label>Phone <span class="required">*</span></label>
-                                <input type="number" class="form-control" required />
+                                <input value="{{Auth::user()->mobile}}" type="number" class="form-control" required />
                             </div>
 
                             <div class="form-group mb-3">
                                 <label>Email address <span class="required">*</span></label>
-                                <input type="email" class="form-control" placeholder="editor@gmail.com"
+                                <input type="email" value="{{Auth::user()->email}}" class="form-control" placeholder="editor@gmail.com"
                                     required />
                             </div>
 
@@ -392,40 +399,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>First name <span class="required">*</span></label>
-                                        <input type="text" class="form-control" required />
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Last name <span class="required">*</span></label>
-                                        <input type="text" class="form-control" required />
+                                        <label>Address <span class="required">*</span></label>
+                                        <input value="{{Auth::user()->address}}" type="text" class="form-control" required />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Company </label>
-                                <input type="text" class="form-control">
+                                <label>Country </label>
+                                <input value="{{Auth::user()->country}}" type="text" class="form-control">
                             </div>
 
-                            <div class="select-custom">
-                                <label>Country / Region <span class="required">*</span></label>
-                                <select name="orderby" class="form-control">
-                                    <option value="" selected="selected">British Indian Ocean Territory
-                                    </option>
-                                    <option value="1">Brunei</option>
-                                    <option value="2">Bulgaria</option>
-                                    <option value="3">Burkina Faso</option>
-                                    <option value="4">Burundi</option>
-                                    <option value="5">Cameroon</option>
-                                </select>
-                            </div>
+
 
                             <div class="form-group">
-                                <label>Street address <span class="required">*</span></label>
-                                <input type="text" class="form-control"
+                                <label>Location <span class="required">*</span></label>
+                                <input value="{{Auth::user()->Location}}" type="text" class="form-control"
                                     placeholder="House number and street name" required />
                                 <input type="text" class="form-control"
                                     placeholder="Apartment, suite, unit, etc. (optional)" required />
@@ -433,17 +422,25 @@
 
                             <div class="form-group">
                                 <label>Town / City <span class="required">*</span></label>
-                                <input type="text" class="form-control" required />
+                                <input type="text" value="{{Auth::user()->town}}" class="form-control" required />
                             </div>
 
                             <div class="form-group">
                                 <label>State / Country <span class="required">*</span></label>
-                                <input type="text" class="form-control" required />
+                                <input type="text" value="{{Auth::user()->country}}" class="form-control" required />
                             </div>
 
-                            <div class="form-group">
-                                <label>Postcode / ZIP <span class="required">*</span></label>
-                                <input type="text" class="form-control" required />
+
+
+                            <div class="form-group mb-3">
+                                <label>Phone <span class="required">*</span></label>
+                                <input value="{{Auth::user()->mobile}}" type="number" class="form-control" required />
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Email address <span class="required">*</span></label>
+                                <input type="email" value="{{Auth::user()->email}}" class="form-control" placeholder="editor@gmail.com"
+                                    required />
                             </div>
 
                             <div class="form-footer mb-0">

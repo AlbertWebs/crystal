@@ -127,8 +127,8 @@
             <div class="social-icons">
                 <a href="{{$Settings->facebook}}" class="social-icon social-facebook icon-facebook" target="_blank" title="facebook">
                 </a>
-                <a href="{{$Settings->twitter}}" class="social-icon social-twitter icon-twitter" target="_blank" title="twitter">
-                </a>
+                {{-- <a href="{{$Settings->twitter}}" class="social-icon social-twitter icon-twitter" target="_blank" title="twitter">
+                </a> --}}
                 <a href="{{$Settings->instagram}}" class="social-icon social-instagram icon-instagram" target="_blank" title="instagram">
                 </a>
                 <a href="{{$Settings->linkedin}}" class="social-icon social-linkedin fas fa-linkedin-in" target="_blank" title="linkedin">

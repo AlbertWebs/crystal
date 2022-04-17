@@ -271,15 +271,15 @@
                         'items': 2
                     },
                     '992': {
-                        'items': 3
+                        'items': 4
                     }
                 }
             }">
             <div class="info-box info-box-icon-left">
-                <i class="icon-shipping text-white"></i>
+                <i class="icon-check text-white"></i>
 
                 <div class="info-box-content">
-                    <h4 class="text-white">Free Shipping &amp; Return</h4>
+                    <h4 class="text-white">Quality Products</h4>
                 </div><!-- End .info-box-content -->
             </div><!-- End .info-box -->
 
@@ -287,7 +287,7 @@
                 <i class="icon-money text-white"></i>
 
                 <div class="info-box-content">
-                    <h4 class="text-white">Money Back Guarantee</h4>
+                    <h4 class="text-white">Affordable products</h4>
                 </div><!-- End .info-box-content -->
             </div><!-- End .info-box -->
 
@@ -298,6 +298,15 @@
                     <h4 class="text-white">Online Support 24/7</h4>
                 </div><!-- End .info-box-content -->
             </div><!-- End .info-box -->
+            <div class="info-box info-box-icon-left">
+                <i class="icon-support text-white"></i>
+
+                <div class="info-box-content">
+                    <h4 class="text-white">24/7 product support</h4>
+                </div><!-- End .info-box-content -->
+            </div><!-- End .info-box -->
+
+
         </div><!-- End .owl-carousel -->
     </div>
 </header><!-- End .header -->
