@@ -17,6 +17,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "laravelium/sitemap": "^8.0",
         "stevebauman/location": "^6.2",
         "stichoza/google-translate-php": "^4.1"
     },

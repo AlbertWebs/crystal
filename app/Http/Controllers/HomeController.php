@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
-            SEOMeta::setTitle(' ' . $Settings->sitename . ' - ' . $Settings->intro . '');
+            SEOMeta::setTitle(' '. $Settings->sitename.' - ' . $Settings->intro . '');
             SEOMeta::setDescription('Car Audio Systems in Kenya, Vehicle Accessories in kenya, Car Sound Systems in Kenya, Car alarm Systems in Kenya,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers' . $Settings->welcome . '');
             SEOMeta::setCanonical('' . $Settings->url . '');
@@ -47,9 +47,8 @@ class HomeController extends Controller
             Twitter::setTitle('' . $Settings->sitename. '');
             Twitter::setSite('@crystalcaraudio');
 
-
             $page_name = 'Home1';
-            $page_title = 'Car Radio, Car Stereo - Amani Vehicle Sounds';
+            $page_title = 'Car Radio, Car Stereo - Crystal Car Audio';
 
             $keywords = 'Car Sound Systems, Car Alarm Systems, Car Surveillance Systems,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
             ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers';
@@ -328,7 +327,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Contact Us | ' . $Settings->sitename . '');
-            SEOMeta::setDescription('Amani Vehicle Sounds, Contact Vehicles Speakers in Kenya, Car Bass Speakers');
+            SEOMeta::setDescription('Crystal Car Audio, Contact Vehicles Speakers in Kenya, Car Bass Speakers');
             SEOMeta::setCanonical('' . $Settings->url . '/contact-us');
 
             OpenGraph::setDescription('' . $Settings->welcome . '');
@@ -352,7 +351,7 @@ class HomeController extends Controller
 
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('About Us | ' . $Settings->sitename . '');
-            SEOMeta::setDescription('Amani Vehicle Sounds, Amani Car Sound Systems  Car Speakers systems. Pioneer Car stereo, Speakers for sale in kenya ');
+            SEOMeta::setDescription('Crystal Car Audio, Amani Car Sound Systems  Car Speakers systems. Pioneer Car stereo, Speakers for sale in kenya ');
             SEOMeta::setCanonical('' . $Settings->url . '/about-us');
             OpenGraph::setDescription('' . $Settings->welcome . '');
             OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
@@ -491,7 +490,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Terms and Conditions | ' . $Settings->sitename . '  ');
-            SEOMeta::setDescription('Amani Vehicle Sounds Systems' . $Settings->welcome . '');
+            SEOMeta::setDescription('Crystal Car Audio Systems' . $Settings->welcome . '');
             SEOMeta::setCanonical('' . $Settings->url . '/terms-and-conditions');
             OpenGraph::setDescription('' . $Settings->welcome . '');
             OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
@@ -512,7 +511,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Terms Of Delivery | ' . $Settings->sitename . '  ');
-            SEOMeta::setDescription('Amani Vehicle Sounds Systems' . $Settings->welcome . '');
+            SEOMeta::setDescription('Crystal Car Audio Systems' . $Settings->welcome . '');
             SEOMeta::setCanonical('' . $Settings->url . '/delivery');
             OpenGraph::setDescription('' . $Settings->welcome . '');
             OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
@@ -535,7 +534,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Privacy Policy | ' . $Settings->sitename . '  ');
-            SEOMeta::setDescription('Amani vehicle Sounds Privacy Policies' . $Settings->welcome . '');
+            SEOMeta::setDescription('Crystal Car Audio Privacy Policies' . $Settings->welcome . '');
             SEOMeta::setCanonical('' . $Settings->url . '/privacy');
             OpenGraph::setDescription('' . $Settings->welcome . '');
             OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
@@ -556,7 +555,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Shipping Policy | ' . $Settings->sitename . '  ');
-            SEOMeta::setDescription('Amani vehicle Sounds Privacy Policies' . $Settings->welcome . '');
+            SEOMeta::setDescription('Crystal Car Audio Privacy Policies' . $Settings->welcome . '');
             SEOMeta::setCanonical('' . $Settings->url . '/privacy');
             OpenGraph::setDescription('' . $Settings->welcome . '');
             OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
@@ -579,7 +578,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle('Copyright Statement | ' . $Settings->sitename . '  ');
-            SEOMeta::setDescription('Amani Vehicle Sounds Copyrights' . $Settings->welcome . '');
+            SEOMeta::setDescription('Crystal Car Audio Copyrights' . $Settings->welcome . '');
             SEOMeta::setCanonical('' . $Settings->url . '/copyright');
             OpenGraph::setDescription('' . $Settings->welcome . '');
             OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');

@@ -20,8 +20,8 @@ use App\Http\Controllers\DropzoneController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'index_home'])->name('home');
+// Route::get('/', [HomeController::class, 'index_home'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home-page');
 Route::get('/product-quick-view/{slung}', [HomeController::class, 'product_quick_view'])->name('product-quick-view');
 Route::get('/products', [HomeController::class, 'categories'])->name('categories');
@@ -639,6 +639,12 @@ Route::get('sitemap', function() {
 		// add every product to the sitemap
 		foreach ($posts as $post) {
 			$sitemap->add("https://www.crystalcaraudio.com/product/$post->slung",'2012-08-25T20:10:00+02:00', '0.8', 'daily');
+		}
+
+		$posts = DB::table('variations')->orderBy('created_at', 'desc')->get();
+		// add every product to the sitemap
+		foreach ($posts as $post) {
+			$sitemap->add("https://www.crystalcaraudio.com/product-variation/$post->slung",'2012-08-25T20:10:00+02:00', '0.8', 'daily');
 		}
 	}
 
