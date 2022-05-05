@@ -589,6 +589,7 @@ Route::get('/C2B','PaymentsConroller@C2B');
 //Post STK
 Route::post('/stk','PaymentsConroller@stk');
 Route::get('/check/{ref}','PaymentsConroller@check');
+
 });
 
 
@@ -649,5 +650,6 @@ Route::get('sitemap', function() {
 	}
 
 	// show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
+
 	return $sitemap->render('xml');
 });
