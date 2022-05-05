@@ -198,7 +198,8 @@
             $('#WAButton').floatingWhatsApp({
                 phone: '+254790721397', //WhatsApp Business phone number +254790721397
                 headerTitle: 'Chat with us on WhatsApp!', //Popup Title
-                popupMessage: 'I have just visited *{{url()->current()}}*', //Popup Message
+                popupMessage: 'Welcome to {{url()->current()}}, How can we serve you today?', //Popup Message
+                message: 'I have just visited *{{url()->current()}}*',
                 showPopup: true, //Enables popup display
                 buttonImage: '<img src="{{url('/')}}/uploads/icon/whatsapp.svg" />', //Button Image
                 // headerColor: 'Jungle Green', //Custom header color
