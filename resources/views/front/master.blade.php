@@ -198,9 +198,9 @@
             $('#WAButton').floatingWhatsApp({
                 phone: '+254790721397', //WhatsApp Business phone number +254790721397
                 headerTitle: 'Chat with us on WhatsApp!', //Popup Title
-                popupMessage: 'Hello, how can we help you?', //Popup Message
+                popupMessage: 'I have just visited *{{url()->current()}}*', //Popup Message
                 showPopup: true, //Enables popup display
-                buttonImage: '<img src="https://amanivehiclesounds.co.ke/uploads/icon/whatsapp.svg" />', //Button Image
+                buttonImage: '<img src="{{url('/')}}/uploads/icon/whatsapp.svg" />', //Button Image
                 // headerColor: 'Jungle Green', //Custom header color
                 // backgroundColor: 'Jungle Green', //Custom background button color
                 position: "left" //Position: left | right

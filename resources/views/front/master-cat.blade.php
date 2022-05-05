@@ -54,10 +54,16 @@
     {{-- <link rel="stylesheet" href="{{asset('theme/assets/css/demo42.min.css')}}"> --}}
     <link rel="stylesheet" href="{{asset('theme/assets/css/demo27.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/assets/vendor/fontawesome-free/css/all.min.css')}}">
+
+    <!--Floating WhatsApp css-->
+    <link rel="stylesheet" href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/5d392d6beb82e88615a2eeb3c/1d603c00fa71af0f58347ff94.js");</script>
+    {{--  --}}
 </head>
 
 <body>
 
+    <div style="z-index:100000" id="WAButton"></div>
     <div id="google_translate_element"></div>
     <div class="page-wrapper">
 
@@ -225,6 +231,27 @@
             });
         })
     </script>
+
+    {{--  --}}
+    <!--Floating WhatsApp javascript-->
+    <script type="text/javascript" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#WAButton').floatingWhatsApp({
+                phone: '+254790721397', //WhatsApp Business phone number +254790721397
+                headerTitle: 'Chat with us on WhatsApp!', //Popup Title
+                popupMessage: 'I have just visited *{{url()->current()}}*', //Popup Message
+                showPopup: true, //Enables popup display
+                buttonImage: '<img src="{{url('/')}}/uploads/icon/whatsapp.svg" />', //Button Image
+                // headerColor: 'Jungle Green', //Custom header color
+                // backgroundColor: 'Jungle Green', //Custom background button color
+                position: "left" //Position: left | right
+
+            });
+        });
+    </script>
+    {{--  --}}
 
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     {{-- Google Translate --}}
