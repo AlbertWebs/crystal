@@ -126,10 +126,10 @@
                 </ul>
             </nav><!-- End .mobile-nav -->
 
-            <form class="search-wrapper mb-2" action="#">
+            {{-- <form class="search-wrapper mb-2" action="#">
                 <input type="text" class="form-control mb-0" placeholder="Search..." required />
                 <button class="btn icon-search text-white bg-transparent p-0" title="submit" type="submit"></button>
-            </form>
+            </form> --}}
 
             <div class="social-icons">
                 <a href="{{$Settings->facebook}}" class="social-icon social-facebook icon-facebook" target="_blank" title="facebook">
