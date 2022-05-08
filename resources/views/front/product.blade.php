@@ -297,7 +297,13 @@
                     <div class="tab-pane fade show active" id="product-desc-content" role="tabpanel"
                         aria-labelledby="product-tab-desc">
                         <div class="product-desc-content">
-                            {!!html_entity_decode($Product->content)!!}
+                            {!!html_entity_decode($Product->content)!!}<br>
+                            {{--  --}}
+                            <br>
+                            <h3>Whats in the box</h3>{!!html_entity_decode($Product->box)!!}
+                            <br>
+                            <h3>Warranty</h3>:{!!html_entity_decode($Product->warranty)!!}
+                            <br><hr>
                             <h1 style="font-size: 1.4rem; font-weight:600">
                                 Shop
                             <a href="{{url('/')}}/product/{{$Product->slung}}">{{$Product->name}}</a>
