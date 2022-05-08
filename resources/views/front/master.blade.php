@@ -25,7 +25,7 @@
     @include('front.facebook')
     {{-- @include('front.tawk') --}}
     @include('front.google')
-
+    @include('front.favicon')
     <!-- Favicon -->
 
     <link rel="preload" href="{{asset('theme/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2')}}" as="font" type="font/woff2"
