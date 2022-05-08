@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
-            SEOMeta::setTitle(' '. $Settings->sitename.' - ' . $Settings->intro . '');
+            SEOMeta::setTitle(' '. $Settings->sitename.'');
             SEOMeta::setDescription('Car speakers, Car subwoofer, car amplifiers , car alarm, car trackers, car audio system, car audio installation, car booster amplifiers');
             SEOMeta::setCanonical('' . $Settings->url . '');
             OpenGraph::setDescription('' . $Settings->welcome . '');
