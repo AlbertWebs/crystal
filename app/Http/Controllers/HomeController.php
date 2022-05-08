@@ -37,8 +37,7 @@ class HomeController extends Controller
         $SEOSettings = DB::table('seosettings')->get();
         foreach ($SEOSettings as $Settings) {
             SEOMeta::setTitle(' '. $Settings->sitename.' - ' . $Settings->intro . '');
-            SEOMeta::setDescription('Car Audio Systems in Kenya, Vehicle Accessories in kenya, Car Sound Systems in Kenya, Car alarm Systems in Kenya,   ,in car Accessories  ,car stereo  ,car subwoofer  ,car stereo installation nairobi  , car audio shop
-            ,car stereo shop  ,powered speakers  ,underseat subwoofer  ,car speakers  ,car amplifiers' . $Settings->welcome . '');
+            SEOMeta::setDescription('Car speakers, Car subwoofer, car amplifiers , car alarm, car trackers, car audio system, car audio installation, car booster amplifiers');
             SEOMeta::setCanonical('' . $Settings->url . '');
             OpenGraph::setDescription('' . $Settings->welcome . '');
             OpenGraph::setTitle('' . $Settings->sitename . ' - ' . $Settings->welcome . '');
