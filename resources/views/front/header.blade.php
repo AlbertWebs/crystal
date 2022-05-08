@@ -123,9 +123,10 @@
                             <button class="btn icon-magnifier p-0" title="search" type="submit"></button>
                         </div><!-- End .header-search-wrapper -->
                     </form>
+
                             <!-- Livesearch Results -->
                     {{-- <div style="background-image: url('{{url('/')}}/uploads/preloaders/preloader.gif');" class="text-center" id="loading-image">Loading.....</div> --}}
-                    <table class="table  table-hover" style="position:absolute; background-color:rgba(255,255,255,0.9); color:#000;  z-index: 1000; max-width: 638px;">
+                    <table class="table  table-hover livesearch" style="position:absolute; background-color:rgba(255,255,255,0.9); color:#000;  z-index: 1000; max-width: 638px;">
                         <thead>
 
                         </thead>
@@ -170,6 +171,10 @@
                 <span class="separator d-block"></span>
 
                @include('front.shopping-cart')
+
+               {{-- <span class="separator d-block"></span> --}}
+
+
 
             </div><!-- End .header-right -->
         </div><!-- End .container -->
