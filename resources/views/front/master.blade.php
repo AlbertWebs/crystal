@@ -112,12 +112,12 @@
                             Special Offer!
                         </a>
                     </li> --}}
-                    <li class="border-0">
+                    {{-- <li class="border-0">
                         <a href="{{url('/')}}/special-offers" target="_blank" rel="noopener" title="Special Offers">
                             Special Offers
                             <span class="tip tip-hot">Hot</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 <ul class="mobile-menu">

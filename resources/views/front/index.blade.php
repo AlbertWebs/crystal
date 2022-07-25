@@ -104,8 +104,7 @@
                 <div class="owl-carousel owl-theme dots-simple">
                     <?php $SpecialOffers = DB::table('product')->where('offer','1')->get(); ?>
                     @foreach ($SpecialOffers as $special)
-                    <div class="banner banner1"
-                        style="background: url('{{url('/')}}/uploads/product/{{$special->offer_banner}}') rgb(29,160,152); background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 40.2rem;">
+                    <div class="banner banner1" style="background: url('{{url('/')}}/uploads/product/{{$special->offer_banner}}') rgb(29,160,152); background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 40.2rem;">
                         <div class="banner-content banner-layer-middle position-absolute">
 
                             {{-- <img src="{{asset('theme/assets/images/demoes/demo42/shop_brand1.png')}}" width="232" height="28"

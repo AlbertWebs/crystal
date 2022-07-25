@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3e1b3ca4345c2edd3da3690803eb41b317f13342',
+    'reference' => '5590bf0be87fec7f295a1072c2d845051822f2b0',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -579,7 +579,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3e1b3ca4345c2edd3da3690803eb41b317f13342',
+      'reference' => '5590bf0be87fec7f295a1072c2d845051822f2b0',
     ),
     'laravel/sail' => 
     array (
@@ -780,6 +780,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '06e2ebd25f2869e54a306dda991f7db58066f7f6',
+    ),
+    'orangehill/iseed' => 
+    array (
+      'pretty_version' => 'v3.0.2',
+      'version' => '3.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '11f4355cdffc570eb231259f8700d760215df3fe',
     ),
     'phar-io/manifest' => 
     array (
