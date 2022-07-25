@@ -1279,7 +1279,7 @@ public function add_Product(Request $request){
     }
 
 
-
+    $slung = Str::slug($request->name);
 
 
     $path = 'uploads/product';
@@ -1314,7 +1314,7 @@ public function add_Product(Request $request){
                 $file = $request->file('thumbnail');
                 /** Renaming Edits */
                 $extension = $file->getClientOriginalExtension();
-                $image_main_temp = $request->name.'-thumbnail.'.$extension;
+                $image_main_temp = $slung.'-thumbnail.'.$extension;
                 $thumbnail = str_replace(' ', '-',$image_main_temp);
                 $file->move($path, $thumbnail);
                 /* Renaming Edits Ends*/
@@ -1337,7 +1337,7 @@ public function add_Product(Request $request){
     }
 
 
-    $slung = Str::slug($request->name);
+
     $Product = new Product;
     $Product->name = $request->name;
     $Product->google_product_category = $request->google_product_category;
@@ -1458,6 +1458,7 @@ public function edit_Product(Request $request, $id){
         $encodedVar = "";
     }
 
+    $slung = Str::slug($request->name);
     // echo $encodedVar;
     // die();
 
@@ -1490,7 +1491,7 @@ public function edit_Product(Request $request, $id){
                 $file = $request->file('thumbnail');
                 /** Renaming Edits */
                 $extension = $file->getClientOriginalExtension();
-                $image_main_temp = $request->name.'-thumbnail.'.$extension;
+                $image_main_temp = $slung.'-thumbnail.'.$extension;
                 $thumbnail = str_replace(' ', '-',$image_main_temp);
                 $file->move($path, $thumbnail);
                 /* Renaming Edits Ends*/
@@ -1510,7 +1511,7 @@ public function edit_Product(Request $request, $id){
                 $file = $request->file('image_one');
                 /** Renaming Edits */
                 $extension = $file->getClientOriginalExtension();
-                $image_main_temp = $request->name.'-001.'.$extension;
+                $image_main_temp = $slung.'-001.'.$extension;
                 $image_one = str_replace(' ', '-',$image_main_temp);
                 $file->move($path, $image_one);
                 /* Renaming Edits Ends*/
@@ -1532,7 +1533,7 @@ public function edit_Product(Request $request, $id){
             $file = $request->file('image_two');
             /** Renaming Edits */
             $extension = $file->getClientOriginalExtension();
-            $image_main_temp = $request->name.'-002.'.$extension;
+            $image_main_temp = $slung.'-002.'.$extension;
             $image_twoRaw = str_replace(' ', '-',$image_main_temp);
             $image_two = str_replace('&', 'and',$image_twoRaw);
             $file->move($path, $image_two);
@@ -1556,7 +1557,7 @@ public function edit_Product(Request $request, $id){
             $file = $request->file('image_three');
             /** Renaming Edits */
             $extension = $file->getClientOriginalExtension();
-            $image_main_temp = $request->name.'-003.'.$extension;
+            $image_main_temp = $slung.'-003.'.$extension;
             $image_three = str_replace(' ', '-',$image_main_temp);
             $file->move($path, $image_three);
             /* Renaming Edits Ends*/
@@ -1580,7 +1581,7 @@ public function edit_Product(Request $request, $id){
    }
 
 
-   $slung = Str::slug($request->name);
+
 
 
    $replaced = $request->replaced;
