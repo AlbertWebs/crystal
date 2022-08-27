@@ -94,7 +94,7 @@
             <span class="mobile-menu-close"><i class="fa fa-times"></i></span>
             <nav class="mobile-nav">
                 <ul class="mobile-menu">
-                    <li><a href="{{url('/')}}">Home</a></li>
+                    
 
                     <li><a href="{{url('/')}}/shop-by-brand">Our Brands</a></li>
 
@@ -103,6 +103,8 @@
                     <li><a href="{{url('/')}}/products">Products</a></li>
 
                     <li><a href="{{url('/')}}/our-portfolio">Installation</a></li>
+
+                    <li><a href="{{url('/')}}/knowledge-base">Knowledge Base</a></li>
 
                 </ul>
 

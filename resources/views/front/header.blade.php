@@ -197,9 +197,9 @@
 
                         </div>
                     </li>
-                    <li class="active">
+                    {{-- <li class="active">
                         <a href="{{url('/')}}">Home</a>
-                    </li>
+                    </li> --}}
                     <li >
                         <a href="{{url('/')}}/products/shop-by-brand">Our Brands</a>
                     </li>
@@ -212,6 +212,8 @@
                     <li >
                         <a href="{{url('/')}}/our-portfolio">Installation</a>
                     </li>
+
+                    <li><a href="{{url('/')}}/knowledge-base">Knowledge Base</a></li>
 
                     <li><a href="{{url('/')}}/find-us" rel="noopener" target="_blank">Contact Us</a>
                     </li>
